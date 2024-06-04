@@ -1,0 +1,150 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Silk;
+    font-size: 16px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+#window {
+    font-weight: bold;
+    font-family: "OxProto";
+}
+
+#workspaces {
+	font-family: FontAwesome6Free;
+	margin-top: 8px;
+	margin-left: 12px;
+	margin-bottom: 0;
+	border-radius: 26px;
+	background: #282828;
+	transition: none;
+}
+
+
+#workspaces button {
+	margin-bottom: 0;
+	transition: none;
+	color: #f8f8f2;
+}
+
+#workspaces button.active {
+	color: #ebdbb2;
+        background: #98971a;
+	border-radius: 15px;
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button.active:hover {
+	color: #ebdbb2;
+        background: #f8f8f2;
+	border-radius: 15px;
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button:hover {
+	transition: none;
+	box-shadow: inherit;
+	text-shadow: inherit;
+	border-radius: 15px;
+	color: #98971a;
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#clock, #custom-power, #battery, #cpu, #memory, #network, #pulseaudio, #mode, #custom-notification {
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 0;
+    border-radius: 26px;
+    color: #f8f8f2;
+    background: #282828;
+	}
+
+#clock {
+	margin-top: 8px;
+	margin-left: 8px;
+	padding-left: 16px;
+	margin-bottom: 0;
+	border-radius: 26px;
+	background: #282828;
+}
+#battery {
+    background: #282828;
+    color: #f8f8f2;
+    border-radius: 25px
+}
+
+#battery icon {
+    color: red;
+}
+
+#battery.charging {
+    color: green;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.warning:not(.charging) {
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#network.disconnected {
+}
+
+#pulseaudio {
+    padding-left: 16px;
+    padding-right: 16px;
+
+}
+
+#pulseaudio.muted {
+}
+
+#custom-power {
+    background: #bb4934;
+}
+
+#custom-notification {
+	background: #282828;
+	margin-top: 8px;
+	margin-left: 12px;
+	margin-right: 12px;
+	margin-bottom: 0;
+	border-radius: 13px;
+	background: #282828;
+	font-family: FontAwesome6Free;
+	color: #f8f8f2;
+	    padding-left: 5px;
+	    padding-right: 5px;
+
+}
