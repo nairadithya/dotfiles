@@ -6,5 +6,5 @@ color {
     scrollbar = "#3c3836"
     separator = "#504945"
 }
-prompt=Run Programs
-allow-images=true
+prompt=Open Applications
+allow-images=false

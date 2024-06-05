@@ -1,28 +1,52 @@
-window{
-  font-size:12px;
-  background-color:#1c1c1c;
-	margin:4px;
-  border:1px solid orange;
-  color:#d5c4a1;
-  font-family:"Hack Nerd Font";
+window {
+margin: 0px;
+border: 1px solid #3c3836;
+background-color: #282828;
 }
 
-#entry:selected{
-  background-color:orange;
-  }
+#input {
+margin: 5px;
+border: none;
+color: #f8f8f2;
+background-color: #44475a;
+}
 
-#text:selected{
-    color:black;
-		font-weight:bold;
-  }
+#inner-box {
+margin: 5px;
+border: none;
+background-color: #3c3836;
+}
 
-#input{
-    background-color:#282828;
-    border:0.5px solid orange;
-    color:#b8bb26;
-		padding:2px;
-  }
-#input:enabled{
-	background-color:black;
-	border:1px solid transparent;
+#outer-box {
+margin: 5px;
+border: none;
+background-color: #3c3836;
+}
+
+#scroll {
+margin: 0px;
+border: none;
+color: #3c3836;
+}
+
+#text {
+margin: 5px;
+border: none;
+color: #ebdbb2;
+} 
+
+#entry.activatable #text {
+color: #282828;
+}
+
+#entry > * {
+color: #f8f8f2;
+}
+
+#entry:selected {
+background-color: #3c3836;
+}
+
+#entry:selected #text {
+font-weight: bold;
 }
