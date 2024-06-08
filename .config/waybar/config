@@ -13,7 +13,7 @@
         "format": "{icon}",
         "format-icons": {
             "1": "",
-            "2": "",
+            "2": " ",
             "3": "󰎈",
             "4": "",
             "5": "󰭹",
@@ -31,7 +31,7 @@
         "battery": {
         "bat": "BAT1",
         "states": {
-            // "good": 95,
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
@@ -42,13 +42,13 @@
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{essid}({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-disconnected": "Disconnected ⚠"
     },
    "pulseaudio": {
         //"scroll-step": 1,
-        "format": "{volume} % {icon}",
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": {
