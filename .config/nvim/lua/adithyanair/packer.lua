@@ -12,6 +12,8 @@ requires = { {'nvim-lua/plenary.nvim'} }
 }
 -- Gruvbox Configuration
 use { "ellisonleao/gruvbox.nvim" }
+-- Catpuccin Setup
+use { "catppuccin/nvim", as = "catppuccin" }
 -- Tree Sitter
 use { "nvim-treesitter/nvim-treesitter",
 run = ':TSUpdate',
