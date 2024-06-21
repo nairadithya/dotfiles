@@ -1,10 +1,10 @@
-color {
-    window = "#282828"
-    border = "#3c3836"
-    text = "#ebdbb2"
-    highlight = "#3c3836"
-    scrollbar = "#3c3836"
-    separator = "#504945"
-}
-prompt=Open Applications
-allow-images=false
+show=drun
+width=450
+height=400
+always_parse_args=true
+show_all=false
+hide_scroll=true
+term=alacritty
+print_command=true
+insensitive=true
+prompt=
