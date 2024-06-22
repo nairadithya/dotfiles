@@ -119,14 +119,17 @@ window#waybar {
 #network {
   padding-left: 16px;
   padding-right: 16px;
+  color: @teal;
 }
 
 #network.disconnected {
+  color: @red;
 }
 
 #pulseaudio {
   padding-left: 16px;
   padding-right: 16px;
+  color: @yellow;
 }
 
 #pulseaudio.muted {
@@ -144,5 +147,5 @@ window#waybar {
   border-radius: 13px;
   font-family: FontAwesome6Free;
   padding-left: 5px;
-  padding-right:5px;
+  padding-right: 5px;
 }

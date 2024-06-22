@@ -135,6 +135,11 @@ _G.packer_plugins = {
     path = "/var/home/adithya/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
+  ["oil.nvim"] = {
+    loaded = true,
+    path = "/var/home/adithya/.local/share/nvim/site/pack/packer/start/oil.nvim",
+    url = "https://github.com/stevearc/oil.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/var/home/adithya/.local/share/nvim/site/pack/packer/start/packer.nvim",

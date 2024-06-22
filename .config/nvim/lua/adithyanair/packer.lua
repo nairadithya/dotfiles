@@ -29,14 +29,17 @@ use {
     {'L3MON4D3/LuaSnip'},
   }
 }
-
+-- Oil.nvim
+use { 'stevearc/oil.nvim'}
+-- Mason
 use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     }
+-- Vimtex
 use {'lervag/vimtex'}
-
-use { 'nvim-lualine/lualine.nvim',
-requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+use { 
+	'nvim-lualine/lualine.nvim',
+	requires = { 'nvim-tree/nvim-web-devicons', opt = true },
 }
 end)

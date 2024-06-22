@@ -1,18 +1,15 @@
 [window]
 opacity = 1 
-padding.x = 10
-padding.y = 10
-
-decorations = "Full"
-decorations_theme_variant = "Light" # "Dark"
+padding.x = 9
+padding.y = 9
 
 [font]
-normal.family = "Hack Nerd Font"
-bold.family = "Hack Nerd Font"
-italic.family = "Hack Nerd Font"
-bold_italic.family = "Hack Nerd Font"
+normal.family = "JetBrains Mono Nerd Font"
+bold.family = "JetBrains Mono Nerd Font"
+italic.family = "JetBrains Mono Nerd Font"
+bold_italic.family = "JetBrains Mono Nerd Font"
 
-size = 10.0
+size = 9.0
 # Catpuccin Theme
 # Default colors
 [colors.primary]
