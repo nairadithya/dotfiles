@@ -31,6 +31,7 @@ use {
 }
 -- Oil.nvim
 use { 'stevearc/oil.nvim'}
+use 'nvim-tree/nvim-web-devicons'
 -- Mason
 use {
     "williamboman/mason.nvim",
