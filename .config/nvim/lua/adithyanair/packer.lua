@@ -39,7 +39,14 @@ use {
     }
 -- Vimtex
 use {'lervag/vimtex'}
-use { 
+use({
+  "epwalsh/obsidian.nvim",
+  tag = "*",  -- recommended, use latest release instead of latest commit
+  requires = {
+    "nvim-lua/plenary.nvim",
+  },
+  })
+  use { 
 	'nvim-lualine/lualine.nvim',
 	requires = { 'nvim-tree/nvim-web-devicons', opt = true },
 }
