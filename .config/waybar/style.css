@@ -21,29 +21,28 @@ window#waybar {
   margin-top: 8px;
   margin-left: 12px;
   margin-bottom: 0;
-  border-radius: 26px;
-  background: @crust;
+  border-radius: 23px;
+  background: @mauve;
   transition: slide;
 }
 
 #workspaces button {
   margin-bottom: 0;
   transition: none;
-  color: @text;
+  color: @base;
 }
 
 #workspaces button.active {
   color: @text;
-  background: @mauve;
+  background: @base;
   border-radius: 15px;
-  animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 #workspaces button.active:hover {
-  color: #ebdbb2;
-  background: @overlay0;
-  border-radius: 15px;
+  color: @text;
+  background: @mantle;
+  border-radius: 25px;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
@@ -54,6 +53,7 @@ window#waybar {
   text-shadow: inherit;
   border-radius: 15px;
   color: @overlay0;
+  background: @mantle;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
@@ -87,17 +87,20 @@ window#waybar {
   padding-left: 16px;
   padding-right: 16px;
   margin-bottom: 0;
+  border: 1px solid @mauve;
 }
 #battery {
   border-radius: 26px;
 }
 
 #battery icon {
-  color: @red;
+  color: @base;
+  background: @red;
 }
 
 #battery.charging {
-  color: @green;
+  color: @base;
+  background: @green;
 }
 
 @keyframes blink {
@@ -119,24 +122,28 @@ window#waybar {
 #network {
   padding-left: 16px;
   padding-right: 16px;
-  color: @teal;
+  color: @base;
+  background: @teal;
 }
 
 #network.disconnected {
-  color: @red;
+  background: @rosewater;
+  color: @base;
 }
 
 #pulseaudio {
   padding-left: 16px;
   padding-right: 16px;
-  color: @yellow;
+  color: @base;
+  background: @yellow;
 }
 
 #pulseaudio.muted {
 }
 
 #custom-power {
-  color: @red;
+  background: @red;
+  color: @base;
 }
 
 #custom-notification {

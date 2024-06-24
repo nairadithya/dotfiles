@@ -1,4 +1,5 @@
 # I title this setup - Catpuccin Overdose.
+
 You, dear reader, will not find difficulty in agreeing with this.
 
 I am currently running Fedora SilverBlue with Hyprland on a Lenovo Yoga Slim 7i Pro. Feel free to clone this repo and modify as needed.
@@ -14,7 +15,7 @@ Ah well here's the list of apps being used.
 - swww (My wallpaper picker currently, it is very annoying, doesn't open on startup, I need to get to fixing that.)
 - hypr (My window manager of choice, it's got pretty animations and it's dynamic)
 - swayidle, swaylock (Haven't gotten to work on this yet, but you can bet it's gonna be catpuccin based)
-- swaync (A notification daemon that doesn't really need any setup)
+- dunst (A notification daemon that lets me use catppuccin(that's literally the only reason, I don't really care))
 - wallpaper (Folder of all the pictures I use as wallpapers)
 - waybar (My bar of choice)
 - wofi (My app menu of choice)

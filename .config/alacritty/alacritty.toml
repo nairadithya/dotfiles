@@ -9,7 +9,7 @@ bold.family = "JetBrains Mono Nerd Font"
 italic.family = "JetBrains Mono Nerd Font"
 bold_italic.family = "JetBrains Mono Nerd Font"
 
-size = 9.0
+size = 9.5
 # Catpuccin Theme
 # Default colors
 [colors.primary]
