@@ -40,7 +40,4 @@ completion = {
 -- Keybindings
 vim.keymap.set('n', '<leader>os',"<CMD>:ObsidianQuickSwitch<CR>", {}),
 vim.keymap.set('n', '<leader>on',"<CMD>:ObsidianNew<CR>", {})
-
--- Vim settings
-vim.sy
 })
