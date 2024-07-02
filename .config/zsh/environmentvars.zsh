@@ -21,4 +21,3 @@ export VISUAL=nvim
 export EDITOR=nvim
 eval "$(tmuxifier init -)"
 export PATH
-echo "Environmetvars.zsh loaded"

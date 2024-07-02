@@ -5,6 +5,5 @@
 # Key bindings
 # ------------
 source "${FZF_PATH}/shell/key-bindings.zsh"
-echo "fzf.zsh loaded"
 
 

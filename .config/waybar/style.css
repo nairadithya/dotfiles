@@ -87,6 +87,7 @@ window#waybar {
   margin-bottom: 0;
   border: 1px solid @mauve;
   background: @mantle;
+  color: @text;
 }
 #battery {
   border-radius: 26px;
