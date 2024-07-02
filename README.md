@@ -1,10 +1,11 @@
 # I title this setup - Catpuccin Overdose.
-
 You, dear reader, will not find difficulty in agreeing with this.
 
-I am currently running Fedora SilverBlue with Hyprland on a Lenovo Yoga Slim 7i Pro. Feel free to clone this repo and modify as needed.
-
 The earlier version of this setup was a largely gruvbox-focused setup. That's until I realized just how beautiful catpuccin looks... I think I went too far.
+
+I am currently running Fedora SilverBlue with Hyprland on a Lenovo Yoga Slim 7i Pro. It is quite an annoying distribution, insofar as it doesn't me catppuccinificate my SDDM.(For those unaware, Fedora SilverBlue has a read-only root filesystem.)
+
+Feel free to clone this repo and modify as needed.
 
 Ah well here's the list of apps being used.
 

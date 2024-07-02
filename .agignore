@@ -1,7 +1,6 @@
+# Folders to avoid
 ~/.cache/
 ~/.mozilla/
-~/Builds/dotfiles/
 ~/.var/
 ~/.local/
 ~/.nvim/
-

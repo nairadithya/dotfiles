@@ -1,6 +1,6 @@
 source "$ZDOTDIR/zinit.zsh"
 source "$ZDOTDIR/fzf.zsh"
 source "$ZDOTDIR/prompt.zsh"
-source "$ZDOTDIR/environment.zsh"
+source "$ZDOTDIR/environmentvars.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/options.zsh"

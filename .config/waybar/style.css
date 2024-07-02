@@ -34,8 +34,8 @@ window#waybar {
 
 #workspaces button.active {
   color: @text;
-  background: @base;
-  border-radius: 15px;
+  background: @crust;
+  border-radius: 23px;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
@@ -79,8 +79,6 @@ window#waybar {
   padding-right: 5px;
   margin-bottom: 0;
   border-radius: 26px;
-  color: @text;
-  background: @crust;
 }
 
 #clock {
@@ -88,14 +86,16 @@ window#waybar {
   padding-right: 16px;
   margin-bottom: 0;
   border: 1px solid @mauve;
+  background: @mantle;
 }
 #battery {
   border-radius: 26px;
+  color: @base;
+  background: @sapphire;
 }
 
 #battery icon {
   color: @base;
-  background: @red;
 }
 
 #battery.charging {

@@ -8,14 +8,14 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.smartindent = true
--- Syncs clipboard with desktop clipboard
-vim.opt.clipboard="unnamedplus"
 -- Disable mouse
 vim.opt.mouse = ""
 -- Remove mode
 vim.opt.showmode = false
 -- Remove highlight after search
 vim.opt.hlsearch = true
+-- Conceal Syntax
+vim.opt.conceallevel = 2
 -- Highlight upon yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
