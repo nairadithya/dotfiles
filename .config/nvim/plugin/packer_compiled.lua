@@ -159,6 +159,11 @@ _G.packer_plugins = {
     path = "/home/adithya/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/home/adithya/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
   vimtex = {
     loaded = true,
     path = "/home/adithya/.local/share/nvim/site/pack/packer/start/vimtex",

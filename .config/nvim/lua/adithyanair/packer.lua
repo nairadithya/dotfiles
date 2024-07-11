@@ -37,6 +37,8 @@ use {
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 }
+-- Vim-Tmux
+use { "christoomey/vim-tmux-navigator" }
 -- Vimtex
 use {'lervag/vimtex'}
 use{

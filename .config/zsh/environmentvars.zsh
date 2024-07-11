@@ -17,6 +17,8 @@ esac
 path+=("$HOME/Builds/swww/target/release/")
 path+=("$HOME/.tmux/plugins/tmuxifier/bin/")
 path+=("$HOME/bin/")
+path+=("$HOME/.local/bin/")
+
 export VISUAL=nvim
 export EDITOR=nvim
 eval "$(tmuxifier init -)"

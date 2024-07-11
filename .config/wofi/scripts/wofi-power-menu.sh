@@ -20,7 +20,7 @@ local f = assert(
     io.popen(
         "echo -e '"
             .. options_string
-            .. "' | wofi --dmenu --insensitive --prompt 'Power menu' --width 300 --style ./powermenu.css --lines "
+            .. "' | wofi --dmenu --insensitive --prompt 'Power menu' --width 300 --style ~/.config/wofi/style.css --lines 9 "
         ------------------ to change the location of the dropdown, use --location 1 (top left) or --location 3 (top right) (see --location in wofi --help)
             .. length,
         "r"
