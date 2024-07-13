@@ -1,9 +1,9 @@
 #!/usr/bin/lua
 local options = {
-    [" Lock"] = "swaylock",
+    [" Lock"] = "hyprlock",
     [" Shut down"] = "systemctl poweroff",
     [" Reboot"] = "systemctl reboot",
-    ["󰍃 Log out"] = "swaymsg exit",
+    ["󰍃 Log out"] = "hyprctl dispatch exit 1",
     ["󰒲 Suspend"] = "systemctl suspend",
     [" Hibernate"] = "systemctl hibernate",
 }

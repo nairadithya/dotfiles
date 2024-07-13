@@ -1,8 +1,8 @@
 [global]
 origin = top-center
-frame_color = "#89b4fa"
+frame_color = "#cba6f7"
 separator_color= frame
-offset = (0, 50)
+offset = 0x10
 
 [urgency_low]
 background = "#1e1e2e"

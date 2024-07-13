@@ -1,0 +1,8 @@
+[topydo]
+filename=~/Sync/todo/todo.txt
+archive_filename=~/Sync/todo/done.txt
+
+[colorscheme]
+focus_background_color=darkgray
+
+
