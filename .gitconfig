@@ -1,3 +1,5 @@
 [user]
 	email = adithyanair121@gmail.com
 	name = Adithya Nair
+[core]
+	editor = nvim
