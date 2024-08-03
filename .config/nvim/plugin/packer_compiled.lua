@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/adithya/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["marp-nvim"] = {
+    loaded = true,
+    path = "/home/adithya/.local/share/nvim/site/pack/packer/start/marp-nvim",
+    url = "https://github.com/mpas/marp-nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/home/adithya/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",

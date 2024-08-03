@@ -3,3 +3,5 @@
 	name = Adithya Nair
 [core]
 	editor = nvim
+[init]
+	defaultBranch = main
