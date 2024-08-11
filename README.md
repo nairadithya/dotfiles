@@ -5,6 +5,8 @@ The earlier version of this setup was a largely gruvbox-focused setup. That's un
 
 I am currently running Fedora with Hyprland on a Lenovo Yoga Slim 7i Pro. 
 
+![](assets/main layout.jpeg)
+
 Feel free to clone this repo and modify as needed.
 
 Here's the list of apps being used.
