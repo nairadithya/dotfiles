@@ -5,7 +5,7 @@ The earlier version of this setup was a largely gruvbox-focused setup. That's un
 
 I am currently running Fedora with Hyprland on a Lenovo Yoga Slim 7i Pro. 
 
-![](assets/main layout.jpeg)
+![](/assets/main.png)
 
 Feel free to clone this repo and modify as needed.
 
@@ -17,7 +17,7 @@ Here's the list of apps being used.
 - tmux (My terminal multiplexer, with catpuccin of course.)
 - hyprpaper (Works great, without complaint)
 - hypr (My window manager of choice, it's got pretty animations and it's dynamic)
-- hypridle, hypridle (I have some weird issue where the entire screen turns red, but that's an issue for later.)
+- hypridle, (I have some weird issue where the entire screen turns red, but that's an issue for later.)
 - dunst (A notification daemon that lets me use catppuccin(that's literally the only reason, I don't really care))
 - wallpaper (Folder of all the pictures I use as wallpapers)
 - waybar (My bar of choice)
