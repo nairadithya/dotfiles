@@ -6,6 +6,7 @@ The earlier version of this setup was a largely gruvbox-focused setup. That's un
 I am currently running Fedora with Hyprland on a Lenovo Yoga Slim 7i Pro. 
 
 ![](/assets/main.png)
+![My note-taking setup](/assets/emacs-org.png)
 
 Feel free to clone this repo and modify as needed.
 
