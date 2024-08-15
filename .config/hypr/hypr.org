@@ -309,8 +309,6 @@ device {
     name = epic-mouse-v1
     sensitivity = -0.1
 }
-
-
 #+end_src
 
 * Hypridle
