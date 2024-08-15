@@ -1,3 +1,25 @@
+#+title: Hyprland Config
+#+author: Adithya Nair
+#+PROPERTY: header-args:conf :tangle hyprland.conf
+* Table Of Contents :toc:
+- [[#apps][Apps]]
+- [[#binds][Binds]]
+  - [[#workspace-autostart][Workspace Autostart]]
+  - [[#main-keybinds][Main Keybinds]]
+  - [[#volume-and-brightness][Volume and brightness]]
+  - [[#media-controls][Media controls]]
+  - [[#window-management][Window Management]]
+  - [[#lid-switch-triggers][Lid Switch Triggers]]
+- [[#window-rules][Window Rules]]
+- [[#colours][Colours]]
+- [[#startup][Startup]]
+- [[#settings][Settings]]
+- [[#hypridle][Hypridle]]
+- [[#hyprlock][Hyprlock]]
+- [[#hyprpaper][Hyprpaper]]
+
+* Apps
+#+begin_src conf
 $terminal = alacritty
 $logseq = GDK_BACKEND=wayland exec ~/Apps/Logseq.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c -a 'emacs'
@@ -7,16 +29,23 @@ $menu = wofi --show drun
 $cmenu = wofi --show run
 $music = flatpak run sh.cider.Cider --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto
 $gimp = flatpak run org.gimp.GIMP
-
+#+end_src
+* Binds
+#+begin_src conf
 $mainMod = SUPER
+#+end_src
 
+** Workspace Autostart
+#+begin_src conf
 # Autostarting my apps within their respective workspace
 exec-once = [workspace 1 silent] $browser
 exec-once = [workspace 2 silent] $emacs
 exec-once = [workspace 3 silent] exec, $music
 exec-once = [workspace 4 silent] exec, $obsidian
 exec-once =  exec, [workspace 5 silent] xdg-open www.web.whatsapp.com
-
+#+end_src
+** Main Keybinds
+#+begin_src conf
 bind = $mainMod SHIFT, n, exec, swaync-client -t -sw
 bind = $mainMod, RETURN, exec, $emacs
 bind = $mainMod SHIFT, O, exec, slurp | grim -g - - | wl-copy
@@ -30,20 +59,24 @@ bind = $mainMod, E, exec, $fileManager
 bind = $mainMod SHIFT, space, togglefloating,
 bind = $mainMod, R, exec, $menu
 bind = $mainMod SHIFT, R, exec, $cmenu
-
-# Volume and brightness
+#+end_src
+** Volume and brightness
+#+begin_src conf
 binde=, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
 bindl=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 binde=, XF86MonBrightnessDown, exec, brightnessctl set 10%-
 bindl=, XF86MonBrightnessUp, exec, brightnessctl set 10%+
-
-# Media controls
+#+end_src
+** Media controls
+#+begin_src conf
 bind = CTRL ALT, space, exec, playerctl play-pause
 bind = CTRL ALT, left, exec, playerctl previous
 bind= CTRL ALT, up, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
 bind= CTRL ALT, down, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bind = CTRL ALT, right, exec, playerctl next
-
+#+end_src
+** Window Management
+#+begin_src conf
 # Move focus with mainMod + arrow keys
 bind = $mainMod, h, movefocus, l
 bind = $mainMod, l, movefocus, r
@@ -87,21 +120,29 @@ bind = $mainMod SHIFT, S, movetoworkspace, special:magic
 bind = $mainMod, mouse_down, workspace, e+1
 bind = $mainMod, mouse_up, workspace, e-1
 
+# Move/resize windows with mainMod + LMB/RMB and dragging
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+#+end_src
+** Lid Switch Triggers
+#+begin_src conf
 # trigger when the switch is turning on
 bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
 # trigger when the switch is turning off
 bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, 2560x1600, 0x0, 2"
-# Move/resize windows with mainMod + LMB/RMB and dragging
-bindm = $mainMod, mouse:272, movewindow
-bindm = $mainMod, mouse:273, resizewindow
-
+#+end_src
+* Window Rules
+#+begin_src conf
 windowrulev2 = suppressevent maximize, class:.*
 windowrulev2 = float, title:(Picture-in-Picture)
 windowrulev2 = float, title:(Extension: (Bitwarden Password Manager) - Bitwarden — Ablaze Floorp)
 windowrulev2 = pin, title:(Picture-in-Picture)
 windowrulev2 = move 10 60, title:(Picture-in-Picture)
 windowrulev2 = size 30% 30%, title:(Picture-in-Picture)
-
+#+end_src
+* Colours
+Catpuccin colours
+#+begin_src conf
 $rosewater = rgb(f5e0dc)
 $rosewaterAlpha = f5e0dc
 
@@ -179,20 +220,24 @@ $mantleAlpha = 181825
 
 $crust = rgb(11111b)
 $crustAlpha = 11111b
+#+end_src
 
+* Startup
+#+begin_src conf
 exec-once = waybar
 exec-once = syncthing
 exec-once = hyprpaper
 exec-once = hypridle
 exec-once = dunst
 exec-once = /usr/bin/emacs --daemon &
-
+#+end_src
+* Settings
+#+begin_src conf
 monitor=eDP-1,preferred,auto,auto
 monitor=,preferred,auto,1,mirror,eDP-1
 # Some default env vars.
 env = XCURSOR_SIZE, 16
 env = QT_QPA_PLATFORMTHEME,qt5ct # change to qt6ct if you have that
-
 input {
     kb_layout = us
     kb_variant =
@@ -264,3 +309,119 @@ device {
     name = epic-mouse-v1
     sensitivity = -0.1
 }
+
+
+#+end_src
+
+* Hypridle
+#+begin_src conf :tangle hypridle.conf
+general {
+    lock_cmd = pidof hyprlock || hyprlock       # avoid starting multiple hyprlock instances.
+    before_sleep_cmd = loginctl lock-session    # lock before suspend.
+    after_sleep_cmd = hyprctl dispatch dpms on  # to avoid having to press a key twice to turn on the display.
+}
+
+listener {
+    timeout = 150                                # 2.5min.
+    on-timeout = brightnessctl -s set 10         # set monitor backlight to minimum, avoid 0 on OLED monitor.
+    on-resume = brightnessctl -r                 # monitor backlight restore.
+}
+
+# turn off keyboard backlight, comment out this section if you dont have a keyboard backlight.
+listener {
+    timeout = 60                                          # 2.5min.
+    on-timeout = brightnessctl -sd rgb:kbd_backlight set 0 # turn off keyboard backlight.
+    on-resume = brightnessctl -rd rgb:kbd_backlight        # turn on keyboard backlight.
+}
+
+listener {
+    timeout = 300                                 # 5min
+    on-timeout = loginctl lock-session            # lock screen when timeout has passed
+}
+
+listener {
+    timeout = 330                                 # 5.5min
+    on-timeout = hyprctl dispatch dpms off        # screen off when timeout has passed
+    on-resume = hyprctl dispatch dpms on          # screen on when activity is detected after timeout has fired.
+}
+
+listener {
+    timeout = 1800                                # 30min
+    on-timeout = systemctl suspend                # suspend pc
+}
+#+end_src
+* Hyprlock
+#+begin_src conf :tangle hyprlock.conf
+source=~/.config/hypr/hyprland.conf
+
+background {
+	path = ~/.config/wallpaper/tetris.png
+    blur_passes = 3 # 0 disables blurring
+	blur_size = 7
+	noise = 0.0117
+	contrast = 0.8916
+	brightness = 0.8172
+	vibrancy = 0.1696
+	vibrancy_darkness = 0.0
+}
+
+label {
+    monitor =
+    text = Welcome, Adithya.
+    text_align = center # center/right or any value for default left. multi-line text alignment inside label container
+    color = $subtext1
+    font_size = 72
+    font_family = Noto Sans
+    rotate = 0 # degrees, counter-clockwise
+    position = 0, 250
+    halign = center
+    valign = center
+}
+label {
+    monitor =
+    text = $TIME
+    text_align = center # center/right or any value for default left. multi-line text alignment inside label container
+    color = $text
+    font_size = 72
+    font_family = Noto Sans
+    rotate = 0 # degrees, counter-clockwise
+
+    position = 0, 120
+    halign = center
+    valign = center
+}
+
+input-field {
+    size = 300, 50
+    outline_thickness = 3
+    dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
+    dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0
+    dots_center = true
+    dots_rounding = -1 # -1 default circle, -2 follow input-field rounding
+    outer_color = $mauve
+    inner_color = $base
+    font_color = $mauve
+    fade_on_empty = true
+    fade_timeout = 1000
+    placeholder_text = <i>Password...</i>
+    hide_input = false
+    rounding = -1 # -1 means complete rounding (circle/oval)
+    check_color = $green
+    fail_color = $red
+    fail_text = <i>Incorrect Password</i> # can be set to empty
+    fail_timeout = 1000
+    fail_transition = 300
+    capslock_color = -1
+    numlock_color = -1
+    bothlock_color = -1
+    invert_numlock = false
+    position = 0, 0
+    halign = center
+    valign = center
+}
+#+end_src
+* Hyprpaper
+#+begin_src conf :tangle hyprpaper.conf
+preload = ~/.config/wallpaper/cat_pacman.png
+wallpaper = ,~/.config/wallpaper/cat_pacman.png
+#+end_src
