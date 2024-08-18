@@ -10,3 +10,5 @@ Feel free to clone this repo and modify as needed.
 
 My hyprland config is in an org file.
 
+=======
+Feel free to clone this repo and modify as needed.
