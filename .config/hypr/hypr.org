@@ -19,6 +19,7 @@
 - [[#hyprpaper][Hyprpaper]]
 
 * Apps
+These are a bunch of variables for my apps so that I don't have to type them all out every time.
 #+begin_src conf
 $terminal = alacritty
 $logseq = GDK_BACKEND=wayland exec ~/Apps/Logseq.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations
@@ -423,3 +424,4 @@ input-field {
 preload = ~/.config/wallpaper/cat_pacman.png
 wallpaper = ,~/.config/wallpaper/cat_pacman.png
 #+end_src
+
