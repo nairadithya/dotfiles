@@ -196,4 +196,5 @@
        ;;literate
        (default +bindings +smartparens))
 
-;; Org-Agenda
+;; Org-Journal
+(setq org-journal-file-format "%Y_%m_%d.org")

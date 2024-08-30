@@ -76,3 +76,13 @@
 ;; they are implemented.
 
 (setq calendar-week-start-day 1)
+
+;; Org-latex-preview remove blurriness
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
+(setq org-preview-latex-default-process 'dvisvgm)
+
+;; Org-latex-preview scale adjustment
+;; map the TAB to activate the cdlatex tab
+;; with this all cdlatex functions work
+(map! :map LaTeX-mode-map
+      "TAB" #'cdlatex-tab)
