@@ -25,7 +25,7 @@ $terminal = alacritty
 $logseq = GDK_BACKEND=wayland exec ~/Apps/Logseq.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c -a 'emacs'
 $fileManager = alacritty -e nv .
-$browser = flatpak run one.ablaze.floorp
+$browser =
 $menu = wofi --show drun
 $cmenu = wofi --show run
 $music = flatpak run sh.cider.Cider --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto
@@ -41,9 +41,7 @@ $mainMod = SUPER
 # Autostarting my apps within their respective workspace
 exec-once = [workspace 1 silent] $browser
 exec-once = [workspace 2 silent] $emacs
-exec-once = [workspace 3 silent] exec, $music
-exec-once = [workspace 4 silent] exec, $obsidian
-exec-once =  exec, [workspace 5 silent] xdg-open www.web.whatsapp.com
+exec-once = [workspace 5 silent] xdg-open 'http://www.web.whatsapp.com'
 #+end_src
 ** Main Keybinds
 #+begin_src conf
@@ -421,7 +419,6 @@ input-field {
 #+end_src
 * Hyprpaper
 #+begin_src conf :tangle hyprpaper.conf
-preload = ~/.config/wallpaper/cat_pacman.png
-wallpaper = ,~/.config/wallpaper/cat_pacman.png
+preload = ~/.config/wallpaper/buttons.png
+wallpaper = ,~/.config/wallpaper/buttons.png
 #+end_src
-
