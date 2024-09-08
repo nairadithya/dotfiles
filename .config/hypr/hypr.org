@@ -25,7 +25,7 @@ $terminal = alacritty
 $logseq = GDK_BACKEND=wayland exec ~/Apps/Logseq.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c -a 'emacs'
 $fileManager = alacritty -e nv .
-$browser =
+$browser = flatpak run io.github.zen_browser.zen
 $menu = wofi --show drun
 $cmenu = wofi --show run
 $music = flatpak run sh.cider.Cider --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto
@@ -38,16 +38,16 @@ $mainMod = SUPER
 
 ** Workspace Autostart
 #+begin_src conf
-# Autostarting my apps within their respective workspace
 exec-once = [workspace 1 silent] $browser
 exec-once = [workspace 2 silent] $emacs
-exec-once = [workspace 5 silent] xdg-open 'http://www.web.whatsapp.com'
+exec-once = [workspace 5 silent] xdg-open 'http://web.whatsapp.com'
 #+end_src
 ** Main Keybinds
 #+begin_src conf
 bind = $mainMod SHIFT, n, exec, swaync-client -t -sw
 bind = $mainMod, RETURN, exec, $emacs
 bind = $mainMod SHIFT, O, exec, slurp | grim -g - - | wl-copy
+bind = $mainMod SHIFT, RETURN, exec, $terminal
 bind = $mainMod, B, exec, $browser
 bind = $mainMod, G, exec, $gimp
 bind = $mainMod, M, exec, $music
@@ -85,8 +85,8 @@ bind = $mainMod, k, movefocus, u
 # Moving windows within a workspace
 bind = $mainMod SHIFT, h, movewindow, l
 bind = $mainMod SHIFT, l, movewindow, r
-bind = $mainMod SHIFT, j, movewindow, u
-bind = $mainMod SHIFT, k, movewindow, d
+bind = $mainMod SHIFT, j, movewindow, d
+bind = $mainMod SHIFT, k, movewindow, u
 # Switch workspaces with mainMod + [0-9]
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2

@@ -52,3 +52,4 @@
 (package! catppuccin-theme)
 
 (package! gnuplot)
+
