@@ -53,3 +53,4 @@
 
 (package! gnuplot)
 
+(package! darkroom)

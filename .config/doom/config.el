@@ -40,8 +40,8 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Sync/Org-Garden/")
 
+(setq org-directory "~/Sync/Org-Garden/")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -74,16 +74,16 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
 (setq calendar-week-start-day 1)
+
 ;; Org-latex-preview remove blurriness
 (setq org-preview-latex-default-process 'dvisvgm)
-;; Org scaling
-(after! org (plist-put org-format-latex-options :scale 0.75))
-
 ;; Org-latex-preview scale adjustment
+(after! org (plist-put org-format-latex-options :scale 0.50))
+
 ;; map the TAB to activate the cdlatex tab
 ;; with this all cdlatex functions work
 (map! :map LaTeX-mode-map
       "TAB" #'cdlatex-tab)
 
+(setq! org-hide-emphasis-markers t)
