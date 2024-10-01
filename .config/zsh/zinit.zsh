@@ -13,15 +13,15 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
 
+# Adding fzf
+zinit light unixorn/fzf-zsh-plugin
+zinit light Aloxaf/fzf-tab
+
 # Adding autosuggestions
 zinit light zsh-users/zsh-autosuggestions
 
 bindkey '^f' autosuggest-accept
 
-
-# FZF-ZSH plugin
-zinit light unixorn/fzf-zsh-plugin
-zinit light Aloxaf/fzf-tab
 
 # Clipboard plugin
 zinit light twang817/zsh-clipboard
