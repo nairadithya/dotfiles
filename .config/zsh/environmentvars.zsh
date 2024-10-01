@@ -18,7 +18,8 @@ path+=("$HOME/Builds/swww/target/release/")
 path+=("$HOME/.tmux/plugins/tmuxifier/bin/")
 path+=("$HOME/bin/")
 path+=("$HOME/.local/bin/")
-
+export BUN_INSTALL="$HOME/.bun"
+path+=("$BUN_INSTALL/bin")
 export VISUAL=nvim
 export EDITOR=nvim
 eval "$(tmuxifier init -)"
