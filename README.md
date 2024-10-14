@@ -1,4 +1,4 @@
-# A Catppuccin Lover's Setup 
+# Catppuccin Overdose
  
 I am currently running Fedora with Hyprland on a Lenovo Yoga Slim 7i Pro. 
 
