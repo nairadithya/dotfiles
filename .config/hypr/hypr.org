@@ -419,6 +419,6 @@ input-field {
 #+end_src
 * Hyprpaper
 #+begin_src conf :tangle hyprpaper.conf
-preload = ~/.config/wallpaper/buttons.png
-wallpaper = ,~/.config/wallpaper/buttons.png
+preload = ~/.config/wallpaper/cat_pacman.png
+wallpaper = ,~/.config/wallpaper/cat_pacman.png
 #+end_src
