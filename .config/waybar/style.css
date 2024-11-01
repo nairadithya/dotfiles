@@ -87,7 +87,8 @@ window#waybar {
 }
 
 #battery {
-  border: 1px solid @text;
+    color: @blue;
+  border: 1px solid @blue;
 }
 
 #battery icon {
@@ -107,8 +108,8 @@ window#waybar {
 }
 
 #network {
-  color: @green;
-  border: 1px solid @green;
+  color: @teal;
+  border: 1px solid @teal;
 }
 
 #network.disconnected {
