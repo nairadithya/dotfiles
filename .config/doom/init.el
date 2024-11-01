@@ -109,7 +109,7 @@
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
-       (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
+       (if (featurep :system 'macos) macos)  ; improve compatibility with macOS
        ;;tty               ; improve the terminal Emacs experience
 
        :lang
@@ -141,9 +141,9 @@
        ;;(haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
-       ;;json              ; At least it ain't XML
+       (json +lsp +tree-sitter)  ; At least it ain't XML
        (java +lsp +tree-sitter)       ; the poster child for carpal tunnel syndrome
-       ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       javascript        ; all(hope(abandon(ye(who(enter(here))))))
        (julia +lsp +tree-sitter)             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (latex +cdlatex +lsp)             ; writing papers in Emacs has never been so fun
@@ -198,3 +198,14 @@
 
 ;; Org-Journal
 (setq org-journal-file-format "%Y_%m_%d.org")
+
+(setq org-preview-latex-process-alist
+      '((dvisvgm :programs ("latex" "dvisvgm")
+         :description "dvi > svg"
+         :message "you need to install the programs: latex and dvisvgm."
+         :use-xcolor t
+         :image-input-type "dvi"
+         :image-output-type "svg"
+         :image-size-adjust (1.0 . 1.0)
+         :latex-compiler ("latex -interaction nonstopmode -output-directory %o %f")
+         :image-converter ("dvisvgm %f -n -b min -c %S -o %O"))))
