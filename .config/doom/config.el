@@ -81,11 +81,13 @@
 ;; Org-latex-preview remove blurriness
 (setq org-preview-latex-default-process 'dvisvgm)
 ;; Org-latex-preview scale adjustment
-(after! org (plist-put org-format-latex-options :scale 0.50))
+(after! org (plist-put org-format-latex-options :scale 1.00))
 
 ;; map the TAB to activate the cdlatex tab
 ;; with this all cdlatex functions work
 (map! :map LaTeX-mode-map
       "TAB" #'cdlatex-tab)
+
+(setq +latex-viewers '(zathura))
 
 (setq! org-hide-emphasis-markers t)
