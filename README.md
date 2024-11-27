@@ -1,4 +1,4 @@
-# Catppuccin Overdose
+<h1 align="center">Catppuccin Overdose</h1>
 
 I am currently running Fedora with Hyprland on a Lenovo Yoga Slim 7i Pro.
 
