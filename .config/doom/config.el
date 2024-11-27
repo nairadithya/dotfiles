@@ -91,3 +91,5 @@
 (setq +latex-viewers '(zathura))
 
 (setq! org-hide-emphasis-markers t)
+
+(setq! +snippets-dir "~/dotfiles/.config/doom/snippets/")

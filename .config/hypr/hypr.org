@@ -22,7 +22,7 @@
 These are a bunch of variables for my apps so that I don't have to type them all out every time.
 #+begin_src conf
 $terminal = kitty
-$logseq = GDK_BACKEND=wayland exec ~/Apps/Logseq.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations
+$logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c -a 'emacs'
 $fileManager = kitty -e nv .
 $browser = flatpak run io.github.zen_browser.zen
@@ -52,6 +52,7 @@ bind = $mainMod SHIFT, O, exec, slurp | grim -g - - | wl-copy
 bind = $mainMod SHIFT, RETURN, exec, $terminal
 bind = $mainMod, B, exec, $browser
 bind = $mainMod, G, exec, $gimp
+bind = $mainMod, N, exec, $logseq
 bind = $mainMod, M, exec, $music
 bind = $mainMod, O, exec, $obsidian
 bind = $mainMod, C, killactive,
@@ -229,7 +230,7 @@ exec-once = waybar
 exec-once = syncthing
 exec-once = hyprpaper
 exec-once = dunst
-exec-once = /usr/bin/emacs --daemon &
+exec-once = emacs --daemon &
 #+end_src
 * Settings
 #+begin_src conf
@@ -251,7 +252,7 @@ input {
         natural_scroll = true
     }
     mouse_refocus = true
-    sensitivity = -0.3 # -1.0 - 1.0, 0 means no modification.
+    sensitivity = 0.3 # -1.0 - 1.0, 0 means no modification.
 }
 
 general {
