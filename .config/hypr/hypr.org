@@ -252,7 +252,7 @@ input {
         natural_scroll = true
     }
     mouse_refocus = true
-    sensitivity = 0.3 # -1.0 - 1.0, 0 means no modification.
+    sensitivity = 0.5 # -1.0 - 1.0, 0 means no modification.
 }
 
 general {
@@ -423,6 +423,7 @@ input-field {
 #+end_src
 * Hyprpaper
 #+begin_src conf :tangle hyprpaper.conf
-preload = ~/.config/wallpaper/cat_pacman.png
-wallpaper = ,~/.config/wallpaper/cat_pacman.png
+preload = ~/.config/wallpaper/tokyo-night.png
+wallpaper = ,~/.config/wallpaper/tokyo-night.png
+splash=false
 #+end_src
