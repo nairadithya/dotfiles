@@ -1,35 +1,34 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar at the bottom of your screen
-    "height": 44, // Waybar height
-    "modules-left": ["hyprland/workspaces", "network", "cava"],
+    "height": 36, // Waybar height
+    "modules-left": ["hyprland/workspaces", ],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "battery", "custom/power"],
+    "modules-right": ["pulseaudio", "battery", "network","custom/power"],
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": false,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "󰈹",
-            "2": "",
-            "3": "󰝚",
-            "4": "",
-            "5": "󰭹",
-            "urgent": "",
-            "default": "",
-        },
-	"persistent-workspaces": {
-		"*":5,
-	},
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format": "{icon}",
+    "format-icons": {
+    "1": "󰎤",
+    "2": "󰎧",
+    "3": "󰎪",
+    "4": "󰎭",
+    "5": "󰎱",
+    "6": "󰎳",
+    "7": "󰎶",
+    "8": "󰎹"
     },
-	"clock": {
-    	"format": "{:%I:%M%p}",
-        "format-alt": "{:%F}",
+    "urgent": "",
+    "default": "",
     },
-
-        "battery": {
-        "bat": "BAT1",
-        "states": {
+    "clock": {
+    "format": "{:%I:%M%p}",
+    "format-alt": "{:%F}",
+    },
+    "battery": {
+    "bat": "BAT1",
+    "states": {
             "good": 95,
             "warning": 30,
             "critical": 15
@@ -59,29 +58,9 @@
         },
         "on-click": "pavucontrol"
 	},
-    "cava": {
-    "framerate": 30,
-    "autosens": 1,
-    "sensitivity": 100,
-    "bars": 14,
-    "lower_cutoff_freq": 50,
-    "higher_cutoff_freq": 10000,
-    "method": "pulse",
-    "source": "auto",
-    "stereo": true,
-    "reverse": false,
-    "bar_delimiter": 0,
-    "monstercat": false,
-    "waves": false,
-    "noise_reduction": 0.77,
-    "input_delay": 2,
-    "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-    "actions": {
-    "on-click-right": "mode"
-    }
-    },
     "custom/power": {
-	"format": "󰐥",
+	"format": " 󰐥 ",
 	"on-click": "exec ~/.config/wofi/scripts/wofi-power-menu.sh"
-	},
+	}
     }
+}

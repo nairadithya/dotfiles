@@ -16,10 +16,9 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
-;;
 
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 12 :weight 'regular))
-(setq doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 20))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14 :weight 'regular))
+(setq doom-variable-pitch-font (font-spec :family "ETBembo" :size 20 :weight 'regular))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -31,6 +30,7 @@
 ;; `load-theme' function. This is the default:
 
 (setq doom-theme 'doom-tokyo-night)
+(doom/set-frame-opacity 50)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -92,3 +92,20 @@
 (setq! org-hide-emphasis-markers t)
 
 (setq! +snippets-dir "~/dotfiles/.config/doom/snippets/")
+
+(use-package! writeroom-mode
+  :hook (writeroom-mode . my-writeroom-setup)
+  :config
+  (setq writeroom-width 80
+        writeroom-maximize-window nil ;; Avoid maximizing the window
+        writeroom-global-effects nil)) ;; Disable global effects for simplicity
+
+(defun my-writeroom-setup ()
+  "Custom setup for writeroom-mode to ensure proper centering."
+  (message "Writeroom-mode setup function is being called!")
+  (if writeroom-mode
+      (progn
+        (setq visual-fill-column-width writeroom-width
+              visual-fill-column-center-text t)
+        (visual-fill-column-mode 1))
+    (visual-fill-column-mode -1)))

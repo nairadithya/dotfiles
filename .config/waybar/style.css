@@ -1,13 +1,12 @@
 @import "mocha.css";
 * {
   border: none;
-  border-radius: 0;
   font-family: JetBrainsMonoNerdFont;
   font-size: 16px;
   min-height: 0;
 } 
 window#waybar {
-  background: transparent;
+  background: @bgDark;
 }
 
 #window {
@@ -15,32 +14,24 @@ window#waybar {
 }
 
 #workspaces {
-  margin-top: 8px;
-  margin-left: 12px;
   margin-bottom: 0;
-  border-radius: 23px;
-  background: @mantle;
-  border: 1px solid @mauve;
+  background: @bgDark;
   transition: slide;
 }
 
 #workspaces button {
-  font-family: "Font Awesome 6 Free";
   margin-bottom: 0;
   transition: none;
-  color: @text;
+  color: @fg;
 }
 
 #workspaces button.active {
-  color: @mauve;
-  background: @mantle;
-  border-radius: 23px;
+  color: @red;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 #workspaces button.active:hover {
-  color: @text;
-  background: @mantle;
+  color: @fgHighlight;
   border-radius: 25px;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
@@ -50,7 +41,6 @@ window#waybar {
   transition: none;
   box-shadow: inherit;
   text-shadow: inherit;
-  border-radius: 15px;
   color: @overlay0;
   background: @mantle;
   animation: gradient_f 20s ease-in infinite;
@@ -71,59 +61,52 @@ window#waybar {
 #pulseaudio,
 #mode,
 #custom-notification {
-  background: @mantle;
-  margin-top: 8px;
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-bottom: 0;
-  padding-left: 12px;
-  padding-right: 12px;
-  border-radius: 16px;
+  margin-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #clock {
-  border: 1px solid @mauve;
-  color: @text;
+  color: @red;
 }
 
 #battery {
     color: @blue;
-  border: 1px solid @blue;
+  border-bottom: 1px solid @blue;
 }
 
 #battery icon {
-  color: @text;
+  color: @fg;
 }
 
 #battery.charging {
   color: @green;
-  background: @mantle;
-  border: 1px solid @green;
+  border-bottom: 1px solid @green;
 
 }
 
 #battery.warning:not(.charging) {
     color: @red;
-        border: 1px solid @red;
+    border-bottom: 1px solid @red;
 }
 
 #network {
   color: @teal;
-  border: 1px solid @teal;
+  border-bottom: 1px solid @teal;
 }
 
 #network.disconnected {
-  color: @rosewater;
-  border: 1px solid @rosewater;
+  color: @yellow;
+  border-bottom: 1px solid @yellow;
 }
 
 #pulseaudio {
-  color: @yellow;
-  border: 1px solid @yellow;
+  color: @magenta;
+  border-bottom: 1px solid @magenta;
 
 }
 
 #custom-power {
   color: @red;
-  border: 1px solid @red;
+  border-bottom: 1px solid @red;
 }
