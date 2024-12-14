@@ -52,3 +52,9 @@
 (package! gnuplot)
 
 (package! darkroom)
+
+(package! catppuccin-theme)
+
+(package! org-xopp
+  :recipe (:host github :repo "mahmoodsh36/org-xopp"
+           :files (:defaults "*.sh")))

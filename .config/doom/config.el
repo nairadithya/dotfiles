@@ -28,9 +28,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
+(setq doom-theme 'catppuccin)
 
-(setq doom-theme 'doom-tokyo-night)
-(doom/set-frame-opacity 50)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -93,19 +92,138 @@
 
 (setq! +snippets-dir "~/dotfiles/.config/doom/snippets/")
 
-(use-package! writeroom-mode
-  :hook (writeroom-mode . my-writeroom-setup)
-  :config
-  (setq writeroom-width 80
-        writeroom-maximize-window nil ;; Avoid maximizing the window
-        writeroom-global-effects nil)) ;; Disable global effects for simplicity
+(after! org (require 'org-xopp) (org-xopp-setup))
 
-(defun my-writeroom-setup ()
-  "Custom setup for writeroom-mode to ensure proper centering."
-  (message "Writeroom-mode setup function is being called!")
-  (if writeroom-mode
-      (progn
-        (setq visual-fill-column-width writeroom-width
-              visual-fill-column-center-text t)
-        (visual-fill-column-mode 1))
-    (visual-fill-column-mode -1)))
+;; Added support for ruff for apheleia
+;; Replace default (black) to use ruff for sorting import and formatting.
+(after! python (setf (alist-get 'python-mode apheleia-mode-alist)
+                     '(ruff-isort ruff)))
+
+(map! :leader "o w" #'writeroom-mode)
+
+(doom/set-frame-opacity 75)
+
+;; Customizing writeroom mode
+(after! writeroom-mode
+  (setq +zen-text-scale 1.5
+        writeroom-mode-line t
+        writeroom-width 80
+        display-line-numbers-mode nil
+        ))
+
+;; Customizing org-export
+;; https://so.nwalsh.com/2020/01/05-latex
+(setq org-latex-compiler "lualatex")
+(setq org-latex-pdf-process
+      (list (concat "latexmk -"
+                    org-latex-compiler
+                    " -recorder -synctex=1 -bibtex-cond %b")))
+(setq org-latex-default-packages-alist
+      '(("" "graphicx" t)
+        ("" "grffile" t)
+        ("" "longtable" nil)
+        ("" "wrapfig" nil)
+        ("" "rotating" nil)
+        ("normalem" "ulem" t)
+        ("" "amsmath" t)
+        ("" "textcomp" t)
+        ("" "amssymb" t)
+        ("" "capt-of" nil)
+        ("" "hyperref" nil)))
+(setq org-latex-listings t)
+(setq org-latex-classes
+      '(("article"
+         "\\RequirePackage{fix-cm}
+\\PassOptionsToPackage{svgnames}{xcolor}
+\\documentclass[11pt]{article}
+\\usepackage{fontspec}
+\\setmainfont{ETBembo}
+\\setsansfont[Scale=MatchLowercase]{Inter}
+\\setmonofont[Scale=MatchLowercase]{JetBrainsMono Nerd Font}
+\\usepackage{sectsty}
+\\allsectionsfont{\\sffamily}
+\\usepackage{enumitem}
+\\setlist[description]{style=unboxed,font=\\sffamily\\bfseries}
+\\usepackage{listings}
+\\lstset{frame=single,aboveskip=1em,
+	framesep=.5em,backgroundcolor=\\color{AliceBlue},
+	rulecolor=\\color{LightSteelBlue},framerule=1pt}
+\\usepackage{xcolor}
+\\newcommand\\basicdefault[1]{\\scriptsize\\color{Black}\\ttfamily#1}
+\\lstset{basicstyle=\\basicdefault{\\spaceskip1em}}
+\\lstset{literate=
+	    {§}{{\\S}}1
+	    {©}{{\\raisebox{.125ex}{\\copyright}\\enspace}}1
+	    {«}{{\\guillemotleft}}1
+	    {»}{{\\guillemotright}}1
+	    {Á}{{\\'A}}1
+	    {Ä}{{\\\"A}}1
+	    {É}{{\\'E}}1
+	    {Í}{{\\'I}}1
+	    {Ó}{{\\'O}}1
+	    {Ö}{{\\\"O}}1
+	    {Ú}{{\\'U}}1
+	    {Ü}{{\\\"U}}1
+	    {ß}{{\\ss}}2
+	    {à}{{\\`a}}1
+	    {á}{{\\'a}}1
+	    {ä}{{\\\"a}}1
+	    {é}{{\\'e}}1
+	    {í}{{\\'i}}1
+	    {ó}{{\\'o}}1
+	    {ö}{{\\\"o}}1
+	    {ú}{{\\'u}}1
+	    {ü}{{\\\"u}}1
+	    {¹}{{\\textsuperscript1}}1
+            {²}{{\\textsuperscript2}}1
+            {³}{{\\textsuperscript3}}1
+	    {ı}{{\\i}}1
+	    {—}{{---}}1
+	    {’}{{'}}1
+	    {…}{{\\dots}}1
+            {⮠}{{$\\hookleftarrow$}}1
+	    {␣}{{\\textvisiblespace}}1,
+	    keywordstyle=\\color{DarkGreen}\\bfseries,
+	    identifierstyle=\\color{DarkRed},
+	    commentstyle=\\color{Gray}\\upshape,
+	    stringstyle=\\color{DarkBlue}\\upshape,
+	    emphstyle=\\color{Chocolate}\\upshape,
+	    showstringspaces=false,
+	    columns=fullflexible,
+	    keepspaces=true}
+\\usepackage[a4paper,margin=1in,left=1.5in]{geometry}
+\\usepackage{parskip}
+\\makeatletter
+\\renewcommand{\\maketitle}{%
+  \\begingroup\\parindent0pt
+  \\sffamily
+  \\Huge{\\bfseries\\@title}\\par\\bigskip
+  \\LARGE{\\bfseries\\@author}\\par\\medskip
+  \\normalsize\\@date\\par\\bigskip
+  \\endgroup\\@afterindentfalse\\@afterheading}
+\\makeatother
+[DEFAULT-PACKAGES]
+\\hypersetup{linkcolor=Blue,urlcolor=DarkBlue,
+  citecolor=DarkRed,colorlinks=true}
+\\AtBeginDocument{\\renewcommand{\\UrlFont}{\\ttfamily}}
+[PACKAGES]
+[EXTRA]"
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}")
+         ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+
+        ("report" "\\documentclass[11pt]{report}"
+         ("\\part{%s}" . "\\part*{%s}")
+         ("\\chapter{%s}" . "\\chapter*{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+
+        ("book" "\\documentclass[11pt]{book}"
+         ("\\part{%s}" . "\\part*{%s}")
+         ("\\chapter{%s}" . "\\chapter*{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))

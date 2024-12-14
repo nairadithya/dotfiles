@@ -26,7 +26,7 @@ These are a bunch of variables for my apps so that I don't have to type them all
 $terminal = kitty
 $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c -a 'emacs'
-$fileManager = kitty -e nv .
+$fileManager = kitty -e yazi
 $browser = flatpak run io.github.zen_browser.zen
 $obsidian = flatpak run md.obsidian.Obsidian
 $menu = wofi --show drun
@@ -43,7 +43,6 @@ $mainMod = SUPER
 #+begin_src conf
 exec-once = [workspace 1 silent] $browser
 exec-once = [workspace 2 silent] $emacs
-exec-once = [workspace 5 silent] xdg-open 'http://web.whatsapp.com'
 #+end_src
 ** Main Keybinds
 Just setting up the main keybinds for my daily use.
@@ -94,7 +93,6 @@ bind = $mainMod SHIFT, l, movewindow, r
 bind = $mainMod SHIFT, j, movewindow, d
 bind = $mainMod SHIFT, k, movewindow, u
 
-# Switch workspaces with mainMod + [0-9]
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2
 bind = $mainMod, 3, workspace, 3
@@ -106,7 +104,6 @@ bind = $mainMod, 8, workspace, 8
 bind = $mainMod, 9, workspace, 9
 bind = $mainMod, 0, workspace, 10
 
-# Move active window to a workspace with mainMod + SHIFT + [0-9]
 bind = $mainMod SHIFT, 1, movetoworkspace, 1
 bind = $mainMod SHIFT, 2, movetoworkspace, 2
 bind = $mainMod SHIFT, 3, movetoworkspace, 3
@@ -116,9 +113,7 @@ bind = $mainMod SHIFT, 6, movetoworkspace, 6
 bind = $mainMod SHIFT, 7, movetoworkspace, 7
 bind = $mainMod SHIFT, 8, movetoworkspace, 8
 bind = $mainMod SHIFT, 9, movetoworkspace, 9
-bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
-# Special workspace (scratchpad)
 bind = $mainMod, S, togglespecialworkspace, magic
 bind = $mainMod SHIFT, S, movetoworkspace, special:magic
 #+end_src
@@ -163,98 +158,88 @@ windowrulev2 = float, title:(Extension: (Bitwarden Password Manager) - Bitwarden
 windowrulev2 = pin, title:(Picture-in-Picture)
 windowrulev2 = move 10 60, title:(Picture-in-Picture)
 windowrulev2 = size 30% 30%, title:(Picture-in-Picture)
+windowrulev2 = float, title:(Progress) class:(Zotero)
 #+end_src
 * Colours
-Tokyo Night colours
 #+begin_src conf
-$bgHighlight = rgb(292e42)
-$bgHighlightAlpha = 292e42
+$rosewater = rgb(f5e0dc)
+$rosewaterAlpha = f5e0dc
 
-$blue = rgb(7aa2f7)
-$blueAlpha = 7aa2f7
+$flamingo = rgb(f2cdcd)
+$flamingoAlpha = f2cdcd
 
-$blue0 = rgb(3d59a1)
-$blue0Alpha = 3d59a1
+$pink = rgb(f5c2e7)
+$pinkAlpha = f5c2e7
 
-$blue1 = rgb(2ac3de)
-$blue1Alpha = 2ac3de
+$mauve = rgb(cba6f7)
+$mauveAlpha = cba6f7
 
-$blue2 = rgb(0db9d7)
-$blue2Alpha = 0db9d7
+$red = rgb(f38ba8)
+$redAlpha = f38ba8
 
-$blue5 = rgb(89ddff)
-$blue5Alpha = 89ddff
+$maroon = rgb(eba0ac)
+$maroonAlpha = eba0ac
 
-$blue6 = rgb(b4f9f8)
-$blue6Alpha = b4f9f8
+$peach = rgb(fab387)
+$peachAlpha = fab387
 
-$blue7 = rgb(394b70)
-$blue7Alpha = 394b70
+$yellow = rgb(f9e2af)
+$yellowAlpha = f9e2af
 
-$comment = rgb(565f89)
-$commentAlpha = 565f89
+$green = rgb(a6e3a1)
+$greenAlpha = a6e3a1
 
-$cyan = rgb(7dcfff)
-$cyanAlpha = 7dcfff
+$teal = rgb(94e2d5)
+$tealAlpha = 94e2d5
 
-$dark3 = rgb(545c7e)
-$dark3Alpha = 545c7e
+$sky = rgb(89dceb)
+$skyAlpha = 89dceb
 
-$dark5 = rgb(737aa2)
-$dark5Alpha = 737aa2
+$sapphire = rgb(74c7ec)
+$sapphireAlpha = 74c7ec
 
-$fg = rgb(c0caf5)
-$fgAlpha = c0caf5
+$blue = rgb(89b4fa)
+$blueAlpha = 89b4fa
 
-$fgDark = rgb(a9b1d6)
-$fgDarkAlpha = a9b1d6
+$lavender = rgb(b4befe)
+$lavenderAlpha = b4befe
 
-$fgGutter = rgb(3b4261)
-$fgGutterAlpha = 3b4261
+$text = rgb(cdd6f4)
+$textAlpha = cdd6f4
 
-$green = rgb(9ece6a)
-$greenAlpha = 9ece6a
+$subtext1 = rgb(bac2de)
+$subtext1Alpha = bac2de
 
-$green1 = rgb(73daca)
-$green1Alpha = 73daca
+$subtext0 = rgb(a6adc8)
+$subtext0Alpha = a6adc8
 
-$green2 = rgb(41a6b5)
-$green2Alpha = 41a6b5
+$overlay2 = rgb(9399b2)
+$overlay2Alpha = 9399b2
 
-$magenta = rgb(bb9af7)
-$magentaAlpha = bb9af7
+$overlay1 = rgb(7f849c)
+$overlay1Alpha = 7f849c
 
-$magenta2 = rgb(ff007c)
-$magenta2Alpha = ff007c
+$overlay0 = rgb(6c7086)
+$overlay0Alpha = 6c7086
 
-$orange = rgb(ff9e64)
-$orangeAlpha = ff9e64
+$surface2 = rgb(585b70)
+$surface2Alpha = 585b70
 
-$purple = rgb(9d7cd8)
-$purpleAlpha = 9d7cd8
+$surface1 = rgb(45475a)
+$surface1Alpha = 45475a
 
-$red = rgb(f7768e)
-$redAlpha = f7768e
+$surface0 = rgb(313244)
+$surface0Alpha = 313244
 
-$red1 = rgb(db4b4b)
-$red1Alpha = db4b4b
+$base = rgb(1e1e2e)
+$baseAlpha = 1e1e2e
 
-$teal = rgb(1abc9c)
-$tealAlpha = 1abc9c
+$mantle = rgb(181825)
+$mantleAlpha = 181825
 
-$terminalBlack = rgb(414868)
-$terminalBlackAlpha = 414868
-
-$yellow = rgb(e0af68)
-$yellowAlpha = e0af68
-
-$bg = rgb(1a1b26)
-$bgAlpha = 1a1b26
-
-$bgDark = rgb(16161e)
-$bgDarkAlpha = 16161e
+$crust = rgb(11111b)
+$crustAlpha = 11111b
 #+end_src
-
 * Startup
 #+begin_src conf
 exec-once = hypridle
@@ -277,7 +262,7 @@ input {
     kb_model =
     kb_options =
     kb_rules =
-
+    kb_options = ctrl:nocaps
     follow_mouse = 3
 
     touchpad {
@@ -292,7 +277,7 @@ general {
     gaps_out = 3
     border_size = 1
     col.active_border = $red
-    col.inactive_border = $terminalBlack
+    col.inactive_border = $mantle
     layout = dwindle
     allow_tearing = false
 }
@@ -305,10 +290,10 @@ decoration {
         passes = 2
     }
     drop_shadow = yes
-    col.shadow = $bgHighlight
-    shadow_range = 9
+    col.shadow = $crust
+    shadow_range = 3
     dim_inactive = no
-    shadow_render_power = 9
+    shadow_render_power = 4
 }
 
 animations {
@@ -389,14 +374,14 @@ background {
     monitor =
     path = $HOME/.config/wallpaper/arcane-fishbones-2.png
     blur_passes = 0
-    color = $bgDark
+    color = $base
 }
 
 # TIME
 label {
     monitor =
     text = cmd[update:30000] echo "$(date +"%R")"
-    color = $fg
+    color = $text
     font_size = 90
     font_family = $font
     position = -30, 0
@@ -425,12 +410,12 @@ input-field {
     dots_spacing = 0.2
     dots_center = true
     outer_color = $accent
-    inner_color = $bgDark
-    font_color = $fgDark
+    inner_color = $crust
+    font_color = $text
     fade_on_empty = true
     hide_input = false
     check_color = $accent
-    fail_color = $red1
+    fail_color = $red
     fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
     capslock_color = $yellow
     position = 0, 80

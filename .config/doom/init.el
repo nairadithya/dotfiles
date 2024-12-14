@@ -68,7 +68,6 @@
 
        :emacs
        (dired             ; making dired pretty [functional]
-        +ranger
         +icons)
        electric          ; smarter, keyword-based electric-indent
        ;;ibuffer         ; interactive buffer management
@@ -97,7 +96,7 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        lookup              ; navigate your code and its documentation
-       (lsp +peek)               ; M-x vscode
+       (lsp +eglot)               ; M-x vscode
        (magit +forge)            ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -161,7 +160,7 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +tree-sitter)            ; beautiful is better than ugly
+       (python +lsp +tree-sitter)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
