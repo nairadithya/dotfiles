@@ -99,7 +99,6 @@
 (after! python (setf (alist-get 'python-mode apheleia-mode-alist)
                      '(ruff-isort ruff)))
 
-(map! :leader "o w" #'writeroom-mode)
 
 (doom/set-frame-opacity 75)
 

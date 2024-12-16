@@ -278,7 +278,7 @@ general {
     border_size = 1
     col.active_border = $red
     col.inactive_border = $mantle
-    layout = dwindle
+    layout = master
     allow_tearing = false
 }
 
@@ -313,7 +313,7 @@ dwindle {
 
 master {
     # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-    new_is_master = true
+    new_status = master
 }
 
 gestures {

@@ -7,3 +7,5 @@
 	defaultBranch = main
 [diff]
 	tool = nvimdiff
+[github]
+	user = nairadithya
