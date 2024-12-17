@@ -28,7 +28,7 @@
 
 
 
-(use-package lsp-tailwindcss
+(use-package! lsp-tailwindcss
   :when (modulep! +lsp)
   :init
   (setq! lsp-tailwindcss-add-on-mode t)
