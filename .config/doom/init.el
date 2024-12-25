@@ -95,7 +95,7 @@
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
-       lookup              ; navigate your code and its documentation
+       (lookup +docsets)             ; navigate your code and its documentation
        (lsp +eglot)               ; M-x vscode
        (magit +forge)            ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
@@ -142,7 +142,7 @@
        ;;idris             ; a language you can depend on
        (json +lsp +tree-sitter)  ; At least it ain't XML
        (java +lsp +tree-sitter)       ; the poster child for carpal tunnel syndrome
-       javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        (julia +lsp +tree-sitter)             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (latex +cdlatex +lsp)             ; writing papers in Emacs has never been so fun
@@ -175,7 +175,7 @@
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       (web +html +css + lsp)               ; the tubes
+       (web +html +css +lsp)               ; the tubes
        ;;yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
 

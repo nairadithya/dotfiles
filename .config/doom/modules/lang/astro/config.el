@@ -1,5 +1,4 @@
 ;;; lang/astro/config.el -*- lexical-binding: t; -*-
-;;; lang/astro/config.el -*- lexical-binding: t; -*-
 
 (use-package! treesit-auto
   :custom

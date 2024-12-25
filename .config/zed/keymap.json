@@ -28,11 +28,5 @@
       "space p s": "project_panel::ToggleFocus",
       "space e": "workspace::ToggleLeftDock"
     }
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "space o t": "pane::CloseActiveItem"
-    }
   }
 ]
