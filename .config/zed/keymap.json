@@ -14,7 +14,7 @@
       "space w v": "pane::SplitRight",
       "space w m m": "workspace::ToggleZoom",
       "space o t": "terminal_panel::ToggleFocus",
-      "space w c": "pane::CloseActiveItem",
+      "space w c": "pane::CloseAllItems",
       "space w l": ["workspace::ActivatePaneInDirection", "Right"],
       "space w h": ["workspace::ActivatePaneInDirection", "Left"],
       "space w j": ["workspace::ActivatePaneInDirection", "Down"],

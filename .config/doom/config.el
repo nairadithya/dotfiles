@@ -142,6 +142,7 @@
 \\usepackage{sectsty}
 \\allsectionsfont{\\sffamily}
 \\usepackage{enumitem}
+\\usepackage[export]{adjustbox}
 \\setlist[description]{style=unboxed,font=\\sffamily\\bfseries}
 \\usepackage{listings}
 \\lstset{frame=single,aboveskip=1em,
@@ -226,3 +227,23 @@
          ("\\section{%s}" . "\\section*{%s}")
          ("\\subsection{%s}" . "\\subsection*{%s}")
          ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+
+
+(defun cleanup-latex-files (project-plist)
+  (let ((source-dir (plist-get project-plist :base-directory)))
+    (dolist (ext '("synctex.gz" "tex" "pdf"))
+      (let ((files (directory-files source-dir t (concat "\\." ext "$"))))
+        (message "Found %d %s files to delete: %s"
+                 (length files) ext (mapconcat 'identity files ", "))
+        (mapc (lambda (file)
+                (when (file-exists-p file)
+                  (delete-file file)
+                  (message "Deleted: %s" file)))
+              files)))))
+
+(setq org-publish-project-alist
+      '(("college-notes"
+         :base-directory "~/university-notes/college-notes/"
+         :publishing-directory "~/university-notes/college-notes/exports"
+         :publishing-function org-latex-publish-to-pdf
+         :completion-function cleanup-latex-files)))
