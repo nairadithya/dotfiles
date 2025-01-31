@@ -6,28 +6,73 @@
 // To see all of Zed's default settings without changing your
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
+
 {
+  "features": {
+    "inline_completion_provider": "none"
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "fixed"
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["ruff"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    }
+  },
+  "preview_tabs": {
+    "enabled": true,
+    "enable_preview_from_file_finder": true,
+    "enable_preview_from_code_navigation": false
+  },
   "vim_mode": true,
-  "ui_font_size": 16,
-  "terminal": {
-    "button": false
+  "active_pane_modifiers": {
+    "border_size": 1
   },
   "assistant": {
-    "enabled": false,
     "button": false,
-    "version": "2"
+    "version": "1"
   },
+  "lsp": {
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          // Ruff server settings goes here
+          "lineLength": 80,
+          "lint": {
+            "extendSelect": ["I"]
+          }
+        }
+      }
+    }
+  },
+  "relative_line_numbers": true,
+  "project_panel": {
+    "entry_spacing": "standard"
+  },
+  "ui_font_size": 15,
   "scrollbar": {
     "show": "never"
   },
-  "tab_bar": {
-    "show": false
-  },
-  "buffer_font_size": 16,
+  "buffer_font_size": 14,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
+    "light": "Catppuccin Mocha",
     "dark": "Catppuccin Mocha"
   }
 }
