@@ -9,8 +9,9 @@
       (append '((".*\\.astro\\'" . astro-mode))
               auto-mode-alist))
 
-;; EGLOT
 
+
+;; EGLOT
 (when (modulep! +lsp)
   (use-package eglot
     :ensure t

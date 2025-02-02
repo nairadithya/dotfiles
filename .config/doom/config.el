@@ -104,3 +104,5 @@
         writeroom-width 80
         display-line-numbers-mode nil
         ))
+
+(load! "org-config")
