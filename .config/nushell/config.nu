@@ -5,7 +5,7 @@ $env.TRANSIENT_PROMPT_COMMAND = "❯ "
 $env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/bin/"
 $env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/.cargo/bin/"
 $env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/.local/bin/"
-
+$env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/.bun/bin/"
 let carapace_completer = {|spans|
     carapace $spans.0 nushell ...$spans | from json
 }

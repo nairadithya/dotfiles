@@ -96,7 +96,7 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        (lookup +docsets)             ; navigate your code and its documentation
-       ;;lsp                ; M-x vscode
+       (lsp +eglot)                ; M-x vscode
        (magit +forge)            ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -106,13 +106,13 @@
        ;;tmux              ; an API for interacting with tmux
        tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
-
+       devdocs           ;; Add devdocs support
        :os
        (if (featurep :system 'macos) macos)  ; improve compatibility with macOS
        ;;tty               ; improve the terminal Emacs experience
 
        :lang
-       astro
+       (astro +lsp +tailwind)
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
        ;;(cc +lsp)         ; C > C++ == 1
@@ -195,17 +195,3 @@
        :config
        ;;literate
        (default +bindings +smartparens))
-
-;; Org-Journal
-(setq org-journal-file-format "%Y_%m_%d.org")
-
-(setq org-preview-latex-process-alist
-      '((dvisvgm :programs ("latex" "dvisvgm")
-         :description "dvi > svg"
-         :message "you need to install the programs: latex and dvisvgm."
-         :use-xcolor t
-         :image-input-type "dvi"
-         :image-output-type "svg"
-         :image-size-adjust (1.0 . 1.0)
-         :latex-compiler ("latex -interaction nonstopmode -output-directory %o %f")
-         :image-converter ("dvisvgm %f -n -b min -c %S -o %O"))))

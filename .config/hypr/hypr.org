@@ -25,13 +25,14 @@ These are a bunch of variables for my apps so that I don't have to type them all
 #+begin_src conf
 $terminal = kitty
 $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
+$code = ~/.local/bin/zed
 $emacs = emacsclient -c -a 'emacs'
 $fileManager = kitty -e yazi
-$browser = firefox
+$browser = flatpak run app.zen_browser.zen
 $obsidian = flatpak run md.obsidian.Obsidian
 $menu = wofi --show drun
 $cmenu = wofi --show run
-$music = cider --enable-features=UseOzonePlatform --ozone-platform=wayland
+$music = flatpak run --socket=wayland --own-name=org.mpris.MediaPlayer2.cider sh.cider.genten --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations
 $gimp = flatpak run org.gimp.GIMP
 #+end_src
 * Binds
@@ -42,20 +43,20 @@ $mainMod = SUPER
 ** Workspace Autostart
 #+begin_src conf
 exec-once = [workspace 1 silent] $browser
-exec-once = [workspace 2 silent] $emacs
+exec-once = [workspace 2 silent] $code
 #+end_src
 ** Main Keybinds
 Just setting up the main keybinds for my daily use.
 #+begin_src conf
 bind = $mainMod SHIFT, n, exec, swaync-client -t -sw
-bind = $mainMod, RETURN, exec, $emacs
+bind = $mainMod, RETURN, exec, $code
 bind = $mainMod SHIFT, O, exec, slurp | grim -g - - | wl-copy
 bind = $mainMod SHIFT, RETURN, exec, $terminal
 bind = $mainMod, B, exec, $browser
 bind = $mainMod, G, exec, $gimp
 bind = $mainMod, N, exec, $logseq
 bind = $mainMod, M, exec, $music
-bind = $mainMod, O, exec, $obsidian
+bind = $mainMod, O, exec, $emacs
 bind = $mainMod, C, killactive,
 bind = $mainMod, Q, exec, ~/.config/wofi/scripts/wofi-power-menu.sh
 bind = $mainMod, E, exec, $fileManager
