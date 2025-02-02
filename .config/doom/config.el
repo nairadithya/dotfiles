@@ -92,8 +92,10 @@
 (after! python (setf (alist-get 'python-mode apheleia-mode-alist)
                      '(ruff-isort ruff)))
 
+;; Always transparent
+(add-to-list 'default-frame-alist '(alpha-background . 75))
 
-(doom/set-frame-opacity 75)
+(setq doom-modeline-height 35)
 
 ;; Customizing writeroom mode
 (after! writeroom-mode
