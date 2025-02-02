@@ -50,6 +50,10 @@
 ;; (unpin! t)
 
 
+(package! org-xopp
+  :recipe (:host github :repo "mahmoodsh36/org-xopp"
+           :files (:defaults "*.sh")))
+
 (package! catppuccin-theme)
 
 
