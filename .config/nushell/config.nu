@@ -16,3 +16,5 @@ $env.config.completions.external = {
     completer: $carapace_completer
 }
 use ~/.cache/starship/init.nu
+
+
