@@ -56,4 +56,4 @@
 
 (package! catppuccin-theme)
 
-
+(package! ox-typst)

@@ -1,103 +1,107 @@
 @import "mocha.css";
+
 * {
-  border: none;
-  font-family: JetBrainsMonoNerdFont;
-  font-size: 16px;
-  min-height: 0;
+    font-size:14px;
+    font-family: "Manrope";
 }
-window#waybar {
-    background: transparent;
+window#waybar{
+    all:unset;
 }
-
-#window {
-  font-weight: bold;
+.modules-left {
+    padding:7px;
+    margin:5px;
+    border-radius:10px;
+    background: alpha(@crust,.5);
+    box-shadow: 0px 0px 2px @crust;
 }
-
-#workspaces {
-  margin-bottom: 0;
-  transition: slide;
+.modules-center {
+    padding:7px;
+    margin:5px;
+    border-radius:10px;
+    background: alpha(@crust,.5);
+    box-shadow: 0px 0px 2px @crust;
 }
-
-#workspaces button {
-  margin-bottom: 0;
-  transition: none;
-  color: @fg;
+.modules-right {
+    padding:7px;
+    margin:5px;
+    border-radius:10px;
+    background: alpha(@crust,.5);
+    box-shadow: 0px 0px 2px @crust;
 }
-
-#workspaces button.active {
-  color: @red;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+tooltip {
+    background:@base;
+    color: @text;
 }
-
-#workspaces button.active:hover {
-  color: @fgHighlight;
-  border-radius: 25px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+#clock:hover, #custom-pacman:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover{
+    transition: all .3s ease;
+    color:@red;
 }
-
-#workspaces button:hover {
-  transition: none;
-  box-shadow: inherit;
-  text-shadow: inherit;
-  color: @overlay0;
-  background: @mantle;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-}
-
-#mode {
-  background: @overlay2;
-  border-bottom: 3px @overlay1;
-}
-
-#clock,
-#custom-power,
-#battery,
-#cpu,
-#memory,
-#network,
-#pulseaudio,
-#mode,
 #custom-notification {
-  margin-bottom: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color:@color7;
+}
+#clock{
+    padding: 0px 5px;
+    color:@peach;
+    transition: all .3s ease;
+}
+#workspaces {
+    padding: 0px 5px;
+}
+#workspaces button {
+    all:unset;
+    padding: 0px 5px;
+    color: alpha(@text,.4);
+    transition: all .2s ease;
+}
+#workspaces button:hover {
+    color: @text;
+    border: none;
+    text-shadow: 0px 0px 1.5px @text;
+    transition: all 1s ease;
+}
+#workspaces button.active {
+    color: @peach;
+    border: none;
+    text-shadow: 0px 0px 2px @mantle;
 }
 
-#clock {
-  color: @red;
-}
+#bluetooth{
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color:@text;
 
-#battery {
-  color: @blue;
 }
+#network{
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color:@text;
 
-#battery icon {
-  color: @blue;
 }
-
+#battery{
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color:@text;
+}
 #battery.charging {
-  color: @green;
+    color: @green;
 }
 
 #battery.warning:not(.charging) {
+    color: @yellow;
+}
+
+#battery.critical:not(.charging) {
     color: @red;
-}
-
-#network {
-  color: @teal;
-}
-
-#network.disconnected {
-  color: @yellow;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #pulseaudio {
-  color: @peach;
-
-}
-
-#custom-power {
-  color: @red;
+    padding: 0px 12px;
+    color: @text;
 }

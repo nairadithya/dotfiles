@@ -16,7 +16,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Adding fzf styling
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
-# vi mode
 export KEYTIMEOUT=1
 
 # Change cursor shape for different vi modes.
