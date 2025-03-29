@@ -6,6 +6,8 @@ $env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/bin/"
 $env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/.cargo/bin/"
 $env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/.local/bin/"
 $env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/.bun/bin/"
+$env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/.deno/bin/"
+
 let carapace_completer = {|spans|
     carapace $spans.0 nushell ...$spans | from json
 }
@@ -17,4 +19,4 @@ $env.config.completions.external = {
 }
 use ~/.cache/starship/init.nu
 
-
+$env.PATH = $env.PATH | split row (char esep) | append "/home/adithya/.duckdb/cli/latest"

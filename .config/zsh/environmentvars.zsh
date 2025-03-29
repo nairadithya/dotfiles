@@ -16,6 +16,7 @@ esac
 # <<< juliaup initialize <<<
 path+=("$HOME/Builds/swww/target/release/")
 path+=("$HOME/.tmux/plugins/tmuxifier/bin/")
+path+=("$HOME/.deno/bin/")
 path+=("$HOME/bin/")
 path+=("$HOME/.local/bin/")
 export BUN_INSTALL="$HOME/.bun"
