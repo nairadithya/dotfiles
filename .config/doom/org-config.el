@@ -3,7 +3,10 @@
 (after! org
   (setq org-directory "~/Sync/Org-Garden/")
   ;; org-journal
-  (setq org-journal-file-format "%y_%m_%d.org")
+  (setq org-journal-file-type 'yearly)
+  (setq org-journal-file-format "%Y.org")
+  (setq org-journal-date-format "%A, %d %B %Y")
+  (setq org-journal-date-prefix "** ")
 
   (setq! org-hide-emphasis-markers t)
 

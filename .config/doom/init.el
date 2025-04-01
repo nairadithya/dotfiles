@@ -106,7 +106,7 @@
        ;;tmux              ; an API for interacting with tmux
        tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
-       devdocs           ;; Add devdocs support
+       ;;devdocs           ;; Add devdocs support
        :os
        (if (featurep :system 'macos) macos)  ; improve compatibility with macOS
        ;;tty               ; improve the terminal Emacs experience
@@ -155,7 +155,6 @@
        ;;ocaml             ; an objective camel
        (org
         +present
-        +pretty
         +journal)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
