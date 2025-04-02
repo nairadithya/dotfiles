@@ -28,7 +28,7 @@ $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=a
 $code = ~/.local/bin/zed
 $emacs = emacsclient -c -a 'emacs'
 $fileManager = kitty -e yazi
-$browser = vivaldi
+$browser = firefox
 $obsidian = flatpak run md.obsidian.Obsidian
 $menu = wofi --show drun
 $cmenu = wofi --show run
@@ -68,7 +68,7 @@ bind = $mainMod SHIFT, R, exec, $cmenu
 #+begin_src conf
 binde=, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
 bindl=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindl = , XF86AudioMute, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%
 binde=, XF86MonBrightnessDown, exec, brightnessctl set 10%-
 bindl=, XF86MonBrightnessUp, exec, brightnessctl set 10%+
 #+end_src
@@ -168,16 +168,10 @@ windowrulev2 = workspace 3, class:(Cider)
 * Colours
 #+begin_src conf
 $accent = rgb(ff6507)
-$accent-90 = rgba(ff6507e6)
-$accent-80 = rgba(ff6507cc)
-$accent-70 = rgba(ff6507b3)
-$accent-60 = rgba(ff650799)
-$accent-50 = rgba(ff650780)
-$accent-40 = rgba(ff650766)
-$accent-30 = rgba(ff65074d)
-$accent-20 = rgba(ff650733)
-$accent-10 = rgba(ff65071a)
-$accent-00 = rgba(ff6507e6)
+$bg-muted = rgb(404040)
+$bg-muted-plus  = rgb(737373)
+$bg  = rgb(121212)
+$fg  = rgb(ffffff)
 #+end_src
 * Startup
 #+begin_src conf
@@ -215,8 +209,8 @@ general {
     gaps_in = 3
     gaps_out = 3
     border_size = 1
-    col.active_border = $accent-80
-    col.inactive_border = $accent-10
+    col.active_border = $accent
+    col.inactive_border = $bg-muted
     layout = dwindle
     allow_tearing = false
 }
@@ -265,7 +259,7 @@ misc {
 
 device {
     name = epic-mouse-v1
-    sensitivity = -0.1
+    sensitivity = -0.4
 }
 #+end_src
 
@@ -296,9 +290,12 @@ listener {
 #+end_src
 * Hyprlock
 #+begin_src conf :tangle hyprlock.conf
-source = $HOME/.config/hypr/colours.conf
+$accent = rgb(ff6507)
+$bg-muted = rgb(404040)
+$bg-muted-plus  = rgb(737373)
+$bg  = rgb(121212)
+$fg  = rgb(ffffff)
 
-$accent = $red
 $font = JetBrainsMono Nerd Font
 
 # GENERAL
@@ -310,20 +307,20 @@ general {
 # BACKGROUND
 background {
     monitor =
-    path = $HOME/.config/wallpaper/arcane-fishbones-2.png
+    path = $HOME/.config/wallpaper/atlas-dark.png
     blur_passes = 0
-    color = $base
+    color = $bg
 }
 
 # TIME
 label {
     monitor =
     text = cmd[update:30000] echo "$(date +"%R")"
-    color = $text
+    color = $accent
     font_size = 90
     font_family = $font
-    position = -30, 0
-    halign = right
+    position = 0, 0
+    halign = center
     valign = top
 }
 
@@ -334,8 +331,8 @@ label {
     color = $fg
     font_size = 25
     font_family = $font
-    position = -30, -150
-    halign = right
+    position = 0, -150
+    halign = center
     valign = top
 }
 
@@ -348,15 +345,15 @@ input-field {
     dots_spacing = 0.2
     dots_center = true
     outer_color = $accent
-    inner_color = $crust
-    font_color = $text
+    inner_color = $bg-muted
+    font_color = $fg
     fade_on_empty = true
     hide_input = false
-    check_color = $accent
-    fail_color = $red
+    check_color = $fg
+    fail_color = $accent
     fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
-    capslock_color = $yellow
-    position = 0, 80
+    capslock_color = $fg
+    position = 0, -120
     halign = center
     valign = center
     }

@@ -1,18 +1,18 @@
 [global]
 origin = top-center
-frame_color = "#cba6f7"
-separator_color= frame
+frame_color = "#ff6507"
+separator_color = frame
 offset = 0x10
 
 [urgency_low]
-background = "#1e1e2e"
-foreground = "#cdd6f4"
+background = "#121212"
+foreground = "#fff"     
 
 [urgency_normal]
-background = "#1e1e2e"
-foreground = "#cdd6f4"
+background = "#121212"
+foreground = "#fff"     
 
 [urgency_critical]
-background = "#1e1e2e"
-foreground = "#cdd6f4"
-frame_color = "#fab387"
+background = "#121212"
+foreground = "#fff"     
+frame_color = "#ff6507"

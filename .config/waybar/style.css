@@ -32,18 +32,41 @@ window#waybar{
     box-shadow: 0px 0px 2px @bg;
 }
 
+@keyframes pulse {
+    from {
+        opacity: 0.85;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modules-left, .modules-center, .modules-right {
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modules-left:hover, .modules-center:hover, .modules-right:hover {
+    background: alpha(@bg-muted, 0.7);
+    box-shadow: 0px 0px 4px alpha(@accent, 0.4);
+}
+
 tooltip {
     background: @bg;
     color: @fg;
 }
 
-#clock:hover, #custom-pacman:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover{
-    transition: all .3s ease;
-}
 #clock, #workspaces, #network, #battery, #pulseaudio {
     padding: 0px 5px;
     color:@fg;
     transition: all .3s ease;
+}
+
+#clock:hover, #bluetooth:hover,#network:hover,#battery:hover{
+    transition: all .3s ease;
+}
+
+#pulseaudio:hover, #network:hover, #battery:hover {
+    color: @accent;
 }
 
 #workspaces button {
