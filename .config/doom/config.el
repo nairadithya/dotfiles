@@ -18,7 +18,7 @@
 ;; accept. For example:
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14 :weight 'regular))
-(setq doom-variable-pitch-font (font-spec :family "Roboto Serif" :size 16 :weight 'regular))
+(setq doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'regular))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -28,7 +28,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'catppuccin)
+(setq doom-theme 'doom-monokai-ristretto)
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -91,11 +91,6 @@
 ;; Replace default (black) to use ruff for sorting import and formatting.
 (after! python (setf (alist-get 'python-mode apheleia-mode-alist)
                      '(ruff-isort ruff)))
-
-;; Always transparent
-(add-to-list 'default-frame-alist '(alpha-background . 75))
-
-(setq doom-modeline-height 35)
 
 ;; Customizing writeroom mode
 (after! writeroom-mode

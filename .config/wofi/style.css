@@ -1,142 +1,46 @@
-@define-color bgHighlight #292e42;
-@define-color blue #7aa2f7;
-@define-color blue0 #3d59a1;
-@define-color blue1 #2ac3de;
-@define-color blue2 #0db9d7;
-@define-color blue5 #89ddff;
-@define-color blue6 #b4f9f8;
-@define-color blue7 #394b70;
-@define-color comment #565f89;
-@define-color cyan #7dcfff;
-@define-color dark3 #545c7e;
-@define-color dark5 #737aa2;
-@define-color fg #c0caf5;
-@define-color fgDark #a9b1d6;
-@define-color fgGutter #3b4261;
-@define-color green #9ece6a;
-@define-color green1 #73daca;
-@define-color green2 #41a6b5;
-@define-color magenta #bb9af7;
-@define-color magenta2 #ff007c;
-@define-color orange #ff9e64;
-@define-color purple #9d7cd8;
-@define-color red #f7768e;
-@define-color red1 #db4b4b;
-@define-color teal #1abc9c;
-@define-color terminalBlack #414868;
-@define-color yellow #e0af68;
-@define-color bg #1a1b26;
-@define-color bgDark #16161e;
-
+@define-color accent #ff6507;
+@define-color bg-muted #404040;
+@define-color bg-muted-plus  #737373;
+@define-color bg  #121212;
+@define-color fg  #fff;
 
 * {
-  font-family: "Inconsolata Nerd Font", monospace;
-  font-size: 14px;
+  font-family: JetBrainsMono Nerd Font, sans-serif;
 }
 
-/* Window */
 window {
-  margin: 0px;
-  padding: 15px;
-  border: 0.16em solid @red;
-  border-radius: 0.1em;
+  margin: 1px;
+  border: 5px solid @accent;
+  border-radius: 7px;
+}
+
+#input {
+  margin: 1px;
+  border-radius: 0px;
+  border: none;
+  border-bottom: 0px solid @accent;
   background-color: @bg;
-  animation: slideIn 0.1s ease-in-out both;
+  color: @fg;
 }
 
-/* Slide In */
-@keyframes slideIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Inner Box */
 #inner-box {
   margin: 5px;
-  padding: 15px;
-  border: none;
   background-color: @bg;
-  animation: fadeIn 0.2s ease-in-out both;
 }
 
-/* Fade In */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Outer Box */
 #outer-box {
-  margin: 5px;
-  padding: 15px;
-  border: none;
+  margin: 3px;
+  padding: 14px;
   background-color: @bg;
+  border-radius: 10px;
 }
 
-/* Scroll */
-#scroll {
-  margin: 0px;
-  padding: 10px;
-  border: none;
-  background-color: @bg;
-}
-
-/* Input */
-#input {
-  margin: 5px 20px;
-  padding: 10px;
-  border: none;
-  border-radius: 0.1em;
-  color: @fg;
-  background-color: @bg;
-  animation: fadeIn 0.5s ease-in-out both;
-}
-
-#input image {
-  border: none;
-  color: @red;
-}
-
-#input * {
-  outline: 4px solid @red;
-}
-
-/* Text */
 #text {
   margin: 5px;
-  border: none;
-  color: @text;
-  animation: fadeIn 0.1s ease-in-out both;
+  color: @fg;
 }
 
-#entry {
-  background-color: @bg;
-}
-
-#entry arrow {
-  border: none;
-  color: @lavender;
-}
-
-/* Selected Entry */
 #entry:selected {
-  border: 0.11em solid @blue;
+  background-color: @bg-muted;
 }
 
-#entry:selected #text {
-  color: @blue;
-}
-
-#entry:drop(active) {
-  background-color: @red1;
-}

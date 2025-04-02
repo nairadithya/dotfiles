@@ -1,70 +1,68 @@
-@import "mocha.css";
+@import "atlas.css";
 
 * {
     font-size:14px;
     font-family: "Manrope";
 }
+
 window#waybar{
     all:unset;
 }
+
 .modules-left {
     padding:7px;
     margin:5px;
     border-radius:10px;
-    background: alpha(@crust,.5);
-    box-shadow: 0px 0px 2px @crust;
+    background: alpha(@bg-muted,.5);
+    box-shadow: 0px 0px 2px @bg;
 }
+
 .modules-center {
     padding:7px;
     margin:5px;
     border-radius:10px;
-    background: alpha(@crust,.5);
-    box-shadow: 0px 0px 2px @crust;
+    background: alpha(@bg-muted,.5);
+    box-shadow: 0px 0px 2px @bg;
 }
 .modules-right {
     padding:7px;
     margin:5px;
     border-radius:10px;
-    background: alpha(@crust,.5);
-    box-shadow: 0px 0px 2px @crust;
+    background: alpha(@bg-muted,.5);
+    box-shadow: 0px 0px 2px @bg;
 }
+
 tooltip {
-    background:@base;
-    color: @text;
+    background: @bg;
+    color: @fg;
 }
+
 #clock:hover, #custom-pacman:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover{
     transition: all .3s ease;
-    color:@red;
 }
-#custom-notification {
+#clock, #workspaces, #network, #battery, #pulseaudio {
     padding: 0px 5px;
-    transition: all .3s ease;
-    color:@color7;
-}
-#clock{
-    padding: 0px 5px;
-    color:@peach;
+    color:@fg;
     transition: all .3s ease;
 }
-#workspaces {
-    padding: 0px 5px;
-}
+
 #workspaces button {
     all:unset;
     padding: 0px 5px;
-    color: alpha(@text,.4);
+    color: @bg-muted-plus;
     transition: all .2s ease;
 }
 #workspaces button:hover {
-    color: @text;
+    color: @fg;
     border: none;
     text-shadow: 0px 0px 1.5px @text;
     transition: all 1s ease;
 }
+
 #workspaces button.active {
-    color: @peach;
+    color: @accent;
     border: none;
-    text-shadow: 0px 0px 2px @mantle;
+    text-shadow: 0px 0px 2px @bg;
 }
 
 #bluetooth{
@@ -76,24 +74,16 @@ tooltip {
 #network{
     padding: 0px 5px;
     transition: all .3s ease;
-    color:@text;
+    color: @fg;
 
 }
-#battery{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color:@text;
-}
+
 #battery.charging {
-    color: @green;
-}
-
-#battery.warning:not(.charging) {
-    color: @yellow;
+    color: @accent;
 }
 
 #battery.critical:not(.charging) {
-    color: @red;
+    color: @fg;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -101,7 +91,3 @@ tooltip {
     animation-direction: alternate;
 }
 
-#pulseaudio {
-    padding: 0px 12px;
-    color: @text;
-}

@@ -31,13 +31,11 @@
             }
         },
         "network": {
-            "format-wifi": " ",
-            "format-ethernet":"",
-            "format-disconnected": "",
-            "tooltip-format-disconnected": "Error",
-            "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-            "tooltip-format-ethernet": "{ifname} 🖧 ",
-            "on-click": "kitty nmtui"
+        "format-wifi": "{signalStrength}% ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
         },
         "pulseaudio": {
             "format": "{volume}% {icon}",

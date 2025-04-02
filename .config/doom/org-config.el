@@ -7,8 +7,8 @@
   (setq org-journal-file-format "%Y.org")
   (setq org-journal-date-format "%A, %d %B %Y")
   (setq org-journal-date-prefix "** ")
+  (setq org-journal-time-prefix "*** ")
 
-  (setq! org-hide-emphasis-markers t)
 
   (setq org-preview-latex-process-alist
         '((dvisvgm :programs ("latex" "dvisvgm")
@@ -17,9 +17,9 @@
            :use-xcolor t
            :image-input-type "dvi"
            :image-output-type "svg"
-           :image-size-adjust (1.0 . 1.0)
+           :image-size-adjust (1.7 . 1.5)
            :latex-compiler ("latex -interaction nonstopmode -output-directory %o %f")
-           :image-converter ("dvisvgm %f -n -b min -c %s -o %o"))))
+           :image-converter ("dvisvgm %f --no-fonts --exact -o %o"))))
 
   (after! org (require 'org-xopp) (org-xopp-setup))
 

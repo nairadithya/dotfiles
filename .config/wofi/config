@@ -1,10 +1,12 @@
 show=drun
-width=420
+width=600
 height=380
+key_exit=Escape
 always_parse_args=true
-show_all=false
+show_all=true
+allow_markup=true
 hide_scroll=true
-term=alacritty
+term=kitty
 print_command=true
 insensitive=true
-prompt=
+prompt=Enter search
