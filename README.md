@@ -1,7 +1,9 @@
-<h1 align="center">A Tribute To Arcane</h1>
+<h1 align="center">ATLAS OS</h1>
 
-I am currently running Fedora with Hyprland on a Lenovo Yoga Slim 7i Pro.
+This version tries to lean into a more minimal colorscheme, inspired off of [Atlas](https://atlasdev.club)
 
-![Main Layout](/assets/main.jpeg)
+![Main Layout](/assets/s1.png)
+
+![Second Layout](/assets/s2.png)
 
 Feel free to clone this repo and modify as needed.
