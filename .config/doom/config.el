@@ -35,7 +35,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 
 (setq display-line-numbers-type 'relative)
-(setq org-directory "~/Sync/Org-Garden/")
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -92,6 +91,9 @@
 ;; Replace default (black) to use ruff for sorting import and formatting.
 (after! python (setf (alist-get 'python-mode apheleia-mode-alist)
                      '(ruff-isort ruff)))
+
+;; Always transparent
+(add-to-list 'default-frame-alist '(alpha-background . 75))
 
 ;; Customizing writeroom mode
 (after! writeroom-mode
