@@ -8,6 +8,7 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "show_edit_predictions": false,
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
@@ -61,7 +62,6 @@
     }
   },
   "relative_line_numbers": true,
-  "show_edit_predictions": false,
   "project_panel": {
     "entry_spacing": "standard"
   },
@@ -74,6 +74,6 @@
   "theme": {
     "mode": "system",
     "light": "Catppuccin Mocha",
-    "dark": "One Dark"
+    "dark": "Ayu Dark"
   }
 }

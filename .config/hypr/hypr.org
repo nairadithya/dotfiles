@@ -25,7 +25,6 @@ These are a bunch of variables for my apps so that I don't have to type them all
 #+begin_src conf
 $terminal = kitty
 $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
-$code = ~/.local/bin/zed
 $emacs = emacsclient -c -a 'emacs'
 $fileManager = kitty -e yazi
 $browser = firefox
@@ -49,7 +48,7 @@ exec-once = [workspace 2 silent] $code
 Just setting up the main keybinds for my daily use.
 #+begin_src conf
 bind = $mainMod SHIFT, n, exec, swaync-client -t -sw
-bind = $mainMod, RETURN, exec, $code
+bind = $mainMod, RETURN, exec, $emacs
 bind = $mainMod SHIFT, O, exec, slurp | grim -g - - | wl-copy
 bind = $mainMod SHIFT, RETURN, exec, $terminal
 bind = $mainMod, B, exec, $browser
@@ -152,7 +151,6 @@ bind = , escape, submap, reset
 # will reset the submap, which will return to the global submap
 submap = reset
 
-# keybinds further down will be global again...
 #+end_src
 * Window Rules
 #+begin_src conf
