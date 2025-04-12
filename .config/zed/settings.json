@@ -9,20 +9,13 @@
 
 {
   "show_edit_predictions": false,
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
-    },
-    "version": "2"
-  },
   "indent_guides": {
     "enabled": true,
     "coloring": "fixed"
   },
   "languages": {
     "Python": {
-      "language_servers": ["ruff"],
+      "language_servers": ["ruff", "pyright"],
       "format_on_save": "on",
       "formatter": [
         {

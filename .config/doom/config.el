@@ -103,4 +103,5 @@
         display-line-numbers-mode nil
         ))
 
+(map! :leader :nv "o c" 'calc)
 (load! "org-config")
