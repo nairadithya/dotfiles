@@ -198,6 +198,7 @@ input {
 
     touchpad {
         natural_scroll = true
+        disable_while_typing = true
     }
     mouse_refocus = true
     sensitivity = 0.5 # -1.0 - 1.0, 0 means no modification.
