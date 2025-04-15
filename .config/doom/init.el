@@ -98,7 +98,7 @@
        (lookup +docsets)             ; navigate your code and its documentation
        (lsp +eglot)                ; M-x vscode
        (magit +forge)            ; a git porcelain for Emacs
-       ;;make              ; run make tasks from Emacs
+       make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
@@ -182,7 +182,7 @@
        ;;zig               ; C, but simpler
 
        :email
-       ;;(mu4e +org +gmail)
+       ;; (mu4e +org +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
 

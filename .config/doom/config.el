@@ -82,7 +82,7 @@
 (map! :map LaTeX-mode-map
       "TAB" #'cdlatex-tab)
 
-(setq +latex-viewers '(zathura))
+(setq +latex-viewers '(sioyek))
 
 
 (setq! +snippets-dir "~/dotfiles/.config/doom/snippets/")
