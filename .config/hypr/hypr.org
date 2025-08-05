@@ -16,6 +16,8 @@
 - [[#colours][Colours]]
 - [[#startup][Startup]]
 - [[#settings][Settings]]
+  - [[#general-device-setup][General Device Setup]]
+  - [[#windows][Windows]]
 - [[#hypridle][Hypridle]]
 - [[#hyprlock][Hyprlock]]
 - [[#hyprpaper][Hyprpaper]]
@@ -26,11 +28,11 @@ These are a bunch of variables for my apps so that I don't have to type them all
 $terminal = kitty
 $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c -a 'emacs'
-$fileManager = kitty -e yazi
+$fileManager = kitty -e yazi ~
 $browser = firefox
 $org-capture = ~/.config/emacs/bin/org-capture
-$menu = wofi --show drun
-$cmenu = wofi --show run
+$menu = fuzzel
+$cmenu = fuzzel --config=~/dotfiles/.config/fuzzel/fuzzel-lock.ini
 $music = Cider --enable-features=UseOzonePlatform --ozone-platform=wayland
 $gimp = flatpak run org.gimp.GIMP
 #+end_src
@@ -42,22 +44,23 @@ $mainMod = SUPER
 ** Workspace Autostart
 #+begin_src conf
 exec-once = [workspace 1 silent] $browser
-exec-once = [workspace 2 silent] $code
+exec-once = [workspace 2 silent] $emacs
 #+end_src
 ** Main Keybinds
 Just setting up the main keybinds for my daily use.
 #+begin_src conf
 bind = $mainMod SHIFT, n, exec, swaync-client -t -sw
 bind = $mainMod, RETURN, exec, $emacs
-bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/grimblast copy area
+bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m region --freeze
 bind = $mainMod SHIFT, RETURN, exec, $terminal
 bind = $mainMod, B, exec, $browser
 bind = $mainMod, G, exec, $gimp
+bind = $mainMod, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m window --freeze
 bind = $mainMod, N, exec, $org-capture
 bind = $mainMod, M, exec, $music
-bind = $mainMod, O, exec, $emacs
+bind = $mainMod, PERIOD, exec, hyprpicker | wl-copy
 bind = $mainMod, C, killactive,
-bind = $mainMod, Q, exec, ~/.config/wofi/scripts/wofi-power-menu.sh
+bind = $mainMod, Q, exec, ~/.config/fuzzel/scripts/power-menu.sh
 bind = $mainMod, E, exec, $fileManager
 bind = $mainMod SHIFT, space, togglefloating,
 bind = $mainMod, R, exec, $menu
@@ -65,18 +68,18 @@ bind = $mainMod SHIFT, R, exec, $cmenu
 #+end_src
 ** Volume and brightness
 #+begin_src conf
-binde=, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+binde=, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
 bindl=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-bindl = , XF86AudioMute, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%
+bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 binde=, XF86MonBrightnessDown, exec, brightnessctl set 10%-
 bindl=, XF86MonBrightnessUp, exec, brightnessctl set 10%+
 #+end_src
 ** Media controls
 #+begin_src conf
-bind = CTRL ALT, space, exec, playerctl play-pause
-bind = CTRL ALT, left, exec, playerctl previous
-bind = CTRL ALT, right, exec, playerctl next
-bind= CTRL ALT, up, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bind = CTRL ALT, space, exec, playerctl --player=cider play-pause
+bind = CTRL ALT, left, exec, playerctl --player=cider previous
+bind = CTRL ALT, right, exec, playerctl --player=cider next
+bind= CTRL ALT, up, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
 bind= CTRL ALT, down, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 #+end_src
 ** Window Management
@@ -118,7 +121,6 @@ bind = $mainMod, S, togglespecialworkspace, magic
 bind = $mainMod SHIFT, S, movetoworkspace, special:magic
 
 bind = $mainMod ALT SHIFT, 1, movecurrentworkspacetomonitor, DP-3
-bind = $mainMod SHIFT, 2, movetoworkspace, 2
 #+end_src
 ** Window Management (Mouse Edition)
 #+begin_src conf
@@ -165,11 +167,27 @@ windowrulev2 = workspace 3, class:(Cider)
 #+end_src
 * Colours
 #+begin_src conf
-$accent = rgb(ff6507)
-$bg-muted = rgb(404040)
-$bg-muted-plus  = rgb(737373)
-$bg  = rgb(121212)
-$fg  = rgb(ffffff)
+$accent = rgb(a7c080)
+$fg = rgb(d3c6aa)
+$bg = rgb(2b3339)
+$bg_1 = rgb(323c41)
+$bg_hl = rgb(3a454a)
+$gutter = rgb(445055)
+$mono_1 = rgb(abb2bf)
+$mono_2 = rgb(503946)
+$mono_3 = rgb(859289)
+$cyan = rgb(83c092)
+$blue = rgb(7fbbb3)
+$purple = rgb(d699b6)
+$green = rgb(a7c080)
+$red = rgb(e67e80)
+$orange = rgb(e69875)
+$yellow = rgb(ddbc7f)
+$gray = rgb(323c41)
+$silver = rgb(9da9a0)
+$black = rgb(2b3339)
+$border = rgb(445055)
+$visual = rgb(323c41)
 #+end_src
 * Startup
 #+begin_src conf
@@ -181,12 +199,12 @@ exec-once = dunst
 exec-once = emacs --daemon &
 #+end_src
 * Settings
+** General Device Setup
 #+begin_src conf
 monitor=eDP-1,preferred,auto,auto
-monitor=,preferred,auto,1
-# Some default env vars.
+monitor=,preferred,auto,auto
 env = XCURSOR_SIZE, 16
-env = QT_QPA_PLATFORMTHEME,qt5ct # change to qt6ct if you have that
+env = QT_QPA_PLATFORMTHEME,qt5ct
 input {
     kb_layout = us
     kb_variant =
@@ -194,38 +212,33 @@ input {
     kb_options =
     kb_rules =
     kb_options = ctrl:nocaps
-    follow_mouse = 3
+    follow_mouse = 2
 
     touchpad {
         natural_scroll = true
         disable_while_typing = true
     }
-    mouse_refocus = true
+    mouse_refocus = false
     sensitivity = 0.5 # -1.0 - 1.0, 0 means no modification.
 }
 
+device {
+    name = epic-mouse-v1
+    sensitivity = -0.4
+}
+#+end_src
+** Windows
+#+begin_src conf
 general {
-    gaps_in = 3
-    gaps_out = 3
+    gaps_in = 2
+    gaps_out = 2
     border_size = 1
     col.active_border = $accent
-    col.inactive_border = $bg-muted
+    col.inactive_border = $bg
     layout = dwindle
     allow_tearing = false
 }
 
-decoration {
-    rounding = 3
-    blur {
-        enabled = true
-        size = 2
-        passes = 2
-    }
-    drop_shadow = yes
-    shadow_range = 3
-    dim_inactive = no
-    shadow_render_power = 4
-}
 
 animations {
     enabled = yes
@@ -237,9 +250,7 @@ animations {
 }
 
 dwindle {
-    # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
     preserve_split = yes # you probably want this
-    no_gaps_when_only = 0
 }
 
 master {
@@ -248,7 +259,6 @@ master {
 }
 
 gestures {
-    # See https://wiki.hyprland.org/Configuring/Variables/ for more
     workspace_swipe = on
 }
 
@@ -256,10 +266,6 @@ misc {
     force_default_wallpaper = 0 # Set to 0 to disable the anime mascot wallpapers
 }
 
-device {
-    name = epic-mouse-v1
-    sensitivity = -0.4
-}
 #+end_src
 
 * Hypridle
@@ -289,12 +295,27 @@ listener {
 #+end_src
 * Hyprlock
 #+begin_src conf :tangle hyprlock.conf
-$accent = rgb(ff6507)
-$bg-muted = rgb(404040)
-$bg-muted-plus  = rgb(737373)
-$bg  = rgb(121212)
-$fg  = rgb(ffffff)
-
+$accent = rgb(a7c080)
+$fg = rgb(d3c6aa)
+$bg = rgb(2b3339)
+$bg_1 = rgb(323c41)
+$bg_hl = rgb(3a454a)
+$gutter = rgb(445055)
+$mono_1 = rgb(abb2bf)
+$mono_2 = rgb(503946)
+$mono_3 = rgb(859289)
+$cyan = rgb(83c092)
+$blue = rgb(7fbbb3)
+$purple = rgb(d699b6)
+$green = rgb(a7c080)
+$red = rgb(e67e80)
+$orange = rgb(e69875)
+$yellow = rgb(ddbc7f)
+$gray = rgb(323c41)
+$silver = rgb(9da9a0)
+$black = rgb(2b3339)
+$border = rgb(445055)
+$visual = rgb(323c41)
 $font = JetBrainsMono Nerd Font
 
 # GENERAL
@@ -306,11 +327,34 @@ general {
 # BACKGROUND
 background {
     monitor =
-    path = $HOME/.config/wallpaper/atlas/atlas-dark.png
+    path = $HOME/.config/wallpaper/everforest.png
     blur_passes = 0
     color = $bg
 }
 
+# TIME
+label {
+    monitor =
+    text = cmd[update:30000] echo "$(date +"%R")"
+    color = $fg
+    font_size = 90
+    font_family = $font
+    position = -30, 0
+    halign = right
+    valign = bottom
+}
+
+# DATE
+label {
+    monitor =
+    text = cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"
+    color = $accent
+    font_size = 25
+    font_family = $font
+    position = -30, -150
+    halign = right
+    valign = bottom
+}
 
 # INPUT FIELD
 input-field {
@@ -321,12 +365,12 @@ input-field {
     dots_spacing = 0.2
     dots_center = true
     outer_color = $accent
-    inner_color = $bg-muted
+    inner_color = $bg_1
     font_color = $fg
     fade_on_empty = true
     hide_input = false
     check_color = $fg
-    fail_color = $accent
+    fail_color = $red
     fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
     capslock_color = $fg
     position = 0, -120
@@ -336,7 +380,7 @@ input-field {
 #+end_src
 * Hyprpaper
 #+begin_src conf :tangle hyprpaper.conf
-preload = ~/.config/wallpaper/atlas/atlas.png
-wallpaper = ,~/.config/wallpaper/atlas/atlas.png
+preload = ~/.config/wallpaper/everforest.png
+wallpaper = ,~/.config/wallpaper/everforest.png
 splash=false
 #+end_src

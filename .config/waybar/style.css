@@ -1,104 +1,45 @@
-@import "atlas.css";
+@import "everforest.css";
 
 * {
-    font-size:14px;
-    font-family: "Manrope";
+    font-size: 16px;
+    font-family: "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+    background: @bg-muted;
 }
 
-window#waybar{
-    all:unset;
-}
-
-.modules-left {
-    padding:7px;
-    margin:5px;
-    border-radius:10px;
-    background: alpha(@bg-muted,.5);
-    box-shadow: 0px 0px 2px @bg;
-}
-
-.modules-center {
-    padding:7px;
-    margin:5px;
-    border-radius:10px;
-    background: alpha(@bg-muted,.5);
-    box-shadow: 0px 0px 2px @bg;
-}
+.modules-left,
+.modules-center,
 .modules-right {
-    padding:7px;
-    margin:5px;
-    border-radius:10px;
-    background: alpha(@bg-muted,.5);
-    box-shadow: 0px 0px 2px @bg;
-}
-
-@keyframes pulse {
-    from {
-        opacity: 0.85;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.modules-left, .modules-center, .modules-right {
+    padding: 2px;
+    margin: 5px;
+    background: @bg-muted;
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.modules-left:hover, .modules-center:hover, .modules-right:hover {
-    background: alpha(@bg-muted, 0.7);
-    box-shadow: 0px 0px 4px alpha(@accent, 0.4);
-}
-
-tooltip {
+.modules-left:hover,
+.modules-center:hover,
+.modules-right:hover {
     background: @bg;
+}
+
+#clock,
+#workspaces,
+#network,
+#battery,
+#pulseaudio,
+#bluetooth {
+    padding: 0 5px;
     color: @fg;
+    transition: all 0.3s ease;
 }
 
-#clock, #workspaces, #network, #battery, #pulseaudio {
-    padding: 0px 5px;
-    color:@fg;
-    transition: all .3s ease;
-}
-
-#clock:hover, #bluetooth:hover,#network:hover,#battery:hover{
-    transition: all .3s ease;
-}
-
-#pulseaudio:hover, #network:hover, #battery:hover {
+#pulseaudio:hover,
+#network:hover,
+#battery:hover {
     color: @accent;
 }
 
-#workspaces button {
-    all:unset;
-    padding: 0px 5px;
-    color: @bg-muted-plus;
-    transition: all .2s ease;
-}
-#workspaces button:hover {
+#bluetooth {
     color: @fg;
-    border: none;
-    text-shadow: 0px 0px 1.5px @text;
-    transition: all 1s ease;
-}
-
-#workspaces button.active {
-    color: @accent;
-    border: none;
-    text-shadow: 0px 0px 2px @bg;
-}
-
-#bluetooth{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color:@text;
-
-}
-#network{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: @fg;
-
 }
 
 #battery.charging {
@@ -107,10 +48,38 @@ tooltip {
 
 #battery.critical:not(.charging) {
     color: @fg;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation: blink 0.5s linear infinite alternate;
 }
 
+#workspaces button {
+    all: unset;
+    padding: 0 5px;
+    color: @bg-muted-plus;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    color: @fg;
+    text-shadow: 0 0 1.5px @fg;
+    transition: all 1s ease;
+}
+
+#workspaces button.active {
+    color: @accent;
+    text-shadow: 0 0 2px @bg;
+}
+
+tooltip {
+    background: @bg;
+    color: @fg;
+}
+
+@keyframes pulse {
+    from { opacity: 0.85; }
+    to   { opacity: 1; }
+}
+
+#mpris {
+  font-family: "Font Awesome 5 Free", "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+  color: @fg;
+}

@@ -28,8 +28,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-lantern)
 
+(setq doom-theme 'everforest-hard-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -93,7 +93,7 @@
                      '(ruff-isort ruff)))
 
 ;; Always transparent
-(add-to-list 'default-frame-alist '(alpha-background . 75))
+(add-to-list 'default-frame-alist '(doom/set-frame-opacity 95))
 
 ;; Customizing writeroom mode
 (after! writeroom-mode
@@ -104,4 +104,7 @@
         ))
 
 (map! :leader :nv "o c" 'calc)
+
+
 (load! "org-config")
+
