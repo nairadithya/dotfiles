@@ -1,24 +1,22 @@
-;;; lang/astro/init.el -*- lexical-binding: t; -*-
+;; ;;; lang/astro/config.el
 
-;; WEB MODE
-(use-package web-mode :ensure t)
+(use-package! astro-ts-mode
+  :init
+  (when (modulep! +lsp)
+    (add-hook 'astro-ts-mode-hook #'lsp! 'append)))
 
-;; ASTRO
-(define-derived-mode astro-mode web-mode "astro")
-(setq auto-mode-alist
-      (append '((".*\\.astro\\'" . astro-mode))
-              auto-mode-alist))
+(set-formatter! 'prettier-astro
+  '("npx" "prettier" "--parser=astro"
+    (apheleia-formatters-indent "--use-tabs" "--tab-width" 'astro-ts-mode-indent-offset))
+  :modes '(astro-ts-mode))
 
+(use-package! lsp-tailwindcss
+  :when (modulep! +lsp)
+  :init
+  (setq! lsp-tailwindcss-add-on-mode t)
+  :config
+  (add-to-list 'lsp-tailwindcss-major-modes 'astro-ts-mode))
 
-
-;; EGLOT
+(add-to-list 'auto-mode-alist '("\\.\\(mdx\\)$" . markdown-mode))
 (when (modulep! +lsp)
-  (use-package eglot
-    :ensure t
-    :config
-    (add-to-list 'eglot-server-programs
-                 '(astro-mode . ("astro-ls" "--stdio"
-                                 :initializationOptions
-                                 (:typescript (:tsdk "./node_modules/typescript/lib")))))
-    :init
-    (add-hook 'astro-mode-hook 'eglot-ensure)))
+  (add-hook 'markdown-mode-local-vars-hook #'lsp! 'append))
