@@ -2,8 +2,7 @@
 
 This version tries to lean into a more minimal colorscheme, inspired off of [Atlas](https://atlasdev.club)
 
-![Main Layout](/assets/s1.png)
+![Main Layout](/assets/main.jpeg)
 
-![Second Layout](/assets/s2.png)
 
 Feel free to clone this repo and modify as needed.
