@@ -2,7 +2,6 @@
 
 (after! org
   (setq org-directory "~/Sync/Org-Garden/")
-  ;; org-journal
   (setq org-journal-file-format "%Y_%m_%d.org")
   (setq org-journal-date-format "%A, %d %B %Y")
   (setq org-journal-date-prefix "** ")
@@ -18,7 +17,7 @@
            :image-input-type "dvi"
            :image-output-type "svg"
            :image-size-adjust (1.7 . 1.5)
-           :latex-compiler ("latex -interaction nonstopmode -output-directory %o %f")
+           :latex-compiler ("lualatex -interaction nonstopmode -output-directory %o %f")
            :image-converter ("dvisvgm %f --no-fonts --exact -o %o"))))
 
   (after! org (require 'org-xopp) (org-xopp-setup))
@@ -51,5 +50,5 @@
 
   (setq org-preview-latex-default-process 'dvisvgm)
 
-  (after! org (plist-put org-format-latex-options :scale 1.00))
+  (plist-put org-format-latex-options :scale 1.00)
   )

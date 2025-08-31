@@ -8,10 +8,16 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "tab_bar": {
+    "show": false
+  },
   "show_edit_predictions": false,
   "indent_guides": {
     "enabled": true,
     "coloring": "fixed"
+  },
+  "agent": {
+    "enabled": true
   },
   "languages": {
     "Python": {
@@ -67,6 +73,6 @@
   "theme": {
     "mode": "system",
     "light": "Catppuccin Mocha",
-    "dark": "Ayu Dark"
+    "dark": "Gruvbox Dark"
   }
 }
