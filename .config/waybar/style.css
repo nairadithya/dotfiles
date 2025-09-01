@@ -2,7 +2,7 @@
 
 * {
     font-size: 16px;
-    font-family: "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+    font-family: "IosevkaTermSlab Nerd Font",  sans-serif;
     background: @bg-muted;
 }
 
@@ -80,6 +80,6 @@ tooltip {
 }
 
 #mpris {
-  font-family: "Font Awesome 5 Free", "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+  font-family: "Font Awesome 5 Free", "IosevkaTermSlab Nerd Font", "Fira Code", sans-serif;
   color: @fg;
 }

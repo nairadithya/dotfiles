@@ -316,7 +316,7 @@ $silver = rgb(9da9a0)
 $black = rgb(2b3339)
 $border = rgb(445055)
 $visual = rgb(323c41)
-$font = JetBrainsMono Nerd Font
+$font = IosevkaTermSlab Nerd Font
 
 # GENERAL
 general {

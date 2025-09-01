@@ -69,7 +69,7 @@
     "show": "never"
   },
   "buffer_font_size": 14,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "IosevkaTermSlab Nerd Font",
   "theme": {
     "mode": "system",
     "light": "Catppuccin Mocha",
