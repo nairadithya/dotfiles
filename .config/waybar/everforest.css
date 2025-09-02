@@ -1,5 +1,45 @@
-@define-color accent        #a7c080;  /* everforest-hard-dark-accent */
-@define-color bg-muted      #323c41;  /* everforest-hard-dark-bg-1 */
-@define-color bg-muted-plus #3a454a;  /* everforest-hard-dark-bg-hl */
-@define-color bg            #2b3339;  /* everforest-hard-dark-bg */
-@define-color fg            #d3c6aa;  /* everforest-hard-dark-fg */
+/* Everforest Dark Colors */
+@define-color background #2b3339;
+@define-color background-light #323c41;
+@define-color foreground #d3c6aa;
+@define-color black #3c474d;
+@define-color red #e67e80;
+@define-color green #a7c080;
+@define-color yellow #dbbc7f;
+@define-color blue #7fbbb3;
+@define-color magenta #d699b6;
+@define-color cyan #83c092;
+@define-color white #d3c6aa;
+@define-color orange #e69875;
+/* Module-specific colors */
+@define-color workspaces-color @foreground;
+@define-color workspaces-focused-bg @green;
+@define-color workspaces-focused-fg @cyan;
+@define-color workspaces-urgent-bg @red;
+@define-color workspaces-urgent-fg @black;
+
+/* Text and border colors for modules */
+@define-color mode-color @orange;
+@define-color mpd-color @magenta;
+@define-color weather-color @magenta;
+@define-color playerctl-color @magenta;
+@define-color clock-color @blue;
+@define-color cpu-color @green;
+@define-color memory-color @magenta;
+@define-color temperature-color @yellow;
+@define-color temperature-critical-color @red;
+@define-color battery-color @cyan;
+@define-color battery-charging-color @green;
+@define-color battery-warning-color @yellow;
+@define-color battery-critical-color @red;
+@define-color network-color @blue;
+@define-color network-disconnected-color @red;
+@define-color pulseaudio-color @orange;
+@define-color pulseaudio-muted-color @red;
+@define-color backlight-color @yellow;
+@define-color disk-color @cyan;
+@define-color uptime-color @green;
+@define-color updates-color @orange;
+@define-color quote-color @green;
+@define-color idle-inhibitor-color @foreground;
+@define-color idle-inhibitor-active-color @red;
