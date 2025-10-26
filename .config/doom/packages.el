@@ -60,3 +60,5 @@
 
 (package! everforest
   :recipe (:host github :repo "Theory-of-Everything/everforest-emacs"))
+
+(package! gptel :recipe (:nonrecursive t))

@@ -25,7 +25,7 @@
 * Apps
 These are a bunch of variables for my apps so that I don't have to type them all out every time.
 #+begin_src conf
-$terminal = kitty
+$terminal = ghostty
 $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c -a 'emacs'
 $fileManager = kitty -e yazi ~
@@ -50,6 +50,7 @@ exec-once = [workspace 2 silent] $emacs
 Just setting up the main keybinds for my daily use.
 #+begin_src conf
 bind = $mainMod SHIFT, n, exec, swaync-client -t -sw
+bind = SUPER, V, exec,  ghostty --class=clipse -e '~/bin/clipse'
 bind = $mainMod, RETURN, exec, $emacs
 bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m region --freeze
 bind = $mainMod SHIFT, RETURN, exec, $terminal
@@ -76,9 +77,9 @@ bindl=, XF86MonBrightnessUp, exec, brightnessctl set 10%+
 #+end_src
 ** Media controls
 #+begin_src conf
-bind = CTRL ALT, space, exec, playerctl --player=cider play-pause
-bind = CTRL ALT, left, exec, playerctl --player=cider previous
-bind = CTRL ALT, right, exec, playerctl --player=cider next
+bind = CTRL ALT, space, exec, playerctl play-pause
+bind = CTRL ALT, left, exec, playerctl  previous
+bind = CTRL ALT, right, exec, playerctl next
 bind= CTRL ALT, up, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
 bind= CTRL ALT, down, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 #+end_src
@@ -157,14 +158,19 @@ submap = reset
 * Window Rules
 #+begin_src conf
 windowrulev2 = suppressevent maximize, class:.*
+windowrulev2 = float,class:(clipse)
+windowrulev2 = size 622 652,class:(clipse)
 windowrulev2 = float, title:(Picture-in-Picture)
 windowrulev2 = float, title:(Extension: (Bitwarden Password Manager) - Bitwarden — Ablaze Floorp)
 windowrulev2 = pin, title:(Picture-in-Picture)
+windowrulev2 = float, title:(doom-capture)
+windowrulev2 = size 50% 50%, title:(doom-capture)
 windowrulev2 = move 10 60, title:(Picture-in-Picture)
 windowrulev2 = size 30% 30%, title:(Picture-in-Picture)
 windowrulev2 = workspace 4, initialClass:(Zotero)
 windowrulev2 = workspace 3, class:(Cider)
 #+end_src
+
 * Colours
 #+begin_src conf
 $accent = rgb(a7c080)
@@ -192,6 +198,7 @@ $visual = rgb(323c41)
 * Startup
 #+begin_src conf
 exec-once = hypridle
+exec-once = ~/bin/clipse -listen
 exec-once = waybar
 exec-once = syncthing
 exec-once = hyprpaper

@@ -5,8 +5,8 @@
     "spacing": 1,
     "margin": 0,
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],                                                                           //battery   //disk     // uptime      //updates        // systray
-    "modules-right": ["pulseaudio", "backlight", "network", "battery", "custom/uptime"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "backlight", "network", "battery"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -23,12 +23,8 @@
             "9": "",
             "10": ""
         },
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5]
         }
     },
 

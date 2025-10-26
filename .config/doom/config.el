@@ -18,7 +18,7 @@
 ;; accept. For example:
 
 (setq doom-font (font-spec :family "IosevkaTermSlab Nerd Font" :size 16 :weight 'regular))
-(setq doom-variable-pitch-font (font-spec :family "IosevkaTermSlab Nerd Font" :size 20 :weight 'regular))
+(setq doom-variable-pitch-font (font-spec :family "Charter" :size 20 :weight 'regular))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -89,22 +89,37 @@
 
 ;; Added support for ruff for apheleia
 ;; Replace default (black) to use ruff for sorting import and formatting.
-(after! python (setf (alist-get 'python-mode apheleia-mode-alist)
-                     '(ruff-isort ruff)))
+(after! apheleia
+  (setf (alist-get 'python-mode apheleia-mode-alist)
+        '(ruff-isort ruff))
+  (setf (alist-get 'python-ts-mode apheleia-mode-alist)
+        '(ruff-isort ruff))
+  )
 
 ;; Always transparent
-(add-to-list 'default-frame-alist '(doom/set-frame-opacity 95))
+(add-to-list 'default-frame-alist '(doom/set-frame-opacity 70))
 
 ;; Customizing writeroom mode
 (after! writeroom-mode
-  (setq +zen-text-scale 1.5
+  (setq +zen-text-scale 1.0
         writeroom-mode-line t
         writeroom-width 80
-        display-line-numbers-mode nil
-        ))
+        )
+  )
 
 (map! :leader :nv "o c" 'calc)
 
 
 (load! "org-config")
+
+(use-package! gptel
+  :config
+  (setq! gptel-model 'claude-sonnet-4.5
+         gptel-backend (gptel-make-gh-copilot "Copilot")
+         gptel-default-mode 'org-mode)
+  )
+
+
+(map! :leader :n "o g" 'gptel)
+(map! :leader :v "o g" 'gptel-rewrite)
 

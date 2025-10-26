@@ -1,0 +1,5 @@
+font-family = "IosevkaTermSlab Nerd Font Mono"
+resize-overlay = "never"
+theme = "Everforest Dark Hard"
+background-opacity = 0.9
+background-blur = true

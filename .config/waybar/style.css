@@ -21,7 +21,6 @@ window#waybar {
 #idle_inhibitor, #tray {
     padding: 0 10px;
     margin: 0 2px;
-    border-bottom: 2px solid transparent;
     background-color: transparent;
 }
 
@@ -68,133 +67,107 @@ window#waybar {
 
 #mpd {
     color: @mpd-color;
-    border-bottom-color: @mpd-color;
 }
 
 #mpd.disconnected,
 #mpd.stopped {
     color: @foreground;
-    border-bottom-color: transparent;
 }
 
 #custom-weather {
     color: @weather-color;
-    border-bottom-color: @weather-color;
 }
 
 #custom-playerctl {
     color: @playerctl-color;
-    border-bottom-color: @playerctl-color;
 }
 
 #custom-playerctl.Playing {
     color: @cyan;
-    border-bottom-color: @cyan;
 }
 
 #custom-playerctl.Paused {
     color: @orange;
-    border-bottom-color: @orange;
 }
 
 #clock {
     color: @clock-color;
-    border-bottom-color: @clock-color;
 }
 
 #cpu {
     color: @cpu-color;
-    border-bottom-color: @cpu-color;
 }
 
 #memory {
     color: @memory-color;
-    border-bottom-color: @memory-color;
 }
 
 #temperature {
     color: @temperature-color;
-    border-bottom-color: @temperature-color;
 }
 
 #temperature.critical {
     color: @temperature-critical-color;
-    border-bottom-color: @temperature-critical-color;
 }
 
 #battery {
     color: @battery-color;
-    border-bottom-color: @battery-color;
 }
 
 #battery.charging, #battery.plugged {
     color: @battery-charging-color;
-    border-bottom-color: @battery-charging-color;
 }
 
 #battery.warning:not(.charging) {
     color: @battery-warning-color;
-    border-bottom-color: @battery-warning-color;
 }
 
 #battery.critical:not(.charging) {
     color: @battery-critical-color;
-    border-bottom-color: @battery-critical-color;
 }
 
 #network {
     color: @network-color;
-    border-bottom-color: @network-color;
 }
 
 #network.disconnected {
     color: @network-disconnected-color;
-    border-bottom-color: @network-disconnected-color;
 }
 
 #pulseaudio {
     color: @pulseaudio-color;
-    border-bottom-color: @pulseaudio-color;
 }
 
 #pulseaudio.muted {
     color: @pulseaudio-muted-color;
-    border-bottom-color: @pulseaudio-muted-color;
 }
 
 #backlight {
     color: @backlight-color;
-    border-bottom-color: @backlight-color;
 }
 
 #disk {
     color: @disk-color;
-    border-bottom-color: @disk-color;
 }
 
 #custom-uptime {
     color: @uptime-color;
-    border-bottom-color: @uptime-color;
 }
 
 #custom-updates {
     color: @updates-color;
-    border-bottom-color: @updates-color;
 }
 
 #custom-quote {
     color: @quote-color;
-    border-bottom-color: @quote-color;
 }
 
 #idle_inhibitor {
     color: @idle-inhibitor-color;
-    border-bottom-color: transparent;
 }
 
 #idle_inhibitor.activated {
     color: @idle-inhibitor-active-color;
-    border-bottom-color: @idle-inhibitor-active-color;
 }
 
 #tray {
@@ -210,5 +183,4 @@ window#waybar {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     color: @red;
-    border-bottom-color: @red;
 }

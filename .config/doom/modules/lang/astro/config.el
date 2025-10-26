@@ -1,4 +1,4 @@
-;; ;;; lang/astro/config.el
+;; ;;; lang/astro/config.el -*- lexical-binding: t; -*-
 
 (use-package! astro-ts-mode
   :init
@@ -10,6 +10,8 @@
     (apheleia-formatters-indent "--use-tabs" "--tab-width" 'astro-ts-mode-indent-offset))
   :modes '(astro-ts-mode))
 
+(add-to-list 'auto-mode-alist '("\\.\\(astro\\)$" . astro-ts-mode))
+
 (use-package! lsp-tailwindcss
   :when (modulep! +lsp)
   :init
@@ -17,6 +19,7 @@
   :config
   (add-to-list 'lsp-tailwindcss-major-modes 'astro-ts-mode))
 
+;; MDX Support
 (add-to-list 'auto-mode-alist '("\\.\\(mdx\\)$" . markdown-mode))
 (when (modulep! +lsp)
   (add-hook 'markdown-mode-local-vars-hook #'lsp! 'append))

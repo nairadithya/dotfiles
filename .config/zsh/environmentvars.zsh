@@ -18,6 +18,7 @@ path+=("$HOME/Builds/swww/target/release/")
 path+=("$HOME/.tmux/plugins/tmuxifier/bin/")
 path+=("$HOME/.deno/bin/")
 path+=("$HOME/bin/")
+path+=("$HOME/.turso/")
 path+=("$HOME/.local/bin/")
 export BUN_INSTALL="$HOME/.bun"
 path+=("$BUN_INSTALL/bin")

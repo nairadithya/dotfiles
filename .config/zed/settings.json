@@ -8,8 +8,14 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
   "tab_bar": {
-    "show": false
+    "show": true
   },
   "show_edit_predictions": false,
   "indent_guides": {
@@ -17,6 +23,16 @@
     "coloring": "fixed"
   },
   "agent": {
+    "default_profile": "write",
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5"
+    },
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5"
+    },
     "enabled": true
   },
   "languages": {
@@ -24,12 +40,8 @@
       "language_servers": ["ruff", "pyright"],
       "format_on_save": "on",
       "formatter": [
-        {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
-          }
-        },
+        { "code_action": "source.organizeImports.ruff" },
+        { "code_action": "source.fixAll.ruff" },
         {
           "language_server": {
             "name": "ruff"
@@ -51,7 +63,6 @@
     "ruff": {
       "initialization_options": {
         "settings": {
-          // Ruff server settings goes here
           "lineLength": 80,
           "lint": {
             "extendSelect": ["I"]
@@ -72,7 +83,7 @@
   "buffer_font_family": "IosevkaTermSlab Nerd Font",
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Mocha",
-    "dark": "Gruvbox Dark"
+    "light": "Everforest Dark",
+    "dark": "Everforest Dark"
   }
 }
