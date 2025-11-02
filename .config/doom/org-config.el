@@ -51,4 +51,10 @@
   (setq org-preview-latex-default-process 'dvisvgm)
 
   (plist-put org-format-latex-options :scale 1.00)
+
+  (add-to-list 'org-capture-templates
+               '("e" "Event" entry
+                 (file+headline (expand-file-name (concat org-directory "events.org")) "Calendar")
+                 "* %?\n%^{Date}T")
+               t)
   )

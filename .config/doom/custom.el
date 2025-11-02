@@ -37,13 +37,12 @@
  '(newsticker-url-list
    '(("My website" "https://adithyanair.com/rss.xml" nil nil nil)))
  '(org-agenda-files
-   '("/home/adithya/Sync/Org-Garden/timetable-agenda.org"
+   '("/home/adithya/Sync/Org-Garden/todo.org"
      "/home/adithya/Sync/Org-Garden/todo/college.org"
-     "/home/adithya/Projects/geppetto/todo.org"
+     "/home/adithya/Sync/Org-Garden/timetable-agenda.org"
      "/home/adithya/Sync/Org-Garden/internships.org"
      "/home/adithya/Sync/Org-Garden/problems-with-config.org"
-     "/home/adithya/Sync/Org-Garden/projects.org"
-     "/home/adithya/Sync/Org-Garden/todo.org"))
+     "/home/adithya/Sync/Org-Garden/projects.org"))
  '(warning-suppress-types '((ox-latex) (defvaralias) (lexical-binding))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

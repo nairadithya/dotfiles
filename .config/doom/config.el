@@ -97,6 +97,7 @@
   )
 
 ;; Always transparent
+(doom/set-frame-opacity 70)
 (add-to-list 'default-frame-alist '(doom/set-frame-opacity 70))
 
 ;; Customizing writeroom mode
@@ -119,7 +120,6 @@
          gptel-default-mode 'org-mode)
   )
 
-
-(map! :leader :n "o g" 'gptel)
-(map! :leader :v "o g" 'gptel-rewrite)
-
+(map! :leader
+      :n "o g" #'gptel
+      :v "o g" #'gptel-rewrite)
