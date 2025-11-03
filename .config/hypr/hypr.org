@@ -27,14 +27,13 @@ These are a bunch of variables for my apps so that I don't have to type them all
 #+begin_src conf
 $terminal = ghostty
 $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
-$emacs = emacsclient -c -a 'emacs'
+$emacs = emacsclient -c 
 $fileManager = kitty -e yazi ~
 $browser = firefox
 $org-capture = ~/.config/emacs/bin/org-capture
 $menu = fuzzel
 $cmenu = fuzzel --config=~/dotfiles/.config/fuzzel/fuzzel-lock.ini
 $music = Cider --enable-features=UseOzonePlatform --ozone-platform=wayland
-$gimp = flatpak run org.gimp.GIMP
 #+end_src
 * Binds
 #+begin_src conf
@@ -44,7 +43,6 @@ $mainMod = SUPER
 ** Workspace Autostart
 #+begin_src conf
 exec-once = [workspace 1 silent] $browser
-exec-once = [workspace 2 silent] $emacs
 #+end_src
 ** Main Keybinds
 Just setting up the main keybinds for my daily use.
@@ -55,7 +53,6 @@ bind = $mainMod, RETURN, exec, $emacs
 bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m region --freeze
 bind = $mainMod SHIFT, RETURN, exec, $terminal
 bind = $mainMod, B, exec, $browser
-bind = $mainMod, G, exec, $gimp
 bind = $mainMod, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m window --freeze
 bind = $mainMod, N, exec, $org-capture
 bind = $mainMod, M, exec, $music
@@ -198,12 +195,8 @@ $visual = rgb(323c41)
 * Startup
 #+begin_src conf
 exec-once = hypridle
-exec-once = ~/bin/clipse -listen
 exec-once = waybar
-exec-once = syncthing
-exec-once = hyprpaper
 exec-once = dunst
-exec-once = emacs --daemon &
 #+end_src
 * Settings
 ** General Device Setup

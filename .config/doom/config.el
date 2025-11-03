@@ -29,7 +29,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 
-(setq doom-theme 'everforest-hard-dark)
+(setq doom-theme 'doom-material)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -98,7 +98,6 @@
 
 ;; Always transparent
 (doom/set-frame-opacity 70)
-(add-to-list 'default-frame-alist '(doom/set-frame-opacity 70))
 
 ;; Customizing writeroom mode
 (after! writeroom-mode
@@ -123,3 +122,8 @@
 (map! :leader
       :n "o g" #'gptel
       :v "o g" #'gptel-rewrite)
+
+;; DOOM DASHBOARD STUFF
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+(add-hook! '+doom-dashboard-functions :append
+  (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Riced with <3 by Adithya Nair")))
