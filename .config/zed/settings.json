@@ -8,6 +8,7 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "disable_ai": false,
   "edit_predictions": {
     "mode": "subtle"
   },
@@ -23,7 +24,7 @@
     "coloring": "fixed"
   },
   "agent": {
-    "default_profile": "write",
+    "default_profile": "ask",
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4.5"
