@@ -4,8 +4,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(elfeed-feeds
-   '("https://diagramchasing.fun/rss.xml" "https://dcurt.is/feed"
-     "https://blog.jsbarretto.com/rss.xml"
+   '("https://worrydream.com/" "https://diagramchasing.fun/rss.xml"
+     "https://dcurt.is/feed" "https://blog.jsbarretto.com/rss.xml"
      "https://compileartisan.pages.dev/rss.xml"
      "https://blog.codingconfessions.com/feed" "https://tush.ar/rss.xml"
      "https://tech.marksblogg.com/feeds/all.atom.xml"
@@ -15,7 +15,6 @@
      "https://www.henrikkarlsson.xyz/feed" "https://heftymouse.me/blog/rss.xml"
      "https://ludic.mataroa.blog/rss/" "https://maggieappleton.com/rss.xml"
      "https://mango.pdf.zone/feed" "https://nadia.xyz/feed.xml"
-     "https://nautil.us/feed/?_sp=ee4e4d47-a2a6-4b8e-9b41-da40ab543d05.1725214404909"
      "https://www.neelnanda.io/blog?format=rss"
      "https://jillianhess.substack.com/feed" "https://papanotes.com/feed.atom"
      "https://plus.maths.org/content/rss.xml" "https://rachsmith.com/feed.xml"
@@ -27,7 +26,6 @@
      "https://austinkleon.com/feed/"
      "https://www.amygoodchild.com/blog?format=rss"
      "https://www.cjthex.com/feed/"
-     "https://www.youtube.com/feeds/videos.xml?channel_id=UCeTfBygNb1TahcNpZyELO8g"
      "https://alexanderobenauer.com/assets/feed/rss.xml"
      "https://interconnected.org/home/feed"
      "https://garymarcus.substack.com/feed"
@@ -37,11 +35,9 @@
  '(newsticker-url-list
    '(("My website" "https://adithyanair.com/rss.xml" nil nil nil)))
  '(org-agenda-files
-   '("/home/adithya/Sync/Org-Garden/todo.org"
-     "/home/adithya/Sync/Org-Garden/todo/college.org"
+   '("~/Sync/Org-Garden/todo.org" "/home/adithya/Sync/Org-Garden/todo/college.org"
      "/home/adithya/Sync/Org-Garden/timetable-agenda.org"
      "/home/adithya/Sync/Org-Garden/internships.org"
-     "/home/adithya/Sync/Org-Garden/problems-with-config.org"
      "/home/adithya/Sync/Org-Garden/projects.org"))
  '(warning-suppress-types '((ox-latex) (defvaralias) (lexical-binding))))
 (custom-set-faces

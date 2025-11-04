@@ -127,3 +127,29 @@
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 (add-hook! '+doom-dashboard-functions :append
   (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Riced with <3 by Adithya Nair")))
+
+(defun doom-dashboard-widget-footer ()
+  (insert
+   "\n"
+   (+doom-dashboard--center
+    (- +doom-dashboard--width 4)
+    (with-temp-buffer
+      (insert-text-button (or (nerd-icons-mdicon "nf-md-clipboard_list_outline" :face 'doom-dashboard-footer-icon :height 1.3 :v-adjust -0.15)
+                              (propertize "org-agenda" 'face 'doom-dashboard-footer))
+                          'action (lambda (_) (org-agenda))
+                          'follow-link t
+                          'help-echo "Check agenda")
+      (insert "   ") 
+      (insert-text-button (or (nerd-icons-faicon "nf-fa-calculator" :face 'doom-dashboard-footer-icon :height 1.3 :v-adjust -0.15)
+                              (propertize "calc" 'face 'doom-dashboard-footer))
+                          'action (lambda (_) (calc))
+                          'follow-link t
+                          'help-echo "Open Calculator")
+      (insert "   ") 
+      (insert-text-button (or (nerd-icons-mdicon "nf-md-text_box_search" :face 'doom-dashboard-footer-icon :height 1.3 :v-adjust -0.15)
+                              (propertize "note-search" 'face 'doom-dashboard-footer))
+                          'action (lambda (_) (call-interactively '+default/org-notes-search))
+                          'follow-link t
+                          'help-echo "Search In Notes")
+      (buffer-string)))
+   "\n"))
