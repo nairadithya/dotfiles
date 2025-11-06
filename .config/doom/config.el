@@ -96,9 +96,10 @@
         '(ruff-isort ruff))
   )
 
-;; Always transparent
-(doom/set-frame-opacity 70)
-
+;; Opacity
+(add-hook 'doom-load-theme-hook
+          (lambda ()
+            (doom/set-frame-opacity 90 t)))
 ;; Customizing writeroom mode
 (after! writeroom-mode
   (setq +zen-text-scale 1.0
