@@ -1,9 +1,8 @@
 alias ls='ls --color'
-alias t='todo.sh'
-alias ec='emacsclient -nw'
+alias ec='emacsclient -t'
 alias xo='xdg-open'
-alias nvim='emacsclient -nw'
-alias vi='emacsclient -nw'
+alias nvim='emacsclient -t'
+alias vi='emacsclient -t'
 export EDITOR='emacsclient -t'
 export VISUAL=$EDITOR
 export ALTERNATE_EDITOR=''

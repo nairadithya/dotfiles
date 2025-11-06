@@ -1,1 +1,0 @@
-source <(tailscale completion zsh)

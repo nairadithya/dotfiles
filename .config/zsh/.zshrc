@@ -1,7 +1,5 @@
-source "$ZDOTDIR/zinit.zsh"
-source "$ZDOTDIR/fzf.zsh"
 source "$ZDOTDIR/prompt.zsh"
 source "$ZDOTDIR/environmentvars.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/options.zsh"
-source "$ZDOTDIR/tailscale.zsh"
+source "$ZDOTDIR/completions.zsh"
