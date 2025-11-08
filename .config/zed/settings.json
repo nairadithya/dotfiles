@@ -24,7 +24,7 @@
     "coloring": "fixed"
   },
   "agent": {
-    "default_profile": "ask",
+    "default_profile": "write",
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4.5"
@@ -85,6 +85,6 @@
   "theme": {
     "mode": "system",
     "light": "Everforest Dark",
-    "dark": "Dracula"
+    "dark": "Ayu Dark"
   }
 }
