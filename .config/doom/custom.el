@@ -35,7 +35,8 @@
  '(newsticker-url-list
    '(("My website" "https://adithyanair.com/rss.xml" nil nil nil)))
  '(org-agenda-files
-   '("~/Sync/Org-Garden/todo.org" "/home/adithya/Sync/Org-Garden/todo/college.org"
+   '("/home/adithya/Sync/Org-Garden/todo.org"
+     "/home/adithya/Sync/Org-Garden/todo/college.org"
      "/home/adithya/Sync/Org-Garden/timetable-agenda.org"
      "/home/adithya/Sync/Org-Garden/internships.org"
      "/home/adithya/Sync/Org-Garden/projects.org"))

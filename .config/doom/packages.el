@@ -54,11 +54,6 @@
   :recipe (:host github :repo "mahmoodsh36/org-xopp"
            :files (:defaults "*.sh")))
 
-(package! catppuccin-theme)
-
 (package! ox-typst)
-
-(package! everforest
-  :recipe (:host github :repo "Theory-of-Everything/everforest-emacs"))
 
 (package! gptel :recipe (:nonrecursive t))
