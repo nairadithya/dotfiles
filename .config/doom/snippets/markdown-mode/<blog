@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Blog Frontmatter
+# uuid: blog-syntax
+# key: <blog
+# condition: t
+# --
+---
+title: $1
+description: $2
+date: `(my/current-date-formatted)`
+isEssay: ${3:true|false}
+---
+
+$0
