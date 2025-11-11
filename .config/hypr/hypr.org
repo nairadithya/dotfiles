@@ -38,7 +38,7 @@ $music = Cider --enable-features=UseOzonePlatform --ozone-platform=wayland
 #+end_src
 * Binds
 #+begin_src conf
-$mainMod = SUPER
+$mainMod = Super
 #+end_src
 
 ** Workspace Autostart
@@ -49,15 +49,15 @@ exec-once = [workspace 1 silent] $browser
 Just setting up the main keybinds for my daily use.
 #+begin_src conf
 bind = $mainMod SHIFT, n, exec, swaync-client -t -sw
-bind = SUPER, V, exec,  ghostty --class=clipse -e '~/bin/clipse'
+bind = SUPER, V, exec,  ghostty --class=com.nairadithya.clipse -e bash -c 'exec ~/bin/clipse'
 bind = $mainMod, RETURN, exec, $emacs
 bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m region --freeze
 bind = $mainMod SHIFT, RETURN, exec, $terminal
+bind = CTRL SHIFT, ESCAPE, exec, emacsclient -c -F '((title . "emacs-agenda"))' -e '(org-agenda-list)'
 bind = $mainMod, B, exec, $browser
-bind = $mainMod, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m window --freeze
 bind = $mainMod, N, exec, $org-capture
 bind = $mainMod, M, exec, $music
-bind = $mainMod, PERIOD, exec, hyprpicker | wl-copy
+# bind = $mainMod, PERIOD, exec, hyprpicker | wl-copy
 bind = $mainMod, C, killactive,
 bind = $mainMod, Q, exec, ~/.config/fuzzel/scripts/power-menu.sh
 bind = $mainMod, E, exec, $fileManager
@@ -168,6 +168,10 @@ windowrulev2 = move 10 60, title:(Picture-in-Picture)
 windowrulev2 = size 30% 30%, title:(Picture-in-Picture)
 windowrulev2 = workspace 4, initialClass:(Zotero)
 windowrulev2 = workspace 3, class:(Cider)
+# Org agenda
+windowrulev2 = float, title:(emacs-agenda)
+windowrulev2 = size 80% 80%, title:(emacs-agenda)
+windowrulev2 = center, title:(emacs-agenda)
 #+end_src
 
 * Colours
@@ -196,7 +200,6 @@ $visual    = rgb(0x2d363a);
 #+end_src
 * Startup
 #+begin_src conf
-exec-once = hypridle
 exec-once = waybar
 exec-once = dunst
 #+end_src
