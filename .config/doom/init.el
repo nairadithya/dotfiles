@@ -156,6 +156,8 @@
        nu
        (ocaml +lsp + tree-sitter)             ; an objective camel
        (org
+        +noter
+        +pretty
         +present
         +journal)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
@@ -189,7 +191,7 @@
 
        :app
        calendar
-       ;;emms
+       emms
        ;;everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        rss        ; emacs as an RSS reader

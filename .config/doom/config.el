@@ -51,7 +51,7 @@
 ;;   - Setting variables which explicitly tell you to set them before their
 ;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
 ;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
+                                        ;
 ;; Here are some additional functions/macros that will help you configure Doom.
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -108,6 +108,8 @@
         )
   )
 
+(menu-bar-mode)
+
 (map! :leader :nv "o c" 'calc)
 
 
@@ -154,3 +156,11 @@
                           'help-echo "Search In Notes")
       (buffer-string)))
    "\n"))
+
+(defun my/current-date-formatted ()
+  "Used in a yasnippet to quickly insert my blog frontmatter boilerplate."
+  (setq value (calendar-current-date))
+  (format "%04d-%02d-%02d"
+          (nth 2 value)  ; year
+          (nth 0 value)  ; month
+          (nth 1 value))) ; day
