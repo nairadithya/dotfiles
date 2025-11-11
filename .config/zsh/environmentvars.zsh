@@ -20,10 +20,9 @@ path+=("$HOME/.deno/bin/")
 path+=("$HOME/bin/")
 path+=("$HOME/.turso/")
 path+=("$HOME/.local/bin/")
+path+=("$HOME/bin/")
 path+=("$HOME/.config/emacs/bin/")
 export BUN_INSTALL="$HOME/.bun"
 path+=("$BUN_INSTALL/bin")
-export VISUAL=nvim
-export EDITOR=nvim
 eval "$(tmuxifier init -)"
 export PATH
