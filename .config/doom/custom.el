@@ -27,12 +27,11 @@
      "https://alexanderobenauer.com/assets/feed/rss.xml"
      "https://wattenberger.com/rss.xml" "https://maggieappleton.com/rss.xml"))
  '(org-agenda-files
-   '("/home/adithya/Sync/Org-Garden/cycles.org"
+   '("~/Sync/Org-Garden/ideas.org" "/home/adithya/Sync/Org-Garden/cycles.org"
      "/home/adithya/Sync/Org-Garden/timetable-agenda.org"
      "/home/adithya/Sync/Org-Garden/todo.org"
      "/home/adithya/Sync/Org-Garden/todo/college.org"
-     "/home/adithya/Sync/Org-Garden/internships.org"
-     "/home/adithya/Sync/Org-Garden/projects.org"))
+     "/home/adithya/Sync/Org-Garden/internships.org"))
  '(warning-suppress-types '((ox-latex) (defvaralias) (lexical-binding))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -97,9 +97,8 @@
   )
 
 ;; Opacity
-(add-hook 'doom-load-theme-hook
-          (lambda ()
-            (doom/set-frame-opacity 90 t)))
+(add-to-list 'default-frame-alist '(alpha-background . 80))
+
 ;; Customizing writeroom mode
 (after! writeroom-mode
   (setq +zen-text-scale 1.0
