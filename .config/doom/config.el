@@ -163,3 +163,14 @@
           (nth 2 value)  ; year
           (nth 0 value)  ; month
           (nth 1 value))) ; day
+
+(setq projectile-project-search-path (list (expand-file-name "~/Projects/")))
+(defun projectile-gc-projects ()
+  "Remove non-existent directories from `projectile-known-projects'."
+  (interactive)
+  (let ((old-projects projectile-known-projects))
+    (setq projectile-known-projects
+          (--select (file-exists-p it) old-projects))
+    (unless (= (length old-projects) (length projectile-known-projects))
+      (message "Projectile: Cleaned up %d non-existent project(s)."
+               (- (length old-projects) (length projectile-known-projects))))))
