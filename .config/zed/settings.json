@@ -25,16 +25,12 @@
   },
   "agent": {
     "default_profile": "write",
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5"
-    },
-    "always_allow_tool_actions": true,
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4.5"
     },
-    "enabled": true
+    "always_allow_tool_actions": true,
+    "model_parameters": []
   },
   "languages": {
     "Python": {
@@ -72,7 +68,7 @@
       }
     }
   },
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "project_panel": {
     "entry_spacing": "standard"
   },
@@ -82,9 +78,5 @@
   },
   "buffer_font_size": 14,
   "buffer_font_family": "IosevkaTermSlab Nerd Font",
-  "theme": {
-    "mode": "system",
-    "light": "Everforest Dark",
-    "dark": "Ayu Dark"
-  }
+  "theme": "Ayu Dark"
 }

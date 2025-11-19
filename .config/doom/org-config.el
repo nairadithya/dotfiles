@@ -58,5 +58,6 @@
                  "* %?\n%^{Date}T")
                t)
   (setq org-noter-always-create-frame nil)
+
   (map! :desc "Open org-agenda weekly" :leader :nv "o o" 'org-agenda-list)
   )

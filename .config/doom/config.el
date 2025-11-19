@@ -107,7 +107,6 @@
         )
   )
 
-(menu-bar-mode)
 
 (map! :leader :nv "o c" 'calc)
 
@@ -156,6 +155,7 @@
       (buffer-string)))
    "\n"))
 
+
 (defun my/current-date-formatted ()
   "Used in a yasnippet to quickly insert my blog frontmatter boilerplate."
   (setq value (calendar-current-date))
@@ -165,6 +165,7 @@
           (nth 1 value))) ; day
 
 (setq projectile-project-search-path (list (expand-file-name "~/Projects/")))
+
 (defun projectile-gc-projects ()
   "Remove non-existent directories from `projectile-known-projects'."
   (interactive)
