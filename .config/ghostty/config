@@ -1,5 +1,3 @@
 font-family = "IosevkaTermSlab Nerd Font Mono"
 resize-overlay = "never"
-
-background-opacity = 0.9
-background-blur = true
+custom-shader = ~/dotfiles/.config/ghostty/crt.glsl

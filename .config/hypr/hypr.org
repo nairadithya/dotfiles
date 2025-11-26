@@ -53,11 +53,10 @@ bind = SUPER, V, exec,  ghostty --class=com.nairadithya.clipse -e bash -c 'exec 
 bind = $mainMod, RETURN, exec, $emacs
 bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m region --freeze
 bind = $mainMod SHIFT, RETURN, exec, $terminal
-bind = CTRL SHIFT, ESCAPE, exec, emacsclient -c -F '((title . "emacs-agenda"))' -e '(org-agenda-list)'
+bind = $mainMod, PERIOD, exec, emacsclient -c -F '((title . "emacs-agenda"))' -e '(org-agenda-list)'
 bind = $mainMod, B, exec, $browser
 bind = $mainMod, N, exec, $org-capture
 bind = $mainMod, M, exec, $music
-# bind = $mainMod, PERIOD, exec, hyprpicker | wl-copy
 bind = $mainMod, C, killactive,
 bind = $mainMod, Q, exec, ~/.config/fuzzel/scripts/power-menu.sh
 bind = $mainMod, E, exec, $fileManager
