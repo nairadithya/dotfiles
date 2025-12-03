@@ -1,5 +1,7 @@
 ---
 default:
+  max_columns: 120 
+  max_rows: 40
   margin:
     percent: 8
   colors:

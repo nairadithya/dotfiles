@@ -113,7 +113,7 @@
        ;;tty               ; improve the terminal Emacs experience
 
        :lang
-       (astro +lsp +tailwind)
+       ;; (astro +lsp +tailwind)
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
        (cc +lsp)         ; C > C++ == 1

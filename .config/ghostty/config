@@ -1,3 +1,5 @@
 font-family = "IosevkaTermSlab Nerd Font Mono"
 resize-overlay = "never"
-theme = "Catppuccin Mocha"
+background-opacity = 0.7
+theme = "IC Orange PPL"
+command = fish --login --interactive

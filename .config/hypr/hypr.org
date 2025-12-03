@@ -29,11 +29,11 @@ These are a bunch of variables for my apps so that I don't have to type them all
 $terminal = ghostty
 $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c 
-$fileManager = kitty -e yazi ~
+$fileManager = $terminal -e yazi ~
 $browser = firefox
 $org-capture = ~/.config/emacs/bin/org-capture
 $menu = fuzzel
-$cmenu = fuzzel --config=~/dotfiles/.config/fuzzel/fuzzel-lock.ini
+$cmenu = fuzzel --config=~/.config/fuzzel/fuzzel-lock.ini
 $music = Cider --enable-features=UseOzonePlatform --ozone-platform=wayland
 #+end_src
 * Binds
@@ -52,6 +52,7 @@ bind = $mainMod SHIFT, n, exec, swaync-client -t -sw
 bind = SUPER, V, exec,  ghostty --class=com.nairadithya.clipse -e bash -c 'exec ~/bin/clipse'
 bind = $mainMod, RETURN, exec, $emacs
 bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m region --freeze
+bind = $mainMod, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m window --freeze
 bind = $mainMod SHIFT, RETURN, exec, $terminal
 bind = $mainMod, PERIOD, exec, emacsclient -c -F '((title . "emacs-agenda"))' -e '(org-agenda-list)'
 bind = $mainMod, B, exec, $browser
@@ -175,37 +176,39 @@ windowrulev2 = center, title:(emacs-agenda)
 
 * Colours
 #+begin_src conf
-$accent    = rgb(0xe07e3e);   
-$fg        = rgb(0xdad8d4);   
-$bg        = rgb(0x202a2e);   
-$bg_1      = rgb(0x2d363a);   
-$bg_hl     = rgb(0x364046);   
-$gutter    = rgb(0x3c464a);   
-$mono_1    = rgb(0xa6a8ac);   
-$mono_2    = rgb(0x4e3f53);   
-$mono_3    = rgb(0x7a8b8d);   
-$cyan      = rgb(0x4fb8b3);   
-$blue      = rgb(0x66a9c9);   
-$purple    = rgb(0xb673a4);   
-$green     = rgb(0x8fcc7d);   
-$red       = rgb(0xe55f5f);   
-$orange    = rgb(0xf08c61);   
-$yellow    = rgb(0xe0c270);   
-$gray      = rgb(0x2d363a);   
-$silver    = rgb(0x9fa6a0);   
-$black     = rgb(0x202a2e);   
-$border    = rgb(0x3c464a);   
-$visual    = rgb(0x2d363a);   
+$accent    = rgb(e07e3e)   
+$fg        = rgb(dad8d4)   
+$bg        = rgb(202a2e)   
+$bg_1      = rgb(2d363a)   
+$bg_hl     = rgb(364046)   
+$gutter    = rgb(3c464a)   
+$mono_1    = rgb(a6a8ac)   
+$mono_2    = rgb(4e3f53)   
+$mono_3    = rgb(7a8b8d)   
+$cyan      = rgb(4fb8b3)   
+$blue      = rgb(66a9c9)   
+$purple    = rgb(b673a4)   
+$green     = rgb(8fcc7d)   
+$red       = rgb(e55f5f)   
+$orange    = rgb(f08c61)   
+$yellow    = rgb(e0c270)   
+$gray      = rgb(2d363a)   
+$silver    = rgb(9fa6a0)   
+$black     = rgb(202a2e)   
+$border    = rgb(3c464a)   
+$visual    = rgb(2d363a)   
 #+end_src
 * Startup
 #+begin_src conf
 exec-once = waybar
-exec-once = dunst
+exec-once = fnott
+exec-once = hyprpolkitagent
+exec-once = clipse
 #+end_src
 * Settings
 ** General Device Setup
 #+begin_src conf
-monitor=eDP-1,preferred,auto,auto
+monitor=eDP-1,preferred,auto,2
 monitor=,preferred,auto,auto
 env = XCURSOR_SIZE, 16
 env = QT_QPA_PLATFORMTHEME,qt5ct
@@ -243,6 +246,11 @@ general {
     allow_tearing = false
 }
 
+decoration {
+ rounding = 1
+ rounding_power = 1
+}
+
 
 animations {
     enabled = yes
@@ -262,9 +270,7 @@ master {
     new_status = master
 }
 
-gestures {
-    workspace_swipe = on
-}
+gestures = 3, horizontal, workspaces
 
 misc {
     force_default_wallpaper = 0 # Set to 0 to disable the anime mascot wallpapers
@@ -331,7 +337,7 @@ general {
 # BACKGROUND
 background {
     monitor =
-    path = $HOME/.config/wallpaper/everforest.png
+    path = $HOME/.config/wallpaper/atlas-dark.png
     blur_passes = 0
     color = $bg
 }

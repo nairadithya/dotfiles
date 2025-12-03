@@ -3,6 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("0d2c5679b6d087686dcfd4d7e57ed8e8aedcccc7f1a478cd69704c02e4ee36fe" default))
  '(elfeed-feeds
    '("https://www.henrikkarlsson.xyz/feed" "https://ludic.mataroa.blog/rss/"
      "https://mango.pdf.zone/feed" "https://www.neelnanda.io/blog?format=rss"
