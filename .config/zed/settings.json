@@ -8,6 +8,7 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "base_keymap": "VSCode",
   "disable_ai": false,
   "edit_predictions": {
     "mode": "subtle"
@@ -24,6 +25,10 @@
     "coloring": "fixed"
   },
   "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5"
+    },
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
@@ -78,5 +83,9 @@
   },
   "buffer_font_size": 14,
   "buffer_font_family": "IosevkaTermSlab Nerd Font",
-  "theme": "Ayu Dark"
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light",
+    "dark": "One Dark"
+  }
 }

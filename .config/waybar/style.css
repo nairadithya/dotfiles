@@ -2,7 +2,7 @@
 
 * {
     font-size:18px;
-    font-family: "Manrope";
+    font-family: "JetBrains Mono Nerd Font";
 }
 
 window#waybar{
@@ -24,6 +24,7 @@ window#waybar{
     background: alpha(@bg-muted,.5);
     box-shadow: 0px 0px 2px @bg;
 }
+
 .modules-right {
     padding:7px;
     margin:5px;

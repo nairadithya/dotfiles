@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# Ensure Wayland display is available
+export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-1}"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+
+MODE="$1"
+ACTION="$2"
+OUTPUT_DIR="$HOME/pictures/screenshots"
+TIMESTAMP=$(date +'%Y-%m-%d_%H-%M-%S')
+FILENAME="$OUTPUT_DIR/screenshot-$TIMESTAMP.png"
+
+# Ensure output directory exists for 'save' mode
+if [[ "$ACTION" == "save" && ! -d "$OUTPUT_DIR" ]]; then
+  mkdir -p "$OUTPUT_DIR" || {
+    notify-send "Screenshot Error" "Failed to create directory: $OUTPUT_DIR"
+    exit 1
+  }
+fi
+
+# Determine source command based on mode
+case "$MODE" in
+region)
+  pkill slurp 2>/dev/null
+  sleep 0.1
+  SOURCE_CMD="hyprshot -m region --raw"
+  ;;
+window)
+  SOURCE_CMD="hyprshot -m window --raw"
+  ;;
+fullscreen)
+  SOURCE_CMD="hyprshot -m output --raw"
+  ;;
+*)
+  notify-send "Screenshot Error" "Invalid mode: $MODE. Use region, window, or fullscreen."
+  exit 1
+  ;;
+esac
+
+# Set swappy options based on action
+case "$ACTION" in
+save)
+  SWAPPY_OPTIONS=(
+    --filename -
+    --output-filename "$FILENAME"
+    --early-exit
+    --disable-notifications
+  )
+  ;;
+copy)
+  SWAPPY_OPTIONS=(
+    --filename -
+    --early-exit
+    --actions-on-enter save-to-clipboard
+    --save-after-copy
+    --disable-notifications
+    --copy-command 'wl-copy'
+  )
+  ;;
+*)
+  notify-send "Screenshot Error" "Invalid action: $ACTION. Use save or copy."
+  exit 1
+  ;;
+esac
+
+# Run the screenshot command pipeline
+eval "$SOURCE_CMD" | swappy "${SWAPPY_OPTIONS[@]}"
+
+# Notify on success for save mode
+if [[ "$ACTION" == "save" && -f "$FILENAME" ]]; then
+  notify-send "Screenshot Saved" "$FILENAME"
+fi

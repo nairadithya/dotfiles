@@ -1,7 +1,7 @@
 ;;; ../../dotfiles/.config/doom/org-config.el -*- lexical-binding: t; -*-
 
 (after! org
-  (setq org-directory "~/Sync/Org-Garden/")
+  (setq org-directory "~/notes/")
   (setq org-journal-file-format "%Y_%m_%d.org")
   (setq org-journal-date-format "%A, %d %B %Y")
   (setq org-journal-date-prefix "** ")

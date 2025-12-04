@@ -29,7 +29,7 @@ These are a bunch of variables for my apps so that I don't have to type them all
 $terminal = ghostty
 $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c 
-$fileManager = $terminal -e yazi ~
+$fileManager = thunar
 $browser = firefox
 $org-capture = ~/.config/emacs/bin/org-capture
 $menu = fuzzel
@@ -48,8 +48,7 @@ exec-once = [workspace 1 silent] $browser
 ** Main Keybinds
 Just setting up the main keybinds for my daily use.
 #+begin_src conf
-bind = $mainMod SHIFT, n, exec, swaync-client -t -sw
-bind = SUPER, V, exec,  ghostty --class=com.nairadithya.clipse -e bash -c 'exec ~/bin/clipse'
+bind = SUPER, V, exec,  ghostty --class=com.nairadithya.clipse -e bash -c 'exec clipse'
 bind = $mainMod, RETURN, exec, $emacs
 bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m region --freeze
 bind = $mainMod, O, exec, ~/.config/hypr/scripts/hyprshot --clipboard-only -m window --freeze
@@ -59,7 +58,7 @@ bind = $mainMod, B, exec, $browser
 bind = $mainMod, N, exec, $org-capture
 bind = $mainMod, M, exec, $music
 bind = $mainMod, C, killactive,
-bind = $mainMod, Q, exec, ~/.config/fuzzel/scripts/power-menu.sh
+bind = $mainMod, Q, exec, ~/.config/fuzzel/scripts/power-menu
 bind = $mainMod, E, exec, $fileManager
 bind = $mainMod SHIFT, space, togglefloating,
 bind = $mainMod, R, exec, $menu
@@ -156,16 +155,16 @@ submap = reset
 * Window Rules
 #+begin_src conf
 windowrulev2 = suppressevent maximize, class:.*
-windowrulev2 = float,class:(clipse)
-windowrulev2 = size 622 652,class:(clipse)
+windowrulev2 = float,class:(com.nairadithya.clipse) # ensure you have a floating window class set if you want this behavior
+windowrulev2 = size 622 652,class:(com.nairadithya.clipse) # set the size of the window as necessary
 windowrulev2 = float, title:(Picture-in-Picture)
-windowrulev2 = float, title:^(Extension: (Bitwarden Password Manager) - Bitwarden — Ablaze Floorp)$
-windowrulev2 = float,class:^(org\.mozilla\.firefox)$,title:^(Extension: \(Raindrop\.io\))
 windowrulev2 = pin, title:(Picture-in-Picture)
-windowrulev2 = float, title:(doom-capture)
-windowrulev2 = size 50% 50%, title:(doom-capture)
 windowrulev2 = move 10 60, title:(Picture-in-Picture)
 windowrulev2 = size 30% 30%, title:(Picture-in-Picture)
+windowrulev2 = float, class:^(org\.mozilla\.firefox)$, title:^(Extension: (Bitwarden Password Manager) - Bitwarden — Mozilla Firefox)$
+windowrulev2 = float,class:^(org\.mozilla\.firefox)$,title:^(Extension: \(Raindrop\.io\))
+windowrulev2 = float, title:(doom-capture)
+windowrulev2 = size 50% 50%, title:(doom-capture)
 windowrulev2 = workspace 4, initialClass:(Zotero)
 windowrulev2 = workspace 3, class:(Cider)
 # Org agenda
@@ -202,8 +201,10 @@ $visual    = rgb(2d363a)
 #+begin_src conf
 exec-once = waybar
 exec-once = fnott
-exec-once = hyprpolkitagent
-exec-once = clipse
+exec-once = hyprpaper
+exec-once = hypridle
+exec-once = clipse -listen
+exec-once = systemctl --user start hyprpolkitagent
 #+end_src
 * Settings
 ** General Device Setup

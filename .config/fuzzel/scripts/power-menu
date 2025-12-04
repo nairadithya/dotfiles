@@ -1,11 +1,11 @@
 #!/usr/bin/lua
 local options = {
-    [" Lock"] = "hyprlock",
-    [" Shut down"] = "systemctl poweroff",
-    [" Reboot"] = "systemctl reboot",
-    ["󰍃 Log out"] = "hyprctl dispatch exit 1",
-    ["󰒲 Suspend"] = "systemctl suspend",
-    [" Hibernate"] = "systemctl hibernate",
+    ["     Lock"] = "hyprlock",
+    ["     Shut down"] = "systemctl poweroff",
+    ["     Reboot"] = "systemctl reboot",
+    ["󰍃     Log out"] = "hyprctl dispatch exit 1",
+    ["󰒲     Suspend"] = "systemctl suspend",
+    ["     Hibernate"] = "systemctl hibernate",
 }
 
 local options_string = ""
