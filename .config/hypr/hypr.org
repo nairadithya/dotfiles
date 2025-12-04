@@ -30,11 +30,12 @@ $terminal = ghostty
 $logseq = flatpak run --socket=wayland com.logseq.Logseq --ozone-platform-hint=auto     --enable-features=WaylandWindowDecorations
 $emacs = emacsclient -c 
 $fileManager = thunar
-$browser = firefox
+$browser = helium-browser
 $org-capture = ~/.config/emacs/bin/org-capture
 $menu = fuzzel
 $cmenu = fuzzel --config=~/.config/fuzzel/fuzzel-lock.ini
 $music = Cider --enable-features=UseOzonePlatform --ozone-platform=wayland
+$whatsapp = /opt/helium-browser-bin/chrome-wrapper --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
 #+end_src
 * Binds
 #+begin_src conf
@@ -44,6 +45,7 @@ $mainMod = Super
 ** Workspace Autostart
 #+begin_src conf
 exec-once = [workspace 1 silent] $browser
+exec-once = [workspace 5 silent] $whatsapp
 #+end_src
 ** Main Keybinds
 Just setting up the main keybinds for my daily use.
