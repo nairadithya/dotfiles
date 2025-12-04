@@ -64,6 +64,7 @@ bind = $mainMod, Q, exec, ~/.config/fuzzel/scripts/power-menu
 bind = $mainMod, E, exec, $fileManager
 bind = $mainMod SHIFT, space, togglefloating,
 bind = $mainMod, R, exec, $menu
+bind = $mainMod, escape, exec, hyprlock
 bind = $mainMod SHIFT, R, exec, $cmenu
 #+end_src
 ** Volume and brightness
@@ -177,27 +178,11 @@ windowrulev2 = center, title:(emacs-agenda)
 
 * Colours
 #+begin_src conf
-$accent    = rgb(e07e3e)   
-$fg        = rgb(dad8d4)   
-$bg        = rgb(202a2e)   
-$bg_1      = rgb(2d363a)   
-$bg_hl     = rgb(364046)   
-$gutter    = rgb(3c464a)   
-$mono_1    = rgb(a6a8ac)   
-$mono_2    = rgb(4e3f53)   
-$mono_3    = rgb(7a8b8d)   
-$cyan      = rgb(4fb8b3)   
-$blue      = rgb(66a9c9)   
-$purple    = rgb(b673a4)   
-$green     = rgb(8fcc7d)   
-$red       = rgb(e55f5f)   
-$orange    = rgb(f08c61)   
-$yellow    = rgb(e0c270)   
-$gray      = rgb(2d363a)   
-$silver    = rgb(9fa6a0)   
-$black     = rgb(202a2e)   
-$border    = rgb(3c464a)   
-$visual    = rgb(2d363a)   
+$accent = rgb(ff6507)
+$bg-muted = rgb(404040)
+$bg-muted-plus  = rgb(737373)
+$bg  = rgb(121212)
+$fg  = rgb(ffffff)
 #+end_src
 * Startup
 #+begin_src conf
@@ -308,28 +293,13 @@ listener {
 #+end_src
 * Hyprlock
 #+begin_src conf :tangle hyprlock.conf
-$accent = rgb(a7c080)
-$fg = rgb(d3c6aa)
-$bg = rgb(2b3339)
-$bg_1 = rgb(323c41)
-$bg_hl = rgb(3a454a)
-$gutter = rgb(445055)
-$mono_1 = rgb(abb2bf)
-$mono_2 = rgb(503946)
-$mono_3 = rgb(859289)
-$cyan = rgb(83c092)
-$blue = rgb(7fbbb3)
-$purple = rgb(d699b6)
-$green = rgb(a7c080)
-$red = rgb(e67e80)
-$orange = rgb(e69875)
-$yellow = rgb(ddbc7f)
-$gray = rgb(323c41)
-$silver = rgb(9da9a0)
-$black = rgb(2b3339)
-$border = rgb(445055)
-$visual = rgb(323c41)
-$font = IosevkaTermSlab Nerd Font
+$accent = rgb(ff6507)
+$bg-muted = rgb(404040)
+$bg-muted-plus  = rgb(737373)
+$bg  = rgb(121212)
+$fg  = rgb(ffffff)
+
+$font = JetBrainsMono Nerd Font
 
 # GENERAL
 general {
@@ -339,8 +309,8 @@ general {
 
 # BACKGROUND
 background {
-    monitor =
-    path = $HOME/.config/wallpaper/atlas-dark.png
+    monitor = eDP-1
+    path = /home/adithya/.config/wallpaper/atlas/atlas-dark.png
     blur_passes = 0
     color = $bg
 }
@@ -349,24 +319,24 @@ background {
 label {
     monitor =
     text = cmd[update:30000] echo "$(date +"%R")"
-    color = $fg
+    color = $accent
     font_size = 90
     font_family = $font
-    position = -30, 0
-    halign = right
-    valign = bottom
+    position = 0, 0
+    halign = center
+    valign = top
 }
 
 # DATE
 label {
     monitor =
     text = cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"
-    color = $accent
+    color = $fg
     font_size = 25
     font_family = $font
-    position = -30, -150
-    halign = right
-    valign = bottom
+    position = 0, -150
+    halign = center
+    valign = top
 }
 
 # INPUT FIELD
@@ -378,15 +348,15 @@ input-field {
     dots_spacing = 0.2
     dots_center = true
     outer_color = $accent
-    inner_color = $bg_1
+    inner_color = $bg-muted
     font_color = $fg
     fade_on_empty = true
     hide_input = false
     check_color = $fg
-    fail_color = $red
+    fail_color = $accent
     fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
     capslock_color = $fg
-    position = 0, -120
+    position = 0, -140
     halign = center
     valign = center
     }
