@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+cmd=$(compgen -c | sort -u | grep -vE '(^\W|^[A-Z])' | fuzzel --dmenu --placeholder="Run Command...")
+[[ -n "$cmd" ]] && $cmd &
