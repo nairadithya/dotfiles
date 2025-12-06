@@ -4,7 +4,7 @@
         "reload_style_on_change": true,
         "modules-left": ["clock"],
         "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["pulseaudio","network","battery"],
+        "modules-right": ["pulseaudio","network","battery", "backlight"],
         "hyprland/workspaces": {
             "format": "{icon}",
             "format-icons": {
@@ -17,7 +17,7 @@
             }
         },
         "clock": {
-            "format": "{:%I:%M %p} ",
+            "format": "{:%I:%M %p}",
             "interval": 1,
             "tooltip-format": "<tt>{calendar}</tt>",
             "calendar": {
@@ -30,10 +30,15 @@
                 "on-click": "shift_up"
             }
         },
+        "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": [""] 
+        },
         "network": {
         "format-wifi": "{signalStrength}% ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
+        "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "Disconnected ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
         },
@@ -63,8 +68,8 @@
             },
             "format": "{capacity}% {icon}",
             "format-charging": "{capacity}% 󰂄",
-            "format-plugged": "{capacity}% 󰂄 ",
-            "format-alt": "{time} {icon}",
+            "format-plugged": "{capacity}% 󰂄",
+            "format-alt": "{time} {icon} ",
             "format-icons": [
                 "󰁻",
             "󰁼",

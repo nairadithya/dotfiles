@@ -1,54 +1,28 @@
 @import "atlas.css";
 
 * {
-    font-size:18px;
-    font-family: "JetBrains Mono Nerd Font";
+    font-size: 18px;
+    font-family: "CaskaydiaCove Nerd Font";
 }
 
-window#waybar{
-    all:unset;
+window#waybar {
+    all: unset;
 }
 
-.modules-left {
-    padding:7px;
-    margin:5px;
-    border-radius:10px;
-    background: alpha(@bg-muted,.5);
-    box-shadow: 0px 0px 2px @bg;
-}
-
-.modules-center {
-    padding:7px;
-    margin:5px;
-    border-radius:10px;
-    background: alpha(@bg-muted,.5);
-    box-shadow: 0px 0px 2px @bg;
-}
-
+.modules-left,
+.modules-center,
 .modules-right {
-    padding:7px;
-    margin:5px;
-    border-radius:10px;
-    background: alpha(@bg-muted,.5);
-    box-shadow: 0px 0px 2px @bg;
-}
-
-@keyframes pulse {
-    from {
-        opacity: 0.85;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.modules-left, .modules-center, .modules-right {
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 10px;
+    background: alpha(@bg-muted, .5);
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.modules-left:hover, .modules-center:hover, .modules-right:hover {
+.modules-left:hover,
+.modules-center:hover,
+.modules-right:hover {
     background: alpha(@bg-muted, 0.7);
-    box-shadow: 0px 0px 4px alpha(@accent, 0.4);
 }
 
 tooltip {
@@ -56,52 +30,54 @@ tooltip {
     color: @fg;
 }
 
-#clock, #workspaces, #network, #battery, #pulseaudio {
-    padding: 0px 5px;
-    color:@fg;
+/* Clock with proper spacing */
+#clock {
+    padding: 0 10px 0 5px;
+    color: @fg;
     transition: all .3s ease;
 }
 
-#clock:hover, #bluetooth:hover,#network:hover,#battery:hover{
+/* Right side modules with proper icon spacing */
+#network,
+#battery,
+#pulseaudio {
+    padding: 0 8px;
+    color: @fg;
     transition: all .3s ease;
 }
 
-#pulseaudio:hover, #network:hover, #battery:hover {
+#clock:hover,
+#network:hover,
+#battery:hover,
+#pulseaudio:hover {
     color: @accent;
+    transition: all .3s ease;
+}
+
+/* Workspaces styling */
+#workspaces {
+    padding: 0;
 }
 
 #workspaces button {
-    all:unset;
-    padding: 0px 5px;
+    all: unset;
+    padding: 0px 8px;
     color: @bg-muted-plus;
     transition: all .2s ease;
 }
+
 #workspaces button:hover {
     color: @fg;
     border: none;
-    text-shadow: 0px 0px 1.5px @text;
-    transition: all 1s ease;
+    transition: all .2s ease;
 }
 
 #workspaces button.active {
     color: @accent;
     border: none;
-    text-shadow: 0px 0px 2px @bg;
 }
 
-#bluetooth{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color:@text;
-
-}
-#network{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: @fg;
-
-}
-
+/* Battery states */
 #battery.charging {
     color: @accent;
 }
@@ -113,4 +89,13 @@ tooltip {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
+    }
 }
