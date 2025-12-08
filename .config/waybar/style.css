@@ -32,12 +32,11 @@ tooltip {
 
 /* Clock with proper spacing */
 #clock {
-    padding: 0 10px 0 5px;
+    padding: 0 10px 0 10px;
     color: @fg;
     transition: all .3s ease;
 }
 
-/* Right side modules with proper icon spacing */
 #network,
 #battery,
 #pulseaudio {

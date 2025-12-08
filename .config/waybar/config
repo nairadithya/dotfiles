@@ -2,8 +2,8 @@
     "layer": "top",
         "position": "top",
         "reload_style_on_change": true,
-        "modules-left": ["clock"],
-        "modules-center": ["hyprland/workspaces"],
+    "modules-left": ["image", "clock"],
+        "modules-center": ["cava", "hyprland/workspaces", "cava"],
         "modules-right": ["pulseaudio","network","battery", "backlight"],
         "hyprland/workspaces": {
             "format": "{icon}",
@@ -16,8 +16,13 @@
                 "*": [1,2,3,4,5]
             }
         },
-        "clock": {
-            "format": "{:%I:%M %p}",
+    "image": {
+        "path": "/home/adithya/dotfiles/.config/waybar/atlas-logo.png",
+        "size": 48,
+        "on-click": "fuzzel"
+    },
+    "clock": {
+        "format": "{:%I:%M %p}",
             "interval": 1,
             "tooltip-format": "<tt>{calendar}</tt>",
             "calendar": {
@@ -67,8 +72,8 @@
                 "critical": 20
             },
             "format": "{capacity}% {icon} ",
-            "format-charging": "{capacity}% 󰂄",
-            "format-plugged": "{capacity}% 󰂄",
+            "format-charging": "{capacity}% 󰂄 ",
+            "format-plugged": "{capacity}% 󰂄 ",
             "format-alt": "{time} {icon} ",
             "format-icons": [
                 "󰁻",
