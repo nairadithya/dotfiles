@@ -175,3 +175,5 @@
     (unless (= (length old-projects) (length projectile-known-projects))
       (message "Projectile: Cleaned up %d non-existent project(s)."
                (- (length old-projects) (length projectile-known-projects))))))
+
+(setq vterm-shell "/usr/bin/fish")
