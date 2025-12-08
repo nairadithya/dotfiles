@@ -8,11 +8,16 @@ export PATH="/home/adithya/.bun/bin:$PATH"
 export PATH="/home/adithya/bin:$PATH"
 
 # Aliases
-alias ec='emacsclient -t'
 alias xo='xdg-open'
-alias nvim='emacsclient -t'
-alias vi='emacsclient -t'
 alias ls='ls --color'
+
+# Emacs aliases
+set emacs_alias = 'emacsclient -t'
+
+alias ec=$emacs_alias 
+alias nvim=$emacs_alias
+alias vim=$emacs_alias
+alias vi=$emacs_alias
 
 # Emacs vterm config
 function vterm_printf;
