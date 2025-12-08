@@ -32,19 +32,19 @@
         },
         "backlight": {
         "device": "intel_backlight",
-        "format": "{percent}% {icon}",
+        "format": "{percent}% {icon} ",
         "format-icons": [""] 
         },
         "network": {
-        "format-wifi": "{signalStrength}% ",
+        "format-wifi": "{signalStrength}%  ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
         "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "Disconnected ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
         },
         "pulseaudio": {
-            "format": "{volume}% {icon}",
-            "format-bluetooth": "{volume}% {icon}",
+            "format": "{volume}% {icon} ",
+            "format-bluetooth": "{volume}% {icon} ",
             "format-muted": "",
             "format-icons": {
             "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
@@ -66,7 +66,7 @@
                 "warning": 30,
                 "critical": 20
             },
-            "format": "{capacity}% {icon}",
+            "format": "{capacity}% {icon} ",
             "format-charging": "{capacity}% 󰂄",
             "format-plugged": "{capacity}% 󰂄",
             "format-alt": "{time} {icon} ",
