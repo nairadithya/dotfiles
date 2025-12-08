@@ -86,6 +86,6 @@
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light",
-    "dark": "One Dark"
+    "dark": "Monospace dark"
   }
 }
