@@ -1,4 +1,4 @@
-<h1 align="center">EverForest</h1>
+<h1 align="center">ATLAS OS</h1>
 
 ![Main Layout](/assets/main.jpeg)
 
