@@ -4,8 +4,9 @@
 
 * Table Of Contents :toc:
 - [[#apps][Apps]]
+- [[#startup][Startup]]
+- [[#workspace-autostart][Workspace AutoStart]]
 - [[#binds][Binds]]
-  - [[#workspace-autostart][Workspace Autostart]]
   - [[#main-keybinds][Main Keybinds]]
   - [[#volume-and-brightness][Volume and brightness]]
   - [[#media-controls][Media controls]]
@@ -15,7 +16,6 @@
   - [[#resizing-submap][Resizing Submap]]
 - [[#window-rules][Window Rules]]
 - [[#colours][Colours]]
-- [[#startup][Startup]]
 - [[#settings][Settings]]
   - [[#general-device-setup][General Device Setup]]
   - [[#windows][Windows]]
@@ -37,14 +37,23 @@ $cmenu = ~/.config/fuzzel/scripts/command-menu
 $music = Cider --enable-features=UseOzonePlatform --ozone-platform=wayland
 $whatsapp = /opt/helium-browser-bin/chrome-wrapper --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
 #+end_src
+* Startup
+#+begin_src conf
+exec-once = waybar
+exec-once = fnott
+exec-once = hyprpaper
+exec-once = hypridle
+exec-once = clipse -listen
+exec-once = systemctl --user start hyprpolkitagent
+exec-once = dbus-update-activation-environment --systemd --all
+#+end_src
+* Workspace AutoStart
+#+begin_src conf
+exec-once = ~/.config/hypr/scripts/startup
+#+end_src
 * Binds
 #+begin_src conf
 $mainMod = Super
-#+end_src
-** Workspace Autostart
-#+begin_src conf
-exec-once = [workspace 1 silent] $browser
-exec-once = [workspace 5 silent] $whatsapp
 #+end_src
 ** Main Keybinds
 Just setting up the main keybinds for my daily use.
@@ -86,6 +95,11 @@ bind= CTRL ALT, down, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 #+end_src
 ** Window Management
 #+begin_src conf
+bind = $mainMod, t, togglegroup
+bind = SUPER+ALT, J, changegroupactive, f
+bind = SUPER+ALT, K, changegroupactive, b
+
+
 # Move focus with mainMod + arrow keys
 bind = $mainMod, h, movefocus, l
 bind = $mainMod, l, movefocus, r
@@ -184,16 +198,6 @@ $bg-muted = rgb(404040)
 $bg-muted-plus  = rgb(737373)
 $bg  = rgb(121212)
 $fg  = rgb(ffffff)
-#+end_src
-* Startup
-#+begin_src conf
-exec-once = waybar
-exec-once = fnott
-exec-once = hyprpaper
-exec-once = hypridle
-exec-once = clipse -listen
-exec-once = systemctl --user start hyprpolkitagent
-exec-once = dbus-update-activation-environment --systemd --all
 #+end_src
 * Settings
 ** General Device Setup
@@ -305,7 +309,6 @@ $font = CaskaydiaCove Nerd Font
 
 # GENERAL
 general {
-    disable_loading_bar = true
     hide_cursor = true
 }
 
@@ -350,17 +353,34 @@ input-field {
     dots_spacing = 0.2
     dots_center = true
     outer_color = $accent
-    inner_color = $bg-muted
+    inner_color = $bg
     font_color = $fg
     fade_on_empty = true
     hide_input = false
     check_color = $fg
     fail_color = $accent
-    fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
+    fail_text = $FAIL <b>$ATTEMPTS</b
     capslock_color = $fg
     position = 0, -140
     halign = center
     valign = center
+}
+
+label {
+    monitor =
+    text = cmd[update:500] echo "$FPRINTPROMPT"
+    color = rgba(200, 200, 200, 1.0)
+    font_size = 24 
+    font_family = $font
+    position = 0, -140
+    halign = center
+    valign = center
+}
+
+auth {
+     fingerprint:enabled = true
+     fingerprint:ready_message = "(Scan fingerprint to unlock)"
+     fingerprint:present_message = "Scanning fingerprint"
 }
 #+end_src
 * Hyprpaper
