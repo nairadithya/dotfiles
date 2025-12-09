@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# Completely GPT generated, it works for me.
+
+declare -A apps=(
+  ["helium-browser"]="helium:1"
+  ["emacsclient -c"]="emacs:2"
+  ["cider"]="Cider:3"
+  ["/opt/helium-browser-bin/chrome-wrapper --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm"]="chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default:5"
+)
+
+launch_and_place() {
+    local cmd="$1"
+    local class="${2%%:*}"
+    local workspace="${2##*:}"
+
+    hyprctl dispatch exec "$cmd" >/dev/null 2>&1 &
+
+    echo "Launching $cmd → look for class '$class', ws $workspace"
+
+    for i in {1..200}; do # ~20 seconds max
+        local addr=$(hyprctl clients -j | jq -r \
+            --arg cls "$class" \
+            '.[] | select(.class == $cls) | .address' 2>/dev/null)
+
+        if [[ -n "$addr" ]]; then
+            echo "✔ Found $class at $addr → sending to workspace $workspace"
+            hyprctl dispatch movetoworkspacesilent "$workspace,address:$addr"
+            return 0
+        fi
+
+        sleep 0.1
+    done
+
+    echo "⚠️ Failed to find window class '$class' for '$cmd'"
+}
+
+for app in "${!apps[@]}"; do
+    launch_and_place "$app" "${apps[$app]}"
+done
