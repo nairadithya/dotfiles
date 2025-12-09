@@ -361,7 +361,7 @@ input-field {
     position = 0, -140
     halign = center
     valign = center
-    }
+}
 #+end_src
 * Hyprpaper
 #+begin_src conf :tangle hyprpaper.conf
