@@ -1,5 +1,5 @@
 * ATLAS OS
-![[./assets/main.jpeg][Main Layout]]
+[[./assets/main.jpeg][Main Layout]]
 
 In honor of [[https:atlasdev.club][ATLAS]] 
 
