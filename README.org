@@ -1,5 +1,6 @@
 * ATLAS OS
-[[file:./assets/main.jpeg][Main Layout]]
+
+#+HTML: <img src="./assets/main.jpeg">
 
 In honor of [[https:atlasdev.club][ATLAS]] 
 
