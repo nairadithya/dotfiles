@@ -20,7 +20,7 @@ local f = assert(
     io.popen(
         "echo -e '"
             .. options_string
-            .. "' | fuzzel --dmenu "
+            .. "' | fuzzel --placeholder \"Power Menu\" --dmenu "
         ------------------ to change the location of the dropdown, use --location 1 (top left) or --location 3 (top right) (see --location in wofi --help)
             .. length,
         "r"
