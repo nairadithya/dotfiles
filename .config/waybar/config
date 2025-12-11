@@ -3,7 +3,7 @@
         "position": "top",
         "reload_style_on_change": true,
     "modules-left": ["image", "clock"],
-        "modules-center": ["cava", "hyprland/workspaces", "cava"],
+        "modules-center": ["hyprland/workspaces"],
         "modules-right": ["pulseaudio","network","battery", "backlight"],
         "hyprland/workspaces": {
             "format": "{icon}",
@@ -44,8 +44,8 @@
         "format-wifi": "{signalStrength}%  ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
         "format-linked": "{ifname} (No IP)  ",
+        "on-click": "nm-connection-editor",
         "format-disconnected": "Disconnected ",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
         },
         "pulseaudio": {
             "format": "{volume}% {icon} ",
