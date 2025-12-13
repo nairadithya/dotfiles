@@ -57,3 +57,5 @@
 (package! ox-typst)
 
 (package! gptel :recipe (:nonrecursive t))
+
+(package! exec-path-from-shell)

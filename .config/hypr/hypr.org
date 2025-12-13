@@ -202,8 +202,7 @@ $fg  = rgb(ffffff)
 * Settings
 ** General Device Setup
 #+begin_src conf
-monitor=eDP-1,preferred,auto,2
-monitor=,preferred,auto,auto
+source = ~/.config/hypr/monitors.conf
 env = XCURSOR_SIZE, 16
 env = QT_QPA_PLATFORMTHEME,qt5ct
 input {
@@ -384,6 +383,6 @@ auth {
 * Hyprpaper
 #+begin_src conf :tangle hyprpaper.conf
 preload = ~/.config/wallpaper/atlas/atlas.png
-wallpaper = eDP-1,~/.config/wallpaper/atlas/atlas.png
+wallpaper = ,~/.config/wallpaper/atlas/atlas.png
 splash=false
 #+end_src
