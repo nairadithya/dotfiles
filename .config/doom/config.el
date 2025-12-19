@@ -177,3 +177,23 @@
                (- (length old-projects) (length projectile-known-projects))))))
 
 (setq vterm-shell "/usr/bin/fish")
+
+;; Astro setup
+(define-derived-mode astro-mode web-mode "astro")
+(setq auto-mode-alist
+      (append '((".*\\.astro\\'" . astro-mode))
+              auto-mode-alist))
+(after! eglot
+  (add-to-list 'eglot-server-programs
+               '(astro-mode . ("astro-ls" "--stdio"
+                               :initializationOptions
+                               (:typescript (:tsdk "./node_modules/typescript/lib")))))
+  )
+
+(add-hook 'astro-mode-hook 'eglot-ensure)
+
+(when (memq window-system '(mac pgtk ns x))
+  (exec-path-from-shell-initialize))
+
+(when (daemonp)
+  (exec-path-from-shell-initialize))
