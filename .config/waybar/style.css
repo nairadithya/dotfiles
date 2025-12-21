@@ -1,4 +1,4 @@
-@import "atlas.css";
+@import "colors.css";
 
 * {
     font-size: 18px;
@@ -9,80 +9,82 @@ window#waybar {
     all: unset;
 }
 
+/* Module containers */
 .modules-left,
 .modules-center,
 .modules-right {
     padding: 5px 10px;
     margin: 5px;
     border-radius: 10px;
-    background: alpha(@bg-muted, .5);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    background: alpha(@surface_container, 0.5);
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .modules-left:hover,
 .modules-center:hover,
 .modules-right:hover {
-    background: alpha(@bg-muted, 0.7);
+    background: alpha(@surface_container_high, 0.7);
 }
 
+/* Tooltip */
 tooltip {
-    background: @bg;
-    color: @fg;
+    background: @surface_container_highest;
+    color: @on_surface;
+    border-radius: 8px;
 }
 
-/* Clock with proper spacing */
+/* Clock */
 #clock {
-    padding: 0 10px 0 10px;
-    color: @fg;
-    transition: all .3s ease;
+    padding: 0 10px;
+    color: @on_surface;
+    transition: all 0.3s ease;
 }
 
+/* Status modules */
 #network,
 #battery,
 #pulseaudio {
     padding: 0 8px;
-    color: @fg;
-    transition: all .3s ease;
+    color: @on_surface;
+    transition: all 0.3s ease;
 }
 
 #clock:hover,
 #network:hover,
 #battery:hover,
 #pulseaudio:hover {
-    color: @accent;
-    transition: all .3s ease;
+    color: @primary;
 }
 
-/* Workspaces styling */
+/* Workspaces */
 #workspaces {
     padding: 0;
 }
 
 #workspaces button {
     all: unset;
-    padding: 0px 8px;
-    color: @bg-muted-plus;
-    transition: all .2s ease;
+    padding: 0 8px;
+    color: @on_surface_variant;
+    transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-    color: @fg;
-    border: none;
-    transition: all .2s ease;
+    color: @on_surface;
 }
 
 #workspaces button.active {
-    color: @accent;
-    border: none;
+    color: @primary;
 }
 
 /* Battery states */
 #battery.charging {
-    color: @accent;
+    color: @primary;
 }
 
 #battery.critical:not(.charging) {
-    color: @fg;
+    color: @error;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -90,6 +92,7 @@ tooltip {
     animation-direction: alternate;
 }
 
+/* Blink animation */
 @keyframes blink {
     from {
         opacity: 1;
