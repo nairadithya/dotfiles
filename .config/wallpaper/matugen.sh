@@ -15,6 +15,8 @@ PATTERN="triangles"
 RESOLUTION="3840x2160"
 MODE="dark"
 SEED=""
+ANTIALIAS="4"
+COLOR_SCHEME="primary-neutral"
 WALLPAPER_SETTER="hyprpaper"
 
 usage() {
@@ -32,9 +34,12 @@ OPTIONS:
                                 Default: dark
     -s, --seed SEED            Random seed for reproducible patterns
     -c, --color COLOR          Source color (hex) to generate scheme from
-                                If not provided, uses existing matugen cache or config
+                                If not provided, fetches color from colorscheme_maker.ts
+    -a, --antialias FACTOR     Anti-aliasing factor (1-6, default: 4, higher=smoother)
     -w, --wallpaper-setter      Wallpaper setter (hyprpaper, swww, none)
                                 Default: hyprpaper
+    --color-scheme SCHEME      Color scheme to extract (all, primary, neutral, primary-neutral)
+                                Default: primary-neutral
     --skip-matugen             Skip running matugen (use cached colors only)
     --skip-set-wallpaper       Generate wallpaper but don't set it
     --show-colors              Display extracted colors
@@ -43,6 +48,15 @@ OPTIONS:
 EXAMPLES:
     # Generate from a source color
     $(basename "$0") -c "#4285f4" -p triangles
+    
+    # Auto-fetch color from colorscheme_maker.ts
+    $(basename "$0") -p circles
+    
+    # Use only primary colors
+    $(basename "$0") -c "#4285f4" -p circles --color-scheme primary
+    
+    # Use only neutral/surface colors
+    $(basename "$0") -c "#88c0d0" -p gradient --color-scheme neutral
     
     # Use cached matugen colors with waves pattern
     $(basename "$0") --skip-matugen -p waves
@@ -77,6 +91,14 @@ check_dependencies() {
     command -v uv >/dev/null || missing+=("uv (install from https://docs.astral.sh/uv/)")
     command -v matugen >/dev/null || missing+=("matugen")
     command -v jq >/dev/null || missing+=("jq")
+    
+    # Only check for bun if we need to fetch a color
+    if [[ -z "$SOURCE_COLOR" && "$SKIP_MATUGEN" != "true" ]]; then
+        command -v bun >/dev/null || missing+=("bun (needed to fetch color)")
+        if [[ ! -f "${SCRIPT_DIR}/colorscheme_maker.ts" ]]; then
+            log "Warning: colorscheme_maker.ts not found at ${SCRIPT_DIR}/colorscheme-maker.ts"
+        fi
+    fi
     
     if [[ "$WALLPAPER_SETTER" == "hyprpaper" && "$SKIP_SET_WALLPAPER" != "true" ]]; then
         if [[ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
@@ -121,8 +143,16 @@ parse_args() {
                 SOURCE_COLOR="$2"
                 shift 2
                 ;;
+            -a|--antialias)
+                ANTIALIAS="$2"
+                shift 2
+                ;;
             -w|--wallpaper-setter)
                 WALLPAPER_SETTER="$2"
+                shift 2
+                ;;
+            --color-scheme)
+                COLOR_SCHEME="$2"
                 shift 2
                 ;;
             --skip-matugen)
@@ -154,7 +184,7 @@ run_matugen() {
     fi
     
     if [[ -z "$SOURCE_COLOR" ]]; then
-        error "No source color provided. Use -c/--color or --skip-matugen"
+        error "No source color provided and fetch_color was not called. This should not happen."
     fi
     
     log "Running matugen with color $SOURCE_COLOR (mode: $MODE)"
@@ -195,28 +225,77 @@ extract_colors() {
     if command -v jq >/dev/null; then
         log "Attempting color extraction with jq..."
         
-        # Method 1: Extract colors using the nested structure (color_name.mode)
+        # Method 1: Extract colors based on color scheme preference
         local jq_colors
-        jq_colors=$(echo "$json_output" | jq -r "
-            [
-                .colors.primary.${MODE},
-                .colors.secondary.${MODE},
-                .colors.tertiary.${MODE},
-                .colors.error.${MODE},
-                .colors.surface.${MODE},
-                .colors.on_surface.${MODE},
-                .colors.primary_container.${MODE},
-                .colors.secondary_container.${MODE},
-                .colors.tertiary_container.${MODE},
-                .colors.surface_variant.${MODE},
-                .colors.on_primary.${MODE},
-                .colors.on_secondary.${MODE}
-            ] | map(select(. != null and . != \"\")) | unique | .[]
-        " 2>/dev/null || echo "")
+        case "$COLOR_SCHEME" in
+            primary)
+                jq_colors=$(echo "$json_output" | jq -r "
+                    [
+                        .colors.primary.${MODE},
+                        .colors.on_primary.${MODE},
+                        .colors.primary_container.${MODE},
+                        .colors.on_primary_container.${MODE},
+                        .colors.primary_fixed.${MODE},
+                        .colors.primary_fixed_dim.${MODE}
+                    ] | map(select(. != null and . != \"\")) | unique | .[]
+                " 2>/dev/null || echo "")
+                ;;
+            neutral)
+                jq_colors=$(echo "$json_output" | jq -r "
+                    [
+                        .colors.surface.${MODE},
+                        .colors.surface_dim.${MODE},
+                        .colors.surface_bright.${MODE},
+                        .colors.surface_container.${MODE},
+                        .colors.surface_container_low.${MODE},
+                        .colors.surface_container_high.${MODE},
+                        .colors.surface_container_highest.${MODE},
+                        .colors.on_surface.${MODE},
+                        .colors.on_surface_variant.${MODE},
+                        .colors.outline.${MODE},
+                        .colors.outline_variant.${MODE}
+                    ] | map(select(. != null and . != \"\")) | unique | .[]
+                " 2>/dev/null || echo "")
+                ;;
+            primary-neutral)
+                jq_colors=$(echo "$json_output" | jq -r "
+                    [
+                        .colors.primary.${MODE},
+                        .colors.on_primary.${MODE},
+                        .colors.primary_container.${MODE},
+                        .colors.surface.${MODE},
+                        .colors.surface_dim.${MODE},
+                        .colors.surface_bright.${MODE},
+                        .colors.surface_container.${MODE},
+                        .colors.on_surface.${MODE},
+                        .colors.on_surface_variant.${MODE},
+                        .colors.outline.${MODE}
+                    ] | map(select(. != null and . != \"\")) | unique | .[]
+                " 2>/dev/null || echo "")
+                ;;
+            all|*)
+                jq_colors=$(echo "$json_output" | jq -r "
+                    [
+                        .colors.primary.${MODE},
+                        .colors.secondary.${MODE},
+                        .colors.tertiary.${MODE},
+                        .colors.error.${MODE},
+                        .colors.surface.${MODE},
+                        .colors.on_surface.${MODE},
+                        .colors.primary_container.${MODE},
+                        .colors.secondary_container.${MODE},
+                        .colors.tertiary_container.${MODE},
+                        .colors.surface_variant.${MODE},
+                        .colors.on_primary.${MODE},
+                        .colors.on_secondary.${MODE}
+                    ] | map(select(. != null and . != \"\")) | unique | .[]
+                " 2>/dev/null || echo "")
+                ;;
+        esac
         
         if [[ -n "$jq_colors" ]]; then
             mapfile -t colors <<< "$jq_colors"
-            log "Method 1 (nested structure): Found ${#colors[@]} colors"
+            log "Method 1 (${COLOR_SCHEME} scheme): Found ${#colors[@]} colors"
         fi
         
         # Method 2: Try extracting all hex colors from the entire JSON
@@ -288,6 +367,7 @@ generate_wallpaper() {
         -r "$RESOLUTION" \
         -o "$wallpaper_path" \
         -s none \
+        --antialias "$ANTIALIAS" \
         $seed_arg \
         $show_colors_arg 2>&1 | tail -1)
     
@@ -356,9 +436,14 @@ set_wallpaper() {
     esac
 }
 
+fetch_color(){
+    SOURCE_COLOR=$(bun run ~/.config/wallpaper/colorscheme_maker.ts)
+}
+
 main() {
     parse_args "$@"
     check_dependencies
+    fetch_color
     
     run_matugen
     extract_colors

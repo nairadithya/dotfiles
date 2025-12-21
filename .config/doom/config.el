@@ -88,6 +88,7 @@
 (setq! +snippets-dir "~/dotfiles/.config/doom/snippets/")
 
 ;; Added support for ruff for apheleia
+;; Added support for ty
 ;; Replace default (black) to use ruff for sorting import and formatting.
 (after! apheleia
   (setf (alist-get 'python-mode apheleia-mode-alist)
@@ -95,9 +96,12 @@
   (setf (alist-get 'python-ts-mode apheleia-mode-alist)
         '(ruff-isort ruff))
   )
+(after! eglot
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("ty" "server"))))
 
 ;; Opacity
-(add-to-list 'default-frame-alist '(alpha-background . 80))
+(add-to-list 'default-frame-alist '(alpha-background . 95))
 
 ;; Customizing writeroom mode
 (after! writeroom-mode
@@ -197,3 +201,28 @@
 
 (when (daemonp)
   (exec-path-from-shell-initialize))
+(setq custom-safe-themes t)
+
+
+;; MATUGEN
+;;
+(defvar my/theme-file (expand-file-name "themes/doom-matugen-theme.el" doom-user-dir))
+(add-to-list 'custom-safe-themes "doom-matugen")
+
+(when (file-exists-p my/theme-file)
+  (load my/theme-file nil 'nomessage)
+  (setq doom-theme 'doom-matugen))
+
+;; Fallback if file doesn't exist
+(unless (member 'doom-matugen (custom-available-themes))
+  (setq doom-theme 'doom-one))
+
+;; Better reload
+(defun my/reload-theme ()
+  (interactive)
+  (load my/theme-file t t)  ; Force reload
+  (doom/reload-theme)       ; Use Doom's reload
+  (message "Theme reloaded!"))
+
+(map! :leader
+      :desc "Reload theme" "h h" #'my/reload-theme)

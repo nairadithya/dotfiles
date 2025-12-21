@@ -46,6 +46,7 @@ exec-once = hypridle
 exec-once = clipse -listen
 exec-once = systemctl --user start hyprpolkitagent
 exec-once = dbus-update-activation-environment --systemd --all
+exec-once = ~/.config/wallpaper/matugen.sh -p circles --color-scheme primary
 #+end_src
 * Workspace AutoStart
 #+begin_src conf
@@ -195,11 +196,7 @@ windowrulev2 = center, title:(emacs-agenda)
 
 * Colours
 #+begin_src conf
-$accent = rgb(ff6507)
-$bg-muted = rgb(404040)
-$bg-muted-plus  = rgb(737373)
-$bg  = rgb(121212)
-$fg  = rgb(ffffff)
+source = ~/.config/hypr/colors.conf
 #+end_src
 * Settings
 ** General Device Setup
@@ -229,23 +226,35 @@ device {
     sensitivity = -0.4
 }
 #+end_src
+
 ** Windows
 #+begin_src conf
 general {
     gaps_in = 2
     gaps_out = 4
     border_size = 1
-    col.active_border = $accent
-    col.inactive_border = $bg
+    col.active_border = $on_primary
+    col.inactive_border = $background
     layout = dwindle
     allow_tearing = false
+}
+
+group {
+      groupbar {
+      enabled = true
+      col.active = $secondary
+      text_color = $on_secondary
+}
 }
 
 decoration {
  rounding = 1
  rounding_power = 1
+ shadow {
+    enabled = true
+    color = $shadow
+ }
 }
-
 
 animations {
     enabled = yes
@@ -272,6 +281,7 @@ misc {
 }
 
 #+end_src
+
 
 * Hypridle
 #+begin_src conf :tangle hypridle.conf
@@ -300,11 +310,7 @@ listener {
 #+end_src
 * Hyprlock
 #+begin_src conf :tangle hyprlock.conf
-$accent = rgb(ff6507)
-$bg-muted = rgb(404040)
-$bg-muted-plus  = rgb(737373)
-$bg  = rgb(121212)
-$fg  = rgb(ffffff)
+source = ~/.config/hypr/colors.conf
 
 $font = CaskaydiaCove Nerd Font
 
@@ -316,9 +322,8 @@ general {
 # BACKGROUND
 background {
     monitor = eDP-1
-    path = /home/adithya/.config/wallpaper/atlas/atlas-dark.png
     blur_passes = 0
-    color = $bg
+    color = $background
 }
 
 # TIME
@@ -337,7 +342,7 @@ label {
 label {
     monitor =
     text = cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"
-    color = $fg
+    color = $on_background
     font_size = 25
     font_family = $font
     position = 0, -150
@@ -353,13 +358,13 @@ input-field {
     dots_size = 0.2
     dots_spacing = 0.2
     dots_center = true
-    outer_color = $accent
-    inner_color = $bg
-    font_color = $fg
+    outer_color = $primary
+    inner_color = $on_primary_container
+    font_color = $on_primary
     fade_on_empty = true
     hide_input = false
-    check_color = $fg
-    fail_color = $accent
+    check_color = $primary_fixed
+    fail_color = $error
     fail_text = $FAIL <b>$ATTEMPTS</b
     capslock_color = $fg
     position = 0, -140

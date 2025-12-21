@@ -1,0 +1,41 @@
+[config]
+
+[templates.ghostty]
+input_path = '~/.config/matugen/ghostty'
+output_path = '~/.config/ghostty/themes/Matugen'
+post_hook = 'pkill -SIGUSR2 ghostty'
+
+[templates.fuzzel]
+input_path = '~/.config/matugen/fuzzel'
+output_path = '~/.config/fuzzel/colors.ini'
+
+[templates.waybar]
+input_path = '~/.config/matugen/waybar'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/gtk'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/gtk'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.qt5ct]
+input_path = '~/.config/matugen/qt'
+output_path = '~/.config/qt5ct/colors/matugen.conf'
+
+[templates.zed]
+input_path = '~/.config/matugen/zed'
+output_path = '~/.config/zed/themes/matugen.json'
+
+[templates.emacs]
+input_path = "~/.config/matugen/emacs"
+output_path = "~/.config/doom/themes/doom-matugen-theme.el"
+
+[templates.hyprland]
+input_path = '~/.config/matugen/hypr'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
