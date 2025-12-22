@@ -96,7 +96,7 @@ check_dependencies() {
     if [[ -z "$SOURCE_COLOR" && "$SKIP_MATUGEN" != "true" ]]; then
         command -v bun >/dev/null || missing+=("bun (needed to fetch color)")
         if [[ ! -f "${SCRIPT_DIR}/colorscheme_maker.ts" ]]; then
-            log "Warning: colorscheme_maker.ts not found at ${SCRIPT_DIR}/colorscheme-maker.ts"
+            log "Warning: colorscheme_maker.ts not found at ${SCRIPT_DIR}/colorscheme_maker.ts"
         fi
     fi
     
@@ -218,12 +218,16 @@ extract_colors() {
     echo "$json_output" > "$debug_file"
     log "Debug: Saved matugen output to $debug_file"
     
+    # Determine the actual mode key to use
+    # Matugen uses: "dark", "light", but also has "default" which usually matches the mode
+    local mode_key="$MODE"
+    
     # Build color array from Material You palette
     local colors=()
     
     # Try multiple extraction methods
     if command -v jq >/dev/null; then
-        log "Attempting color extraction with jq..."
+        log "Attempting color extraction with jq (mode: $mode_key)..."
         
         # Method 1: Extract colors based on color scheme preference
         local jq_colors
@@ -231,63 +235,67 @@ extract_colors() {
             primary)
                 jq_colors=$(echo "$json_output" | jq -r "
                     [
-                        .colors.primary.${MODE},
-                        .colors.on_primary.${MODE},
-                        .colors.primary_container.${MODE},
-                        .colors.on_primary_container.${MODE},
-                        .colors.primary_fixed.${MODE},
-                        .colors.primary_fixed_dim.${MODE}
+                        .colors.primary.${mode_key},
+                        .colors.on_primary.${mode_key},
+                        .colors.primary_container.${mode_key},
+                        .colors.on_primary_container.${mode_key},
+                        (.colors.primary_fixed.${mode_key} // .colors.primary_fixed.default),
+                        (.colors.primary_fixed_dim.${mode_key} // .colors.primary_fixed_dim.default),
+                        .colors.inverse_primary.${mode_key}
                     ] | map(select(. != null and . != \"\")) | unique | .[]
                 " 2>/dev/null || echo "")
                 ;;
             neutral)
                 jq_colors=$(echo "$json_output" | jq -r "
                     [
-                        .colors.surface.${MODE},
-                        .colors.surface_dim.${MODE},
-                        .colors.surface_bright.${MODE},
-                        .colors.surface_container.${MODE},
-                        .colors.surface_container_low.${MODE},
-                        .colors.surface_container_high.${MODE},
-                        .colors.surface_container_highest.${MODE},
-                        .colors.on_surface.${MODE},
-                        .colors.on_surface_variant.${MODE},
-                        .colors.outline.${MODE},
-                        .colors.outline_variant.${MODE}
+                        .colors.surface.${mode_key},
+                        (.colors.surface_dim.${mode_key} // .colors.surface_dim.default),
+                        (.colors.surface_bright.${mode_key} // .colors.surface_bright.default),
+                        (.colors.surface_container.${mode_key} // .colors.surface_container.default),
+                        (.colors.surface_container_low.${mode_key} // .colors.surface_container_low.default),
+                        (.colors.surface_container_high.${mode_key} // .colors.surface_container_high.default),
+                        (.colors.surface_container_highest.${mode_key} // .colors.surface_container_highest.default),
+                        .colors.on_surface.${mode_key},
+                        .colors.on_surface_variant.${mode_key},
+                        .colors.outline.${mode_key},
+                        .colors.outline_variant.${mode_key},
+                        .colors.background.${mode_key}
                     ] | map(select(. != null and . != \"\")) | unique | .[]
                 " 2>/dev/null || echo "")
                 ;;
             primary-neutral)
                 jq_colors=$(echo "$json_output" | jq -r "
                     [
-                        .colors.primary.${MODE},
-                        .colors.on_primary.${MODE},
-                        .colors.primary_container.${MODE},
-                        .colors.surface.${MODE},
-                        .colors.surface_dim.${MODE},
-                        .colors.surface_bright.${MODE},
-                        .colors.surface_container.${MODE},
-                        .colors.on_surface.${MODE},
-                        .colors.on_surface_variant.${MODE},
-                        .colors.outline.${MODE}
+                        .colors.primary.${mode_key},
+                        .colors.on_primary.${mode_key},
+                        .colors.primary_container.${mode_key},
+                        .colors.surface.${mode_key},
+                        (.colors.surface_dim.${mode_key} // .colors.surface_dim.default),
+                        (.colors.surface_bright.${mode_key} // .colors.surface_bright.default),
+                        (.colors.surface_container.${mode_key} // .colors.surface_container.default),
+                        .colors.on_surface.${mode_key},
+                        .colors.on_surface_variant.${mode_key},
+                        .colors.outline.${mode_key},
+                        .colors.background.${mode_key}
                     ] | map(select(. != null and . != \"\")) | unique | .[]
                 " 2>/dev/null || echo "")
                 ;;
             all|*)
                 jq_colors=$(echo "$json_output" | jq -r "
                     [
-                        .colors.primary.${MODE},
-                        .colors.secondary.${MODE},
-                        .colors.tertiary.${MODE},
-                        .colors.error.${MODE},
-                        .colors.surface.${MODE},
-                        .colors.on_surface.${MODE},
-                        .colors.primary_container.${MODE},
-                        .colors.secondary_container.${MODE},
-                        .colors.tertiary_container.${MODE},
-                        .colors.surface_variant.${MODE},
-                        .colors.on_primary.${MODE},
-                        .colors.on_secondary.${MODE}
+                        .colors.primary.${mode_key},
+                        .colors.secondary.${mode_key},
+                        .colors.tertiary.${mode_key},
+                        .colors.error.${mode_key},
+                        .colors.surface.${mode_key},
+                        .colors.on_surface.${mode_key},
+                        .colors.primary_container.${mode_key},
+                        .colors.secondary_container.${mode_key},
+                        .colors.tertiary_container.${mode_key},
+                        (.colors.surface_variant.${mode_key} // .colors.surface_variant.default),
+                        .colors.on_primary.${mode_key},
+                        .colors.on_secondary.${mode_key},
+                        .colors.background.${mode_key}
                     ] | map(select(. != null and . != \"\")) | unique | .[]
                 " 2>/dev/null || echo "")
                 ;;
@@ -295,17 +303,32 @@ extract_colors() {
         
         if [[ -n "$jq_colors" ]]; then
             mapfile -t colors <<< "$jq_colors"
-            log "Method 1 (${COLOR_SCHEME} scheme): Found ${#colors[@]} colors"
+            log "Method 1 (${COLOR_SCHEME} scheme, ${mode_key} mode): Found ${#colors[@]} colors"
         fi
         
-        # Method 2: Try extracting all hex colors from the entire JSON
+        # Method 2: Try extracting all hex colors from the mode-specific section
         if [[ ${#colors[@]} -eq 0 ]]; then
-            log "Method 1 failed, trying fallback extraction..."
+            log "Method 1 failed, trying mode-specific extraction..."
+            jq_colors=$(echo "$json_output" | jq -r "
+                [.colors | to_entries[] | .value.${mode_key}] | 
+                map(select(. != null and . != \"\" and test(\"^#[0-9a-fA-F]{6,8}$\"))) | 
+                unique | .[]
+            " 2>/dev/null | head -12 || echo "")
+            
+            if [[ -n "$jq_colors" ]]; then
+                mapfile -t colors <<< "$jq_colors"
+                log "Method 2 (${mode_key} colors): Found ${#colors[@]} colors"
+            fi
+        fi
+        
+        # Method 3: Try extracting all hex colors from the entire JSON
+        if [[ ${#colors[@]} -eq 0 ]]; then
+            log "Method 2 failed, trying fallback extraction..."
             jq_colors=$(echo "$json_output" | jq -r '.. | select(type == "string" and test("^#[0-9a-fA-F]{6,8}$")) | select(length > 0)' 2>/dev/null | sort -u | head -12)
             
             if [[ -n "$jq_colors" ]]; then
                 mapfile -t colors <<< "$jq_colors"
-                log "Method 2 (all hex): Found ${#colors[@]} colors"
+                log "Method 3 (all hex): Found ${#colors[@]} colors"
             fi
         fi
     fi
@@ -436,7 +459,7 @@ set_wallpaper() {
     esac
 }
 
-fetch_color(){
+fetch_color() {
     SOURCE_COLOR=$(bun run ~/.config/wallpaper/colorscheme_maker.ts)
 }
 
