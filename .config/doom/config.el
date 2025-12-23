@@ -203,11 +203,15 @@
   (exec-path-from-shell-initialize))
 (setq custom-safe-themes t)
 
+;; DIRED
+(after! dirvish (setq dirvish-hide-details t))
+
+
 
 ;; MATUGEN
 ;;
 (defvar my/theme-file (expand-file-name "themes/doom-matugen-theme.el" doom-user-dir))
-(add-to-list 'custom-safe-themes "doom-matugen")
+(setq custom-safe-themes '("doom-matugen"))
 
 (when (file-exists-p my/theme-file)
   (load my/theme-file nil 'nomessage)

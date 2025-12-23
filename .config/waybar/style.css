@@ -1,90 +1,120 @@
 @import "colors.css";
 
 * {
-    font-size: 18px;
-    font-family: "CaskaydiaCove Nerd Font";
+    all: unset;
+    border: none;
+    font-family: "Roboto Flex";
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
 }
 
 window#waybar {
-    all: unset;
+    background: alpha(@surface, 0.6);
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    color: @on_surface;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Module containers */
-.modules-left,
-.modules-center,
+/* .modules-left { */
+/* padding: 0.4px; */
+/* margin: 0.6px 0.6px 0.3px 0.6px; */
+/* border-radius: 10px; */
+/* background: alpha(@surface, .6); */
+/* box-shadow: 0px 0px 2px rgba(0, 0, 0, .6); */
+/* } */
+
+.modules-center {
+    color: @on_surface;
+    font-size: 1.6rem;
+}
+
 .modules-right {
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 10px;
-    background: alpha(@surface_container, 0.5);
-    transition:
-        background 0.3s ease,
-        box-shadow 0.3s ease;
+    color: @on_surface;
+    font-size: 1.6rem;
 }
 
-.modules-left:hover,
-.modules-center:hover,
-.modules-right:hover {
-    background: alpha(@surface_container_high, 0.7);
-}
-
-/* Tooltip */
 tooltip {
-    background: @surface_container_highest;
+    background: alpha(@surface, 0.89);
+    border: 2px solid alpha(@primary, 0.9);
+    border-radius: 16px;
     color: @on_surface;
-    border-radius: 8px;
 }
 
-/* Clock */
-#clock {
-    padding: 0 10px;
-    color: @on_surface;
-    transition: all 0.3s ease;
+tooltip label {
+    font-family: "Roboto Flex";
+    font-size: 1.4rem;
+    padding: 12px;
 }
 
-/* Status modules */
-#network,
-#battery,
-#pulseaudio {
-    padding: 0 8px;
-    color: @on_surface;
-    transition: all 0.3s ease;
+#battery:hover,
+#network:hover,
+#bluetooth:hover,
+#wireplumber:hover,
+#power-profiles-daemon:hover,
+#custom-nightlight:hover,
+#idle_inhibitor:hover,
+#custom-screenshot:hover,
+#custom-colorpicker:hover,
+#custom-expand:hover,
+#clock:hover,
+#custom-notification:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover {
+    color: @secondary;
 }
 
 #clock:hover,
-#network:hover,
-#battery:hover,
-#pulseaudio:hover {
-    color: @primary;
+#systeminfo:hover,
+#workspaces:hover,
+#quicksettings:hover {
+    background: alpha(@secondary_container, 0.7);
 }
 
-/* Workspaces */
-#workspaces {
-    padding: 0;
+#idle_inhibitor.activated:hover {
+    color: shade(@orange, 1.1);
 }
 
-#workspaces button {
-    all: unset;
+#battery.charging:hover {
+    color: shade(@green, 1.1);
+}
+
+#battery.warning:not(.charging):hover {
+    color: shade(@yellow, 1.1);
+}
+
+#battery.critical:not(.charging):hover {
+    color: shade(@error_container, 1.1);
+}
+
+/*---------Left Module-----------------*/
+
+#quicksettings {
     padding: 0 8px;
-    color: @on_surface_variant;
-    transition: all 0.2s ease;
+    margin: 3px 6px;
+    border-radius: 16px;
+    background: alpha(@surface, 0.5);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease-in-out;
 }
 
-#workspaces button:hover {
+#battery {
+    margin: 0 6px;
+    min-width: 16px;
     color: @on_surface;
 }
 
-#workspaces button.active {
-    color: @primary;
+#battery.charging {
+    color: @green;
 }
 
-/* Battery states */
-#battery.charging {
-    color: @primary;
+#battery.warning:not(.charging) {
+    color: @yellow;
 }
 
 #battery.critical:not(.charging) {
-    color: @error;
+    color: @error_container;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -92,12 +122,205 @@ tooltip {
     animation-direction: alternate;
 }
 
-/* Blink animation */
-@keyframes blink {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0.3;
-    }
+#network {
+    margin: 0 6px;
+    min-width: 16px;
+    color: @on_surface;
+    transition: all 0.3s ease-in-out;
+}
+
+#bluetooth {
+    margin: 0 6px;
+    min-width: 16px;
+    color: @on_surface;
+    transition: all 0.3s ease-in-out;
+}
+
+#wireplumber {
+    font-size: 1.8rem;
+    margin: 0 6px;
+    min-width: 16px;
+    color: @on_surface;
+    transition: all 0.3s ease-in-out;
+}
+
+/* #pulseaudio-slider slider { */
+/* min-height: 0px; */
+/* min-width: 0px; */
+/* opacity: 0; */
+/* background-image: none; */
+/* border: none; */
+/* box-shadow: none; */
+/* } */
+
+/* #pulseaudio-slider trough { */
+/* margin: 0 4px; */
+/* min-height: 10px; */
+/* min-width: 80px; */
+/* border: 1px solid alpha(@inverse_surface, 0.7); */
+/* border-radius: 8px; */
+/* background: alpha(@surface_variant, .7); */
+/* } */
+
+/* #pulseaudio-slider highlight { */
+/* min-width: 10px; */
+/* border-radius: 5px; */
+/* background: alpha(@tertiary, .9); */
+/* } */
+
+#power-profiles-daemon {
+    transition: all 0.3s ease-in-out;
+}
+
+#power-profiles-daemon.performance {
+    margin: 0 6px;
+    min-width: 16px;
+    color: @red;
+    text-shadow: 0px 0px 2px alpha(@surface, 0.7);
+    transition: background 0.3s ease-in-out;
+}
+
+#power-profiles-daemon.power-saver {
+    margin: 0 6px;
+    min-width: 16px;
+    color: @green;
+    text-shadow: 0px 0px 2px alpha(@surface, 0.7);
+    transition: background 0.3s ease-in-out;
+}
+
+#custom-nightlight {
+    margin: 0 6px;
+    min-width: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+#tray {
+    margin: 0 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+#tray menu {
+    font-size: 1.2rem;
+    background: @surface;
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: 0px 0px 2px alpha(@shadow, 0.8);
+}
+
+#tray menu * {
+    margin: 2px;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+#tray menu *:hover {
+    background: @surface_container;
+}
+
+/*---------Middle Module-----------------*/
+
+/* #tools {} */
+
+#idle_inhibitor {
+    margin: 0 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+#idle_inhibitor.activated {
+    color: @orange;
+    text-shadow: 0px 0px 2px alpha(@surface, 0.7);
+}
+
+#custom-screenshot {
+    margin: 0 6px;
+    text-shadow: 0px 0px 2px alpha(@surface, 0.7);
+}
+
+#custom-colorpicker {
+    margin: 0 6px;
+}
+
+#custom-expand {
+    margin: 0 6px;
+    color: alpha(@on_surface, 2);
+    text-shadow: 0px 0px 2px alpha(@surface, 0.7);
+}
+
+#clock {
+    font-size: 1.2rem;
+    padding: 0 12px;
+    margin: 3px 6px;
+    border-radius: 16px;
+    background: alpha(@surface, 0.5);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease-in-out;
+}
+
+#custom-notification {
+    margin: 0 6px;
+    text-shadow: 0px 0px 2px alpha(@surface, 0.7);
+    transition: all 0.3s ease-in-out;
+}
+
+/*---------Left Module-----------------*/
+/*----SystemInfo----*/
+
+#systeminfo {
+    font-size: 1.2rem;
+    padding: 0 8px;
+    margin: 3px 6px;
+    border-radius: 16px;
+    background: alpha(@surface, 0.5);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease-in-out;
+}
+
+#cpu,
+#memory,
+#temperature {
+    margin: 0 6px;
+}
+
+/*----WorkSpaces----*/
+
+#workspaces {
+    font-size: 0.3rem;
+    padding: 14px;
+    margin: 3px 6px;
+    border-radius: 16px;
+    background: alpha(@surface, 0.6);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+
+#workspaces button {
+    padding: 2px 4px;
+    margin: 0px 2px;
+    border-radius: 16px;
+    background: @on_surface_variant;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    margin: 0px 4px;
+    background-color: @primary;
+    min-width: 48px;
+    background-size: 400% 400%;
+    box-shadow: 0 0 0 2px @primary;
+}
+
+#workspaces button:hover {
+    font-weight: bold;
+    background-color: @tertiary;
+    border-radius: 16px;
+    min-width: 48px;
+    background-size: 400% 400%;
+    box-shadow: 0 0 0 2px @tertiary;
+}
+
+#workspaces button.urgent {
+    font-weight: bold;
+    background-color: @error;
+    border-radius: 16px;
+    min-width: 48px;
+    background-size: 400% 400%;
 }

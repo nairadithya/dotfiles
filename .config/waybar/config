@@ -1,91 +1,218 @@
 {
-    "layer": "top",
-        "position": "top",
-        "reload_style_on_change": true,
-    "modules-left": ["image", "clock"],
-        "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["pulseaudio","network","battery", "backlight"],
-        "hyprland/workspaces": {
-            "format": "{icon}",
-            "format-icons": {
-                "active": "",
-                "default": "",
-                "empty": ""
-            },
-            "persistent-workspaces": {
-                "*": [1,2,3,4,5]
-            }
-        },
-    "image": {
-        "path": "/home/adithya/dotfiles/.config/waybar/atlas-logo.png",
-        "size": 48,
-        "on-click": "fuzzel"
-    },
-    "clock": {
-        "format": "{:%I:%M %p}",
-            "interval": 1,
-            "tooltip-format": "<tt>{calendar}</tt>",
-            "calendar": {
-                "format": {
-                    "today": "<span color='#989e8a'><b>{}</b></span>"
-                }
-            },
-            "actions": {
-                "on-click-right": "shift_down",
-                "on-click": "shift_up"
-            }
-        },
-        "backlight": {
-        "device": "intel_backlight",
-        "format": "{percent}% {icon} ",
-        "format-icons": [""] 
-        },
-        "network": {
-        "format-wifi": "{signalStrength}%  ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
-        "format-linked": "{ifname} (No IP)  ",
-        "on-click": "nm-connection-editor",
-        "format-disconnected": "Disconnected ",
-        },
-        "pulseaudio": {
-            "format": "{volume}% {icon} ",
-            "format-bluetooth": "{volume}% {icon} ",
-            "format-muted": "",
-            "format-icons": {
-            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
-            "headphone": "",
-            "phone-muted": "",
-            "portable": "",
-            "car": "",
-            "default": ["","", ""]
-            },
-            "scroll-step": 1,
-            "on-click": "pavucontrol",
-            "ignored-sinks": ["Easy Effects Sink"]
-        },
-        "battery": {
-            "interval":30,
-            "states": {
-                "good": 95,
-                "warning": 30,
-                "critical": 20
-            },
-            "format": "{capacity}% {icon} ",
-            "format-charging": "{capacity}% 󰂄 ",
-            "format-plugged": "{capacity}% 󰂄 ",
-            "format-alt": "{time} {icon} ",
-            "format-icons": [
-                "󰁻",
-            "󰁼",
-            "󰁾",
-            "󰂀",
-            "󰂂",
-            "󰁹"
-            ],
-        },
-        "temperature": {
-            "critical-threshold": 80,
-            "format": "",
-        },
+	"layer": "bottom",
+	"position": "top",
+	"reload_style_on_change": true,
+	"modules-left": [
+		"clock",
+	],
+	"modules-center": [
+		"hyprland/workspaces",
+		"group/tools"
+	],
+	"modules-right": [
+		"tray",
+		"group/quicksettings"
+	],
+	"group/tools": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 600,
+			"transition-left-to-right": false,
+			"click-to-reveal": false
+		},
+		"modules": [
+			"custom/expand",
+			"custom/colorpicker",
+			"custom/screenshot",
+			"idle_inhibitor"
+		]
+	},
+	"group/quicksettings": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/nightlight",
+			"power-profiles-daemon",
+			"wireplumber",
+			"bluetooth",
+			"network",
+			"battery"
+		]
+	},
+	"hyprland/workspaces": {
+		"format": "",
+		"persistent-workspaces": {
+			"*": [
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		}
+	},
+	"clock": {
+		"format": "{:%a %d %B, %H:%M}",
+		"interval": 1,
+		"tooltip": true,
+		"tooltip-format": "<tt>{calendar}</tt>",
+		"calendar": {
+			"mode": "month",
+			"mode-mon-col": 3,
+			"on-click-right": "mode",
+			"format": {
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+		}
+	},
+	"custom/expand": {
+		"format": "",
+		"tooltip": false,
+	},
+	"custom/colorpicker": {
+		"format": "󰈊",
+		"return-type": "json",
+		"interval": "once",
+		"exec": "~/.local/bin/colorpicker -j",
+		"on-click": "~/.local/bin/colorpicker",
+		"signal": 1
+	},
+	"custom/screenshot": {
+		"format": "󱣴",
+		"tooltip-format": "Screenshot",
+		// "return-type": "json",
+		// "interval": "once",
+		// "exec": "~/.local/bin/screenshot.nu",
+		"on-click": "~/.local/bin/screenshot.nu",
+		// "signal": 1
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "󰅶",
+			"deactivated": "󰾪"
+		},
+		"tooltip-format-activated": "Caffeine On",
+		"tooltip-format-deactivated": "Caffeine Off",
+	},
+	"tray": {
+		"icon-size": 24,
+		"spacing": 8
+	},
+	"custom/nightlight": {
+		"tooltip": false,
+		"format": "{text}",
+		"interval": "once",
+		"exec": "sh -c '[[ -n $(hyprctl hyprsunset temperature | rg -o 6000) ]] && printf \"\" || printf 󰤄'",
+		"on-click": "swaync-client -t -sw",
+		"signal": 16,
+	},
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip": false,
+		"format-icons": {
+			"performance": "󰓅",
+			"power-saver": "󰾆"
+		}
+	},
+	"wireplumber": {
+		"format": "{icon}",
+		"format-muted": "󰝟",
+		"format-icons": {
+			"default": [
+				"󰕿",
+				"󰖀",
+				"󰕾"
+			]
+		},
+		"tooltip-format": "{volume}%",
+		"scroll-step": 5.0,
+		"on-click": "fnott",
+		"on-click-right": "pavucontrol",
+	},
+	"bluetooth": {
+		"format-on": "",
+		"format-off": "",
+		"format-disabled": "",
+		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "overskride"
+	},
+	"network": {
+		"format": "{icon}",
+		"format-ethernet": "󰈀",
+		"format-disconnected": "󰪎",
+		"tooltip-format-disconnected": "Disconnected",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
+		"tooltip-format-ethernet": "{ifname} 󰈀 ",
+		"format-icons": {
+			"ethernet": "󰈀",
+			"wifi": [
+				"󰤟",
+				"󰤢",
+				"󰤥",
+				"󰤨"
+			]
+		},
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "nm-connection-editor",
+		// "on-click": "uwsm app -- footclient --app-id=nmtui sh -c 'sleep 0.1; nmtui'"
+	},
+	"battery": {
+		"interval": 30,
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 20
+		},
+		"format": "{icon}",
+		"format-charging": "{icon}",
+		"format-plugged": "{icon}",
+		"interval": 60,
+		"tooltip-format": "{capacity}%",
+		"on-click": "swaync-client -t -sw",
+		"format-icons": {
+			"default": [
+				"󰁺",
+				"󰁻",
+				"󰁼",
+				"󰁽",
+				"󰁾",
+				"󰁾",
+				"󰂀",
+				"󰂁",
+				"󰂂",
+				"󰁹",
+			],
+			"charging": [
+				"󰢜",
+				"󰂆",
+				"󰂇",
+				"󰂈",
+				"󰢝",
+				"󰂉",
+				"󰢞",
+				"󰂊",
+				"󰂋",
+				"󰂅"
+			],
+			"plugged": [
+				"󰁺",
+				"󰁻",
+				"󰁼",
+				"󰁽",
+				"󰁾",
+				"󰁾",
+				"󰂀",
+				"󰂁",
+				"󰂂",
+				"󰁹",
+			],
+		}
+	}
 }

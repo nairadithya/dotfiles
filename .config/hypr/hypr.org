@@ -41,12 +41,11 @@ $whatsapp = /opt/helium-browser-bin/chrome-wrapper --profile-directory=Default -
 #+begin_src conf
 exec-once = waybar
 exec-once = fnott
-exec-once = hyprpaper
 exec-once = hypridle
 exec-once = clipse -listen
 exec-once = systemctl --user start hyprpolkitagent
 exec-once = dbus-update-activation-environment --systemd --all
-exec-once = ~/.config/wallpaper/matugen.sh -p circles --color-scheme primary
+exec-once = ~/.config/wallpaper/matugen.sh -p waves --color-scheme primary
 #+end_src
 * Workspace AutoStart
 #+begin_src conf
