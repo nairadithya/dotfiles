@@ -8,6 +8,10 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "audio": {
+    "experimental.legacy_audio_compatible": true,
+    "experimental.rodio_audio": true
+  },
   "base_keymap": "VSCode",
   "disable_ai": false,
   "edit_predictions": {

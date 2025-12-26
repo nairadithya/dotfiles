@@ -232,7 +232,7 @@ general {
     gaps_in = 2
     gaps_out = 4
     border_size = 1
-    col.active_border = $on_primary
+    col.active_border = $primary
     col.inactive_border = $background
     layout = dwindle
     allow_tearing = false
@@ -241,8 +241,9 @@ general {
 group {
       groupbar {
       enabled = true
-      col.active = $secondary
-      text_color = $on_secondary
+      col.active = $primary
+      text_color = $on_primary
+      col.inactive = $inverse_primary
 }
 }
 
@@ -280,7 +281,6 @@ misc {
 }
 
 #+end_src
-
 
 * Hypridle
 #+begin_src conf :tangle hypridle.conf

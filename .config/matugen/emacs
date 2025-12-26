@@ -4,6 +4,16 @@
 ;; A Doom Emacs theme following Material Design 3 color role guidelines.
 ;; Generated with matugen and properly mapped to M3 semantic color roles.
 ;;
+;; Note on org-hide with transparent backgrounds:
+;; Emacs cannot make text truly transparent. The org-hide face matches the
+;; background color, but with transparent backgrounds, hidden stars will still
+;; be visible against whatever is behind the window. To work around this:
+;;
+;; 1. Use org-modern which replaces leading stars with cleaner indicators
+;; 2. Set (setq org-hide-leading-stars t) and org will only show one star
+;; 3. Use (setq org-startup-indented t) for org-indent-mode (hides stars better)
+;; 4. For full transparency support, consider org-superstar with custom bullets
+;;
 ;;; Code:
 
 (require 'doom-themes)
@@ -161,6 +171,9 @@ Can be an integer to determine the exact padding."
                                        cyan
                                      highlight))
    
+   ;;;; hl-line - line highlight
+   (hl-line :background base2)
+   
    ;;;; solaire-mode - using M3 surface hierarchy
    (solaire-default-face :inherit 'default :background bg-alt)
    (solaire-fringe-face :inherit 'solaire-default-face)
@@ -210,6 +223,7 @@ Can be an integer to determine the exact padding."
     :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive-alt)))
    
    ;;;; org-mode - M3 semantic colors
+   (org-hide :foreground bg :background bg)  ; Hidden stars - matches default bg
    (org-level-1 :foreground blue :weight 'bold :height 1.3)
    (org-level-2 :foreground cyan :weight 'bold :height 1.2)
    (org-level-3 :foreground teal :weight 'bold :height 1.1)
