@@ -8,7 +8,7 @@ I use =stow= to manage my dotfiles. I've structured things such that everything 
 stow .
 #+end_src
 
-This rice syncs my colourscheme with my [website](https://adithyanair.com)
+This rice syncs my colourscheme with my [[https:adithyanair.com][website]].
 
 Feel free to clone this repo and modify as needed.
 ** Making the wallpaper
