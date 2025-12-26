@@ -1,8 +1,6 @@
-* ATLAS OS
+* MATERIAL ME
 
 [[file:./assets/main.jpeg]]
-
-In honor of [[https://atlasdev.club][ATLAS]] 
 
 I use =stow= to manage my dotfiles. I've structured things such that everything is symlinked to =.config= with one command:
 
@@ -10,4 +8,10 @@ I use =stow= to manage my dotfiles. I've structured things such that everything 
 stow .
 #+end_src
 
+This rice syncs my colourscheme with my [website](https://adithyanair.com)
+
 Feel free to clone this repo and modify as needed.
+** Making the wallpaper
+#+begin_src 
+exec ./.config/wallpaper/matugen.sh
+#+end_src
