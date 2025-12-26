@@ -105,10 +105,10 @@
 
 ;; Customizing writeroom mode
 (after! writeroom-mode
-  (setq +zen-text-scale 1.0
-        writeroom-mode-line t
-        writeroom-width 80
-        )
+  (setq! +zen-text-scale 1.0
+         writeroom-mode-line t
+         writeroom-width 60
+         )
   )
 
 
