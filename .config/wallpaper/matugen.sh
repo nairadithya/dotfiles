@@ -466,7 +466,9 @@ fetch_color() {
 main() {
     parse_args "$@"
     check_dependencies
-    fetch_color
+    if [[ -z "$SOURCE_COLOR" ]]; then
+        fetch_color
+    fi
     
     run_matugen
     extract_colors
