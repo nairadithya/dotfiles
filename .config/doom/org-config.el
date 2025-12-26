@@ -57,7 +57,9 @@
                  (file+headline (expand-file-name (concat org-directory "events.org")) "Calendar")
                  "* %?\n%^{Date}T")
                t)
-  (setq org-noter-always-create-frame nil)
+  (setq! org-noter-always-create-frame nil)
 
   (map! :desc "Open org-agenda weekly" :leader :nv "o o" 'org-agenda-list)
+  (setq! org-modern-star 'replace)
+
   )
