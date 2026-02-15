@@ -25,3 +25,5 @@ use ~/.cache/starship/init.nu
 alias jupyter = uv run --with jupyter jupyter lab
 alias doom = ~/.config/emacs/bin/doom 
 alias ppt2pdf = libreoffice --headless --convert-to pdf
+
+use '/home/adithya/.config/broot/launcher/nushell/br' *

@@ -422,7 +422,6 @@ set_wallpaper() {
         log "Skipping wallpaper setting (--skip-set-wallpaper or not in Hyprland)"
         log "To set manually, run:"
         if [[ "$WALLPAPER_SETTER" == "hyprpaper" ]]; then
-            log "  hyprctl hyprpaper preload '$wallpaper_path'"
             log "  hyprctl hyprpaper wallpaper ',$wallpaper_path'"
         else
             log "  swww img '$wallpaper_path'"
@@ -441,8 +440,7 @@ set_wallpaper() {
                 sleep 1
             fi
             
-            # Preload and set wallpaper
-            hyprctl hyprpaper preload "$wallpaper_path" || error "Failed to preload wallpaper"
+            # Set wallpaper (hyprpaper loads it automatically)
             hyprctl hyprpaper wallpaper ",$wallpaper_path" || error "Failed to set wallpaper"
             log "Wallpaper set successfully"
             ;;

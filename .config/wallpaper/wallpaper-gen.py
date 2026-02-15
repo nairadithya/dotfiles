@@ -214,8 +214,7 @@ def load_colors(colorscheme_input):
 def set_wallpaper(image_path, setter="hyprpaper"):
     """Set wallpaper using specified setter"""
     if setter == "hyprpaper":
-        # Preload and set wallpaper via hyprctl
-        subprocess.run(["hyprctl", "hyprpaper", "preload", str(image_path)])
+        # Set wallpaper via hyprctl (hyprpaper loads it automatically)
         subprocess.run(["hyprctl", "hyprpaper", "wallpaper", f",{image_path}"])
     elif setter == "swww":
         subprocess.run(["swww", "img", str(image_path)])

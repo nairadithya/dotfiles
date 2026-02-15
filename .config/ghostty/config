@@ -3,4 +3,4 @@ resize-overlay = "never"
 background-opacity = 0.7
 theme = "Matugen"
 command = fish --login --interactive
-
+shell-integration-features = ssh-env

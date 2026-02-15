@@ -58,4 +58,11 @@
 
 (package! gptel :recipe (:nonrecursive t))
 
+
+(package! timetabel
+  :recipe (:host github :repo "nairadithya/timetab.el"))
+
 (package! exec-path-from-shell)
+
+(package! exec-path-from-shell)
+
