@@ -29,7 +29,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 
-(setq doom-theme 'doom-sourcerer)
+(setq doom-theme 'doom-atlas)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -206,27 +206,10 @@
 ;; DIRED
 (after! dirvish (setq dirvish-hide-details t))
 
-
-
-;; MATUGEN
-;;
-(defvar my/theme-file (expand-file-name "themes/doom-matugen-theme.el" doom-user-dir))
-(setq custom-safe-themes '("doom-matugen"))
-
-(when (file-exists-p my/theme-file)
-  (load my/theme-file nil 'nomessage)
-  (setq doom-theme 'doom-matugen))
-
-;; Fallback if file doesn't exist
-(unless (member 'doom-matugen (custom-available-themes))
-  (setq doom-theme 'doom-one))
-
-;; Better reload
-(defun my/reload-theme ()
-  (interactive)
-  (load my/theme-file t t)  ; Force reload
-  (doom/reload-theme)       ; Use Doom's reload
-  (message "Theme reloaded!"))
-
-(map! :leader
-      :desc "Reload theme" "h h" #'my/reload-theme)
+;; Python Config
+(setq python-shell-interpreter "uv"
+      python-shell-interpreter-args "run python -i"
+      python-shell-interpreter-interactive-arg "-i"
+      python-shell-prompt-regexp ">>> "
+      python-shell-prompt-block-regexp "\\.\\.\\. "
+      python-shell-prompt-output-regexp "")

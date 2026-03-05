@@ -17,6 +17,7 @@ alias ec=$emacs_alias
 alias nvim=$emacs_alias
 alias vim=$emacs_alias
 alias vi=$emacs_alias
+alias ppt2pdf='libreoffice --headless --convert-to pdf'
 
 # Emacs vterm config
 function vterm_printf;

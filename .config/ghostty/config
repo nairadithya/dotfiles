@@ -1,6 +1,7 @@
-font-family = "IosevkaTermSlab Nerd Font Mono"
+font-family = "CaskaydiaCove Nerd Font"
 resize-overlay = "never"
-background-opacity = 0.7
-theme = "Matugen"
+background-opacity = 0.9
+font-size = 13.5
+theme = "atlas"
 command = fish --login --interactive
 shell-integration-features = ssh-env

@@ -10,7 +10,6 @@
 		"group/tools"
 	],
 	"modules-right": [
-		"tray",
 		"group/quicksettings"
 	],
 	"group/tools": {
@@ -30,8 +29,6 @@
 	"group/quicksettings": {
 		"orientation": "horizontal",
 		"modules": [
-			"custom/nightlight",
-			"power-profiles-daemon",
 			"wireplumber",
 			"bluetooth",
 			"network",
@@ -39,7 +36,6 @@
 		]
 	},
 	"hyprland/workspaces": {
-		"format": "",
 		"persistent-workspaces": {
 			"*": [
 				1,
@@ -118,48 +114,30 @@
 		}
 	},
 	"wireplumber": {
-		"format": "{icon}",
+		"format": "Volume: {volume}% |",
 		"format-muted": "󰝟",
-		"format-icons": {
-			"default": [
-				"󰕿",
-				"󰖀",
-				"󰕾"
-			]
-		},
-		"tooltip-format": "{volume}%",
 		"scroll-step": 5.0,
 		"on-click": "fnott",
 		"on-click-right": "pavucontrol",
 	},
 	"bluetooth": {
-		"format-on": "",
-		"format-off": "",
+		"format-on": "Bluetooth: On |",
+		"format-off": "Bluetooth: Off |",
+		"format-connected": "Bluetooth: Connected to {device_alias} |",
 		"format-disabled": "",
 		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
 		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
 		"tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
 		"tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
-		"on-click": "swaync-client -t -sw",
-		"on-click-right": "overskride"
+        "on-click": "ghostty -e 'bluetuith'",
 	},
 	"network": {
-		"format": "{icon}",
-		"format-ethernet": "󰈀",
-		"format-disconnected": "󰪎",
-		"tooltip-format-disconnected": "Disconnected",
+		"format": "Connected: {essid} |",
+		"format-ethernet": "Connected: Ethernet",
+		"format-disconnected": "Disconnected",
 		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
 		"tooltip-format-ethernet": "{ifname} 󰈀 ",
-		"format-icons": {
-			"ethernet": "󰈀",
-			"wifi": [
-				"󰤟",
-				"󰤢",
-				"󰤥",
-				"󰤨"
-			]
-		},
-		"on-click": "swaync-client -t -sw",
+		"on-click": "ghostty -e nmtui",
 		"on-click-right": "nm-connection-editor",
 		// "on-click": "uwsm app -- footclient --app-id=nmtui sh -c 'sleep 0.1; nmtui'"
 	},
@@ -170,10 +148,9 @@
 			"warning": 30,
 			"critical": 20
 		},
-		"format": "{icon}",
-		"format-charging": "{icon}",
-		"format-plugged": "{icon}",
-		"interval": 60,
+		"format": "Battery: {capacity}%",
+		"format-charging": "Plugged In: {capacity}% ",
+		"interval": 15,
 		"tooltip-format": "{capacity}%",
 		"on-click": "swaync-client -t -sw",
 		"format-icons": {
