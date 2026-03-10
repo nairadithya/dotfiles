@@ -7,7 +7,7 @@
  '(custom-safe-themes
    '("9e215280f65fa298ca210d010f2ac73db9cb6d4f03b10eec1ac7c448372605a4"
      default))
- '(package-selected-packages '(doom-themes lambda-line magit nerd-icons))
+ '(package-selected-packages '(doom-themes evil lambda-line magit nerd-icons))
  '(package-vc-selected-packages
    '((lambda-line :url "https://github.com/lambda-emacs/lambda-line"))))
 (custom-set-faces
