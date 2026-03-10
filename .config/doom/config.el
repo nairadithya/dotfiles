@@ -17,8 +17,12 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 
-(setq doom-font (font-spec :family "IosevkaTermSlab Nerd Font" :size 20 :weight 'regular))
-(setq doom-variable-pitch-font (font-spec :family "Charter" :size 24 :weight 'regular))
+(setq doom-font (font-spec :family "CaskaydiaCove Nerd Font" :size 20 :weight 'regular))
+(setq doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 24 :weight 'regular))
+(setq doom-serif-font (font-spec :family "IBM Plex Serif" :size 30 :weight 'regular))
+(setq doom-symbol-font (font-spec :family "Noto Sans Symbols 2"))
+(setq doom-emoji-font (font-spec :family "Noto Color Emoji"))
+
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -213,3 +217,6 @@
       python-shell-prompt-regexp ">>> "
       python-shell-prompt-block-regexp "\\.\\.\\. "
       python-shell-prompt-output-regexp "")
+
+(after! emojify
+  (setq emojify-display-style 'unicode))
