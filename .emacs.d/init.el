@@ -38,6 +38,8 @@
 (load-theme 'atlas t)
 (set-face-attribute 'default nil :font "CaskaydiaCove Nerd Font" :height 120)
 
+
+;; PACKAGES
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status))
