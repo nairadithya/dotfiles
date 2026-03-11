@@ -12,7 +12,7 @@ alias xo='xdg-open'
 alias ls='ls --color'
 
 # Emacs aliases
-set emacs_alias = 'emacsclient -t'
+set emacs_alias 'emacsclient -t'
 alias ec=$emacs_alias 
 alias nvim=$emacs_alias
 alias vim=$emacs_alias
