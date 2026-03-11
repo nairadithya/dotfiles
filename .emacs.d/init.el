@@ -33,5 +33,4 @@
 (use-package dired
   :ensure nil
   :config
-(add-hook 'dired-mode-hook #'dired-hide-details-mode)
-  )
+  (add-hook 'dired-mode-hook #'dired-hide-details-mode))
