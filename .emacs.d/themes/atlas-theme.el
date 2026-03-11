@@ -77,6 +77,10 @@
    `(diff-added ((t (:foreground ,base8 :background ,base2))))
    `(diff-removed ((t (:foreground ,orange-dim :background ,base2))))
    `(diff-context ((t (:foreground ,base6))))
+;; dired
+`(dired-directory ((t (:foreground ,orange :weight bold))))
+`(dired-symlink ((t (:foreground ,base7 :slant italic))))
+`(dired-broken-symlink ((t (:foreground ,orange-dim :strike-through t))))
 
    ;; errors
    `(error ((t (:foreground ,orange))))

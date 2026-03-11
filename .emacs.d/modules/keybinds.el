@@ -1,0 +1,5 @@
+(evil-define-key 'normal 'global (kbd "SPC SPC") #'project-find-file)
+(evil-define-key 'normal 'global (kbd "SPC o -") #'dired-jump)
+(evil-define-key 'normal 'global (kbd "SPC g g") #'magit-status)
+(evil-define-key 'normal 'global (kbd "SPC w") evil-window-map)
+(evil-define-key 'normal 'global (kbd "SPC p") project-prefix-map)

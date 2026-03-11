@@ -2,18 +2,15 @@
 #+AUTHOR: Adithya Nair
 
 * Candidate Packages
-1. Vertico/Good Icomplete
-2. Evil
-3. Yasnippet
-4. 
+1. Vertico
+2. Orderless
 
 * TODO
-+ [ ] Create a nice custom modeline
-+ [ ] Create native non-Doom theme
-+ [ ] Setup =project.el=
-+ [ ] Simple home screen
-+ [ ] Font configuration
-+ [ ] Clean up cache stuff
-+ [ ] Setup language-specific tooling
-+ [ ] Start thinking about custom org-mode workflows
-+ [ ] 
+- [x] Create a nice custom modeline
+- [x] Create native non-Doom theme
+- [x] Setup =project.el=
+- [ ] Simple home screen
+- [x] Font configuration
+- [x] Clean up cache stuff
+- [ ] Setup language-specific tooling
+- [ ] Start thinking about custom org-mode workflows

@@ -1,3 +1,12 @@
+;;; cache.el --- Cache file locations -*- lexical-binding: t; -*-
+
+
+(require 'url)
+(require 'saveplace)
+(require 'recentf)
+(require 'tramp)
+(require 'transient)
+
 (defvar my/emacs-cache-dir (expand-file-name "~/.cache/emacs/"))
 
 
@@ -56,4 +65,3 @@
 
 (setq transient-history-file
       (expand-file-name "transient/history.el" my/emacs-cache-dir))
-
