@@ -12,5 +12,10 @@
 - [ ] Simple home screen
 - [x] Font configuration
 - [x] Clean up cache stuff
-- [ ] Setup language-specific tooling
 - [ ] Start thinking about custom org-mode workflows
+
+* Language Specific Tooling
+- [ ] Typst
+- [ ] Rust
+- [ ] OCAML
+- [ ] Python
