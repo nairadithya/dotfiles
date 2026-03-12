@@ -36,6 +36,10 @@
    `(highlight ((t (:background ,base3))))
    `(hl-line ((t (:background ,base2))))
 
+   `(vertical-border ((t (:foreground ,base3))))
+   `(window-divider ((t (:foreground ,base3))))
+   `(window-divider-first-pixel ((t (:foreground ,base3))))
+   `(window-divider-last-pixel ((t (:foreground ,base3))))
    ;; line numbers
    `(line-number ((t (:foreground ,base5 :background ,bg))))
    `(line-number-current-line ((t (:foreground ,base7 :background ,bg))))
@@ -73,14 +77,16 @@
    `(org-todo ((t (:foreground ,orange :weight bold))))
    `(org-done ((t (:foreground ,base6 :strike-through t))))
 
+   `(fringe ((t (:background ,bg :foreground ,bg))))
+   `(fill-column-indicator ((t (:foreground ,base3))))
    ;; diff / vc
    `(diff-added ((t (:foreground ,base8 :background ,base2))))
    `(diff-removed ((t (:foreground ,orange-dim :background ,base2))))
    `(diff-context ((t (:foreground ,base6))))
-;; dired
-`(dired-directory ((t (:foreground ,orange :weight bold))))
-`(dired-symlink ((t (:foreground ,base7 :slant italic))))
-`(dired-broken-symlink ((t (:foreground ,orange-dim :strike-through t))))
+   ;; dired
+   `(dired-directory ((t (:foreground ,orange :weight bold))))
+   `(dired-symlink ((t (:foreground ,base7 :slant italic))))
+   `(dired-broken-symlink ((t (:foreground ,orange-dim :strike-through t))))
 
    ;; errors
    `(error ((t (:foreground ,orange))))
@@ -91,6 +97,9 @@
 (when load-file-name
   (add-to-list 'custom-theme-load-path
                (file-name-directory load-file-name)))
+
+(setq-default indicate-buffer-boundaries nil
+              indicate-empty-lines nil)
 
 (provide-theme 'atlas)
 

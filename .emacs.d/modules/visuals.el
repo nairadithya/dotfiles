@@ -11,15 +11,6 @@
       initial-scratch-message nil)
 
 ;; MODELINE
-(force-mode-line-update t) 
-(setq-default mode-line-format '("%e"
-				 mode-line-misc-info
-				 mode-line-modes
-				 mode-line-front-space
-				 mode-line-modified " "
-				 mode-line-buffer-identification "  "
-				 mode-line-position "  "
-				 mode-line-end-spaces))
-
+(set-face-attribute 'default nil :font "IosevkaTermSlab Nerd Font" :height 160)
+(force-mode-line-update t)
 (load-theme 'atlas t)
-(set-face-attribute 'default nil :font "CaskaydiaCove Nerd Font" :height 160)
