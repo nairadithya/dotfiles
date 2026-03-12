@@ -7,8 +7,6 @@
  '(custom-safe-themes
    '("9e215280f65fa298ca210d010f2ac73db9cb6d4f03b10eec1ac7c448372605a4"
      default))
- '(package-selected-packages
-   '(doom-themes evil lambda-line magit magit-p4 nerd-icons vertico))
  '(package-vc-selected-packages
    '((lambda-line :url "https://github.com/lambda-emacs/lambda-line")))
  '(safe-local-variable-directories '("/home/adithya/projects/pyn/")))
