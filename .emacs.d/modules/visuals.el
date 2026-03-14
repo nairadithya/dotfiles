@@ -1,4 +1,4 @@
-;; Mode Settings
+;; Mode Settings  -*- lexical-binding: t; -*-
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (global-display-line-numbers-mode 1)

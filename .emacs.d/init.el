@@ -1,4 +1,4 @@
-; --- init.el --- Emacs configuration -*- lexical-binding: t; -*-
+;; --- init.el --- Emacs configuration -*- lexical-binding: t; -*-
 ;; GC Optimization 
 (setq gc-cons-threshold (* 50 1000 1000))
 
@@ -19,10 +19,10 @@
              (expand-file-name "themes" user-emacs-directory))
 
 (load-module "cache.el")
+(load-module "packages.el")
 (load-module "visuals.el")
 (load-module "utils.el")
-(load-module "languages.el")
-(load-module "packages.el")
+
 ;; Package Config
 (use-package emacs
   :custom
@@ -35,9 +35,12 @@
   :ensure t
   :config
   (evil-mode 1)
-  (evil-define-key 'normal 'global (kbd "SPC w") evil-window-map)
-  (evil-define-key 'normal 'global (kbd "SPC g g") #'magit-status) 
   )
+
+(evil-define-key 'normal 'global (kbd "SPC w") evil-window-map)
+
+(use-package magit
+  :bind ("C-x g" . #'magit-status))
 
 (use-package dired
   :ensure nil
@@ -55,16 +58,6 @@
   (compilation-always-kill t)
   (compilation-scroll-output t)
   (ansi-color-for-compilation-mode t))
-
-(use-package transient
-  :ensure t
-  :demand t
-  )
-
-(use-package magit
-  :defer t
-  :config
-  )
 
 (use-package project
   :ensure nil
