@@ -1,6 +1,5 @@
 ;;; cache.el --- Cache file locations -*- lexical-binding: t; -*-
 
-
 (require 'url)
 (require 'saveplace)
 (require 'recentf)

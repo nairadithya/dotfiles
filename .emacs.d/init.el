@@ -28,8 +28,22 @@
   :custom
   (enable-recursive-minibuffers t)
   (read-extended-command-predicate #'command-completion-default-include-p)
-  (minibuffer-prompt-properties
-   '(read-only t cursor-intangible t face minibuffer-prompt)))
+  (minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
+  (save-place-mode 1)
+  (auto-save-visited-mode 1)
+  ;; Settings
+  (setq read-file-name-completion-ignore-case t
+	read-buffer-completion-ignore-case t
+	completion-ignore-case t
+	load-prefer-newer t
+	backup-by-copying t
+	visible-bell t
+	apropos-do-all t
+	ediff-window-setup-function 'ediff-setup-windows-plain
+	auto-save-visited-interval 30
+	auto-save-default nil
+	)
+  )
 
 (use-package evil
   :ensure t
