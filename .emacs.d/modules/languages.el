@@ -24,3 +24,6 @@
 ;; Typst Setup
 (require 'typst-ts-mode nil t)
 (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode))
+
+
+(provide 'languages)

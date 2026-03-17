@@ -3,6 +3,7 @@
 (menu-bar-mode 0)
 (global-display-line-numbers-mode 1)
 (scroll-bar-mode 0)
+(global-visual-line-mode -1)
 (column-number-mode 1)
 (show-paren-mode 1)
 (setq inhibit-startup-screen t
@@ -10,6 +11,7 @@
       inhibit-startup-echo-area-message t
       initial-scratch-message nil)
 
+(setf display-line-numbers 'relative)
 ;; MODELINE
 (set-face-attribute 'default nil :font "IosevkaTermSlab Nerd Font" :height 160)
 (force-mode-line-update t)
@@ -25,3 +27,5 @@
 	  (run-with-timer 0.2 nil
 			  (lambda ()
 			    (set-face-background 'mode-line orig))))))
+
+(provide 'visuals)

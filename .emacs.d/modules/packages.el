@@ -15,3 +15,6 @@
   (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t) ;; Basically ensures every package
+
+
+(provide 'packages)

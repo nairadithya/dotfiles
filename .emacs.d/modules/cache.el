@@ -58,3 +58,5 @@
 
 (setq project-list-file
       (expand-file-name "projects" my/emacs-cache-dir))
+
+(provide 'cache)

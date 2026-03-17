@@ -9,7 +9,8 @@
      default))
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(doom-modeline dune evil magit neocaml ocaml-eglot orderless vertico))
+   '(doom-modeline dune evil exec-path-from-shell magit ocaml-eglot
+		   orderless tuareg vertico))
  '(package-vc-selected-packages
    '((typst-ts-mode :url
 		    "https://codeberg.org/meow_king/typst-ts-mode.git")

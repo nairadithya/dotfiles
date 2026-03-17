@@ -9,3 +9,5 @@
   (interactive)
   (let ((default-directory (concat website-directory posts-directory)))
     (call-interactively #'find-file)))
+
+(provide 'utils)

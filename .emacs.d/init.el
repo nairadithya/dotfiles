@@ -12,31 +12,36 @@
   (load custom-file))
 
 ;; Load External Files
-(defun load-module (file-name)
-  (load (expand-file-name file-name (concat user-emacs-directory "modules/"))))
+(defun load-module (name)
+  (require (intern name)
+           (expand-file-name (concat name ".el")
+                             (concat user-emacs-directory "modules/"))))
 
+;; Themes Loading
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes" user-emacs-directory))
 
-(load-module "cache.el")
-(load-module "packages.el")
-(load-module "visuals.el")
-(load-module "utils.el")
-
+(load-module "cache")
+(load-module "packages")
+(load-module "visuals")
+(load-module "utils")
+(load-module "ocaml")
 
 (use-package emacs
   :custom
   (enable-recursive-minibuffers t)
   (read-extended-command-predicate #'command-completion-default-include-p)
   (minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
-  (save-place-mode 1)
-  (auto-save-visited-mode 1)
+  (save-place-mode 1) ;; Save the place your cursor was at for files.
+  (auto-save-visited-mode 1) ;; Automatically saves buffers, with a timer.
   ;; Settings
   (setq read-file-name-completion-ignore-case t
 	read-buffer-completion-ignore-case t
 	completion-ignore-case t
+	;; Choose newer config over compiled/elisp
 	load-prefer-newer t
 	backup-by-copying t
+	;; Flash frame (see visuals.el for the flash code)
 	visible-bell t
 	apropos-do-all t
 	ediff-window-setup-function 'ediff-setup-windows-plain
@@ -60,8 +65,15 @@
   :defer t
   :after transient
   :commands (magit-status) 
-:bind ("C-x g" . #'magit-status))
+  :bind ("C-x g" . #'magit-status)
+  :config
+  (evil-define-key 'normal 'global (kbd "SPC g") #'magit-status)
+  )
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
 
 (use-package dired
   :ensure nil
