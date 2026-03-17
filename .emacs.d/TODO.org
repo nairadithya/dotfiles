@@ -4,8 +4,10 @@
 * Candidate Packages
 1. Vertico
 2. Orderless
+3. Company
+4. Neocaml
 
-* TODO TEST
+* TODO
 - [x] Create a nice custom modeline
 - [x] Create native non-Doom theme
 - [x] Setup =project.el=

@@ -14,3 +14,14 @@
 (set-face-attribute 'default nil :font "IosevkaTermSlab Nerd Font" :height 160)
 (force-mode-line-update t)
 (load-theme 'atlas t)
+
+;; Flash on error with theme colour
+(setq visible-bell nil
+      ring-bell-function
+      (lambda ()
+	(let ((orig (face-background 'mode-line))
+	      (flash (face-foreground 'font-lock-keyword-face)))
+	  (set-face-background 'mode-line flash)
+	  (run-with-timer 0.2 nil
+			  (lambda ()
+			    (set-face-background 'mode-line orig))))))
