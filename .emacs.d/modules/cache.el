@@ -5,7 +5,6 @@
 (require 'saveplace)
 (require 'recentf)
 (require 'tramp)
-(require 'transient)
 (require 'project)
 
 (defvar my/emacs-cache-dir (expand-file-name "~/.cache/emacs/"))
@@ -57,15 +56,6 @@
 
 (setq package-user-dir
       (expand-file-name "elpa/" my/emacs-cache-dir))
-
-(setq transient-levels-file
-      (expand-file-name "transient/levels.el" my/emacs-cache-dir))
-
-(setq transient-values-file
-      (expand-file-name "transient/values.el" my/emacs-cache-dir))
-
-(setq transient-history-file
-      (expand-file-name "transient/history.el" my/emacs-cache-dir))
 
 (setq project-list-file
       (expand-file-name "projects" my/emacs-cache-dir))

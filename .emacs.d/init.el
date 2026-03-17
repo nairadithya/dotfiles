@@ -23,7 +23,7 @@
 (load-module "visuals.el")
 (load-module "utils.el")
 
-;; Package Config
+
 (use-package emacs
   :custom
   (enable-recursive-minibuffers t)
@@ -35,12 +35,19 @@
   :ensure t
   :config
   (evil-mode 1)
+  (evil-define-key 'normal 'global (kbd "SPC w") evil-window-map)
   )
 
-(evil-define-key 'normal 'global (kbd "SPC w") evil-window-map)
+(use-package transient 
+  :demand t 
+  :ensure t)
 
 (use-package magit
-  :bind ("C-x g" . #'magit-status))
+  :defer t
+  :after transient
+  :commands (magit-status) 
+:bind ("C-x g" . #'magit-status))
+
 
 (use-package dired
   :ensure nil
@@ -65,7 +72,6 @@
   (evil-define-key 'normal 'global (kbd "SPC SPC") #'project-find-file)
   (evil-define-key 'normal 'global (kbd "SPC p") project-prefix-map)
   )
-
 
 (use-package vertico
   :ensure t
@@ -96,5 +102,5 @@
 	doom-modeline-modal-modern-icon t
 	doom-modeline-major-mode-icon t
 	doom-modeline-buffer-file-name-style 'truncate-upto-project
-	doom-modeline-bar-width 0)
+	doom-line-bar-width 0)
   )

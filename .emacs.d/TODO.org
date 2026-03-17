@@ -5,7 +5,7 @@
 1. Vertico
 2. Orderless
 
-* TODO
+* TODO TEST
 - [x] Create a nice custom modeline
 - [x] Create native non-Doom theme
 - [x] Setup =project.el=
@@ -13,9 +13,9 @@
 - [x] Font configuration
 - [x] Clean up cache stuff
 - [ ] Start thinking about custom org-mode workflows
-
+- [ ] Fix magit bug with transient
 * Language Specific Tooling
+- [ ] OCAML
 - [ ] Typst
 - [ ] Rust
-- [ ] OCAML
 - [ ] Python

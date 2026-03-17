@@ -18,7 +18,7 @@
 ;; accept. For example:
 
 (setq doom-font (font-spec :family "CaskaydiaCove Nerd Font" :size 20 :weight 'regular))
-(setq doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 24 :weight 'regular))
+(setq doom-variable-pitch-font (font-spec :family "IBM Plex Serif" :size 24 :weight 'regular))
 (setq doom-serif-font (font-spec :family "IBM Plex Serif" :size 30 :weight 'regular))
 (setq doom-symbol-font (font-spec :family "Noto Sans Symbols 2"))
 (setq doom-emoji-font (font-spec :family "Noto Color Emoji"))
