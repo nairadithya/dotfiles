@@ -4,6 +4,7 @@
 (global-display-line-numbers-mode 1)
 (scroll-bar-mode 0)
 (global-visual-line-mode -1)
+(blink-cursor-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
 (setq inhibit-startup-screen t

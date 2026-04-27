@@ -5,6 +5,7 @@
       (list treesit-install-language-grammar-directory))
 (setq treesit-language-source-alist
       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+        (c "https://github.com/tree-sitter/tree-sitter-c")
         (css "https://github.com/tree-sitter/tree-sitter-css")
         (elisp "https://github.com/Wilfred/tree-sitter-elisp")
         (html "https://github.com/tree-sitter/tree-sitter-html")
