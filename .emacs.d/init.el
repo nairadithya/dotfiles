@@ -25,6 +25,7 @@
 (load-module "ocaml")
 (load-module "meow-config")
 
+
 (use-package meow :ensure t
   :config
   (meow-setup)
@@ -181,3 +182,4 @@
 	doom-modeline-buffer-file-name-style 'truncate-upto-project
 	doom-line-bar-width 0)
   )
+

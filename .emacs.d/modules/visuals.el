@@ -13,10 +13,12 @@
       initial-scratch-message nil)
 
 (setf display-line-numbers 'relative)
+
+(set-face-attribute 'default nil :font "BlexMono Nerd Font" :height 160)
+
 ;; MODELINE
-(set-face-attribute 'default nil :font "IosevkaTermSlab Nerd Font" :height 160)
 (force-mode-line-update t)
-(load-theme 'atlas t)
+
 
 ;; Flash on error with theme colour
 (setq visible-bell nil
@@ -28,5 +30,10 @@
 	  (run-with-timer 0.2 nil
 			  (lambda ()
 			    (set-face-background 'mode-line orig))))))
+
+(dolist (mode '(org-mode-hook
+		term-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (provide 'visuals)
