@@ -5,7 +5,6 @@
 * Table Of Contents :toc:
 - [[#apps][Apps]]
 - [[#startup][Startup]]
-- [[#workspace-autostart][Workspace AutoStart]]
 - [[#binds][Binds]]
   - [[#main-keybinds][Main Keybinds]]
   - [[#volume-and-brightness][Volume and brightness]]
@@ -35,7 +34,6 @@ $org-capture = ~/.config/emacs/bin/org-capture
 $menu = fuzzel
 $cmenu = ~/.config/fuzzel/scripts/command-menu
 $music = Cider --enable-features=UseOzonePlatform --ozone-platform=wayland
-$whatsapp = /opt/helium-browser-bin/chrome-wrapper --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
 #+end_src
 * Startup
 #+begin_src conf
@@ -46,10 +44,6 @@ exec-once = hyprpaper
 exec-once = waybar
 exec-once = systemctl --user start hyprpolkitagent
 exec-once = dbus-update-activation-environment --systemd --all
-#+end_src
-* Workspace AutoStart
-#+begin_src conf
-exec-once = ~/.config/hypr/scripts/startup
 #+end_src
 * Binds
 #+begin_src conf

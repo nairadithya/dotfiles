@@ -13,9 +13,22 @@
       initial-scratch-message nil)
 
 (setf display-line-numbers 'relative)
+(use-package ef-themes
+  :ensure t
+  :init
+  (ef-themes-take-over-modus-themes-mode 1)
+  :config
+  (setq modus-themes-mixed-fonts t)
+  (setq modus-themes-italic-constructs t)
+  (modus-themes-load-theme 'ef-winter))
+
+
+(use-package visual-fill-column
+  :after org)
 
 (set-face-attribute 'default nil :font "BlexMono Nerd Font" :height 160)
-
+(set-face-attribute 'fixed-pitch nil :font "BlexMono Nerd Font" :height 160)
+(set-face-attribute 'variable-pitch nil :font "IBM Plex Serif" :weight 'regular)
 ;; MODELINE
 (force-mode-line-update t)
 

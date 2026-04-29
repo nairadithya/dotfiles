@@ -6,6 +6,7 @@
 (setq treesit-language-source-alist
       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
         (c "https://github.com/tree-sitter/tree-sitter-c")
+        (c "https://github.com/tree-sitter/tree-sitter-cpp")
         (css "https://github.com/tree-sitter/tree-sitter-css")
         (elisp "https://github.com/Wilfred/tree-sitter-elisp")
         (html "https://github.com/tree-sitter/tree-sitter-html")
@@ -23,7 +24,7 @@
 
 
 ;; Typst Setup
-(require 'typst-ts-mode nil t)
+(require 'typst-ts nil t)
 (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode))
 
 

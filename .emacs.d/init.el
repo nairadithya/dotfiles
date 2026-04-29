@@ -24,7 +24,7 @@
 (load-module "utils")
 (load-module "ocaml")
 (load-module "meow-config")
-
+(load-module "org-config")
 
 (use-package meow :ensure t
   :config
@@ -42,6 +42,12 @@
   (dashboard-vertically-center-content t)
   (dashboard-show-shortcuts nil)
   )
+
+(use-package term
+  :config
+  (setq explicit-shell-file-name "bash")
+  ;;(setq explicit-zsh-args '())
+  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *"))
 
 (use-package emacs
   :custom
@@ -70,22 +76,7 @@
 	)
   )
 
-(use-package ef-themes
-  :ensure t
-  :init
-  ;; This makes the Modus commands listed below consider only the Ef
-  ;; themes.  For an alternative that includes Modus and all
-  ;; derivative themes (like Ef), enable the
-  ;; `modus-themes-include-derivatives-mode' instead.  The manual of
-  ;; the Ef themes has a section that explains all the possibilities:
-  ;;
-  ;; - Evaluate `(info "(ef-themes) Working with other Modus themes or taking over Modus")'
-  ;; - Visit <https://protesilaos.com/emacs/ef-themes#h:6585235a-5219-4f78-9dd5-6a64d87d1b6e>
-  (ef-themes-take-over-modus-themes-mode 1)
-  :config
-  (setq modus-themes-mixed-fonts t)
-  (setq modus-themes-italic-constructs t)
-  (modus-themes-load-theme 'ef-autumn))
+
 
 (use-package transient 
   :demand t 
@@ -143,6 +134,8 @@
   (completion-pcm-leading-wildcard t)) 
 
 (use-package marginalia :ensure t :init (marginalia-mode))
+(use-package typst-ts-mode
+  :vc (:url "https://codeberg.org/meow_king/typst-ts-mode.git"))
 
 (use-package consult
   :ensure t

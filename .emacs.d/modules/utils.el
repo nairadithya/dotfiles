@@ -10,4 +10,11 @@
   (let ((default-directory (concat website-directory posts-directory)))
     (call-interactively #'find-file)))
 
+(setq org-notes-directory (expand-file-name "~/notes/"))
+
+(defun find-notes ()
+  (interactive)
+  (let ((default-directory org-notes-directory))
+    (call-interactively #'find-file)))
+
 (provide 'utils)

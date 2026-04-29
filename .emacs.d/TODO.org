@@ -17,7 +17,8 @@
 - [ ] Start thinking about custom org-mode workflows
 - [ ] Fix magit bug with transient
 * Language Specific Tooling
-- [ ] OCAML
+- [x] OCAML
+- [ ] C
 - [ ] Typst
 - [ ] Rust
 - [ ] Python
