@@ -1,9 +1,12 @@
+(setq meow-keypad-ctrl-meta-prefix ?G)
+(setq meow-keypad-meta-prefix ?M)
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-define-key
    '("j" . meow-next)
    '("k" . meow-prev)
    '("<escape>" . ignore))
+  
   (meow-leader-define-key
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
@@ -17,7 +20,19 @@
    '("9" . meow-digit-argument)
    '("0" . meow-digit-argument)
    '("/" . meow-keypad-describe-key)
+   
+   ;; Project
+   '("SPC" . project-find-file)
+   '("p p" . project-switch-project)
+
+   ;; Files And Consult
+   '("." . find-file)
+   '("o -" . dired-jump)
+   '("f r" . consult-recent-file)
+
+   '("g" . (lambda () (interactive) (require 'magit) (magit-status)))
    '("?" . meow-cheatsheet))
+  
   (meow-normal-define-key
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
@@ -79,6 +94,8 @@
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
    '("'" . repeat)
-   '("<escape>" . ignore)))
+   '("<escape>" . ignore)
+   '("<escape>" . ignore)
+   ))
 
 (provide 'meow-config)
