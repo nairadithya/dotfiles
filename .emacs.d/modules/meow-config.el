@@ -24,12 +24,20 @@
    ;; Project
    '("SPC" . project-find-file)
    '("p p" . project-switch-project)
+   '("p c" . project-compile)
+   '("p C" . project-recompile)
 
    ;; Files And Consult
    '("." . find-file)
    '("o -" . dired-jump)
    '("f r" . consult-recent-file)
 
+   ;; Code
+   '("c c" . compile)
+   '("c C" . recompile)
+   
+
+   
    '("g" . (lambda () (interactive) (require 'magit) (magit-status)))
    '("?" . meow-cheatsheet))
   

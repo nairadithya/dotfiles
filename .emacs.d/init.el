@@ -89,6 +89,7 @@
   :after transient
   :commands (magit-status) 
   :bind ("C-x g" . #'magit-status)
+  :config (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   )
 
 (use-package exec-path-from-shell
