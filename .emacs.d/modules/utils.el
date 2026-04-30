@@ -12,7 +12,7 @@
 
 (setq org-notes-directory (expand-file-name "~/notes/"))
 
-(defun find-notes ()
+(defun my/find-notes ()
   (interactive)
   (let ((default-directory org-notes-directory))
     (call-interactively #'find-file)))

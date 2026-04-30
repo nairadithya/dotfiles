@@ -1,5 +1,6 @@
 (setq meow-keypad-ctrl-meta-prefix ?G)
 (setq meow-keypad-meta-prefix ?M)
+
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-define-key
@@ -33,14 +34,13 @@
    '("f r" . consult-recent-file)
 
    ;; Code
-   '("c c" . compile)
-   '("c C" . recompile)
+   '("x c" . compile)
+   '("x C" . recompile)
    
 
    
    '("g" . (lambda () (interactive) (require 'magit) (magit-status)))
    '("?" . meow-cheatsheet))
-  
   (meow-normal-define-key
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)

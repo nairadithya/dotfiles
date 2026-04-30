@@ -12,10 +12,10 @@
      default))
  '(org-agenda-files '("~/notes/todo.org"))
  '(package-selected-packages
-   '(consult consult-eglot corfu dashboard doom-modeline dune ef-themes
-	     embark embark-consult exec-path-from-shell magit
-	     marginalia meow ocaml-eglot orderless org-bullets tuareg
-	     typst-ts-mode vertico visual-fill-column))
+   '(consult consult-eglot corfu dashboard doom-modeline doom-themes dune
+	     ef-themes embark embark-consult exec-path-from-shell
+	     magit marginalia meow ocaml-eglot orderless org-bullets
+	     tuareg typst-ts-mode vertico visual-fill-column))
  '(package-vc-selected-packages
    '((typst-ts-mode :url
 		    "https://codeberg.org/meow_king/typst-ts-mode.git")

@@ -13,14 +13,34 @@
       initial-scratch-message nil)
 
 (setf display-line-numbers 'relative)
-(use-package ef-themes
-  :ensure t
-  :init
-  (ef-themes-take-over-modus-themes-mode 1)
-  :config
-  (setq modus-themes-mixed-fonts t)
-  (setq modus-themes-italic-constructs t)
-  (modus-themes-load-theme 'ef-winter))
+
+(use-package ef-themes		  
+  :ensure t			
+  :init				
+  (ef-themes-take-over-modus-themes-mode 1) 
+  :config				    
+  (setq modus-themes-mixed-fonts t)	    
+  (setq modus-themes-italic-constructs t)   
+  (modus-themes-load-theme 'ef-frost))    
+
+;; (use-package doom-themes
+;;   :ensure t
+;;   :custom
+;;   ;; Global settings (defaults)
+;;   (doom-themes-enable-bold t)   ; if nil, bold is universally disabled
+;;   (doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   ;; for treemacs users
+;;   :config
+;;   (load-theme 'atlas t)
+
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   ;; Enable custom neotree theme (nerd-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; or for treemacs users
+;;   (doom-themes-treemacs-config)
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
 
 
 (use-package visual-fill-column

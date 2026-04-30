@@ -106,11 +106,14 @@
 
 
 (use-package compile
-  :ensure nil
+  :defer t
   :custom
   (compilation-always-kill t)
   (compilation-scroll-output t)
-  (ansi-color-for-compilation-mode t))
+  (ansi-color-for-compilation-mode t)
+  :config
+  (put 'compile-command 'safe-local-variable #'stringp)
+  )
 
 (use-package project
   :ensure nil
