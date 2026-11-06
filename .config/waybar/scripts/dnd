@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -eu
+
+state_file="${XDG_RUNTIME_DIR:?}/waybar-fnott-dnd"
+exec 9>"${state_file}.lock"
+flock 9
+
+pid=$(pgrep -u "$(id -u)" -x fnott | head -n 1 || true)
+if [[ -z "$pid" ]]; then
+    printf '{"text":"[ dnd unavailable ]","class":"unavailable","tooltip":"Fnott is not running"}\n'
+    exit 0
+fi
+
+paused=false
+if [[ -f "$state_file" ]] && [[ "$(<"$state_file")" == "$pid" ]]; then
+    paused=true
+fi
+
+if [[ "${1:-}" == toggle ]]; then
+    if [[ "$paused" == true ]]; then
+        fnottctl unpause
+        rm -f -- "$state_file"
+        paused=false
+    else
+        fnottctl pause
+        printf '%s\n' "$pid" > "$state_file"
+        paused=true
+    fi
+fi
+
+if [[ "$paused" == true ]]; then
+    printf '{"text":"[ dnd on ]","class":"on","tooltip":"Notifications paused. Click to resume."}\n'
+else
+    printf '{"text":"[ dnd off ]","class":"off","tooltip":"Notifications enabled. Click to pause."}\n'
+fi
