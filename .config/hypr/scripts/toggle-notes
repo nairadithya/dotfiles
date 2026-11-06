@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Keep daily writing in its own frame and Hyprland special workspace.
+set -euo pipefail
+
+trap 'notify-send "Notes workspace" "Could not open notes. Check the Emacs daemon and Hyprland configuration." >/dev/null 2>&1 || true' ERR
+
+# Ignore overlapping launches, rather than creating duplicate frames or toggles.
+exec 9>"${XDG_RUNTIME_DIR:?}/emacs-notes.lock"
+flock -n 9 || exit 0
+
+monitors=$(hyprctl -j monitors)
+visible=$(jq -r 'any(.[]; .focused and .specialWorkspace.name == "special:notes")' \
+    <<<"$monitors")
+if [[ "$visible" == true ]]; then
+    hyprctl dispatch 'hl.dsp.workspace.toggle_special("notes")' >/dev/null
+else
+    # The Lisp command explicitly targets the notes frame, never the current one.
+    emacsclient --eval '(my/notes-open-today)' >/dev/null
+    hyprctl dispatch 'hl.dsp.workspace.toggle_special("notes")' >/dev/null
+fi
