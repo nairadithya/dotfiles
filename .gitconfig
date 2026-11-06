@@ -2,10 +2,8 @@
 	email = adithyanair121@gmail.com
 	name = Adithya Nair
 [core]
-	editor = nvim
+	editor = emacsclient -t -a emacs
 [init]
 	defaultBranch = main
-[diff]
-	tool = nvimdiff
 [github]
 	user = nairadithya

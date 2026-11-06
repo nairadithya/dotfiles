@@ -30,3 +30,7 @@ function vterm_printf;
         printf "\e]%s\e\\" "$argv"
     end
 end
+
+function fish_greeting
+    bash ~/bin/machine-report.sh
+end

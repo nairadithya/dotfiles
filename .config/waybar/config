@@ -14,6 +14,7 @@
 	"group/quicksettings": {
 		"orientation": "horizontal",
 		"modules": [
+			"custom/dnd",
 			"wireplumber",
 			"bluetooth",
 			"network",
@@ -32,7 +33,7 @@
 		}
 	},
 	"clock": {
-		"format": "{:%a %d %B, %H:%M}",
+		"format": "[ {:%a %d %B, %H:%M} ]",
 		"interval": 1,
 		"tooltip": true,
 		"tooltip-format": "<tt>{calendar}</tt>",
@@ -41,7 +42,7 @@
 			"mode-mon-col": 3,
 			"on-click-right": "mode",
 			"format": {
-				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+				"today": "<span color='#ff6507'><b><u>{}</u></b></span>"
 			}
 		},
 		"actions": {
@@ -49,17 +50,22 @@
 		}
 	},
 
+	"custom/dnd": {
+		"exec": "~/.config/waybar/scripts/dnd",
+		"return-type": "json",
+		"interval": 2,
+		"on-click": "~/.config/waybar/scripts/dnd toggle"
+	},
 	"wireplumber": {
-		"format": "Volume: {volume}% |",
-		"format-muted": "󰝟",
+		"format": "[ vol {volume}% ]",
+		"format-muted": "[ vol muted ]",
 		"scroll-step": 5.0,
-		"on-click": "fnott",
 		"on-click-right": "pavucontrol",
 	},
 	"bluetooth": {
-		"format-on": "Bluetooth: On |",
-		"format-off": "Bluetooth: Off |",
-		"format-connected": "Bluetooth: Connected to {device_alias} |",
+		"format-on": "[ bt on ]",
+		"format-off": "[ bt off ]",
+		"format-connected": "[ bt {device_alias} ]",
 		"format-disabled": "",
 		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
 		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
@@ -68,11 +74,11 @@
         "on-click": "ghostty -e 'bluetuith'",
 	},
 	"network": {
-		"format": "Connected: {essid} |",
-		"format-ethernet": "Connected: Ethernet",
-		"format-disconnected": "Disconnected",
+		"format": "[ net {essid} ]",
+		"format-ethernet": "[ net ethernet ]",
+		"format-disconnected": "[ net offline ]",
 		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
-		"tooltip-format-ethernet": "{ifname} 󰈀 ",
+		"tooltip-format-ethernet": "{ifname}",
 		"on-click": "ghostty -e nmtui",
 		"on-click-right": "nm-connection-editor",
 		// "on-click": "uwsm app -- footclient --app-id=nmtui sh -c 'sleep 0.1; nmtui'"
@@ -83,49 +89,10 @@
 			"warning": 30,
 			"critical": 20
 		},
-		"format": "{icon} {capacity}%",
-		"format-charging": "{icon} {capacity}%",
-		"format-plugged": "{icon} {capacity}%",
+		"format": "[ bat {capacity}% ]",
+		"format-charging": "[ bat {capacity}% charging ]",
+		"format-plugged": "[ bat {capacity}% plugged ]",
 		"interval": 15,
-		"tooltip-format": "{capacity}%",
-		"on-click": "fnott",
-		"format-icons": {
-			"default": [
-				"󰁺",
-				"󰁻",
-				"󰁼",
-				"󰁽",
-				"󰁾",
-				"󰁾",
-				"󰂀",
-				"󰂁",
-				"󰂂",
-				"󰁹",
-			],
-			"charging": [
-				"󰢜",
-				"󰂆",
-				"󰂇",
-				"󰂈",
-				"󰢝",
-				"󰂉",
-				"󰢞",
-				"󰂊",
-				"󰂋",
-				"󰂅"
-			],
-			"plugged": [
-				"󰁺",
-				"󰁻",
-				"󰁼",
-				"󰁽",
-				"󰁾",
-				"󰁾",
-				"󰂀",
-				"󰂁",
-				"󰂂",
-				"󰁹",
-			],
-		}
+		"tooltip-format": "{capacity}%"
 	}
 }

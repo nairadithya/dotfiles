@@ -29,21 +29,21 @@ code:
 
 execution_output:
   colors:
-    foreground: "c6d0f5"
-    background: "414559"
+    foreground: "ffffff"
+    background: "404040"
   status:
     running:
-      foreground: "8caaee"
+      foreground: "ff6507"
     success:
-      foreground: "a6d189"
+      foreground: "c0c0c0"
     failure:
-      foreground: "e78284"
+      foreground: "ff6507"
     not_started:
-      foreground: "e5c890"
+      foreground: "c44d05"
 
 inline_code:
   colors:
-    foreground: "a6d189"
+    foreground: "c0c0c0"
 
 intro_slide:
   title:
@@ -58,19 +58,19 @@ intro_slide:
   event:
     alignment: center
     colors:
-      foreground: "a6d189"
+      foreground: "c0c0c0"
   location:
     alignment: center
     colors:
-      foreground: "85c1dc"
+      foreground: "c0c0c0"
   date:
     alignment: center
     colors:
-      foreground: "e5c890"
+      foreground: "c44d05"
   author:
     alignment: center
     colors:
-      foreground: "b5bfe2"
+      foreground: "ffffff"
     positioning: page_bottom
   footer: true
 
@@ -78,56 +78,56 @@ headings:
   h1:
     prefix: "██"
     colors:
-      foreground: "81c8be"
+      foreground: "ff6507"
   h2:
     prefix: "▓▓▓"
     colors:
-      foreground: "ca9ee6"
+      foreground: "c0c0c0"
   h3:
     prefix: "▒▒▒▒"
     colors:
-      foreground: "8caaee"
+      foreground: "ff6507"
   h4:
     prefix: "░░░░░"
     colors:
-      foreground: "e78284"
+      foreground: "ff6507"
   h5:
     prefix: "░░░░░░"
     colors:
-      foreground: "a6d189"
+      foreground: "c0c0c0"
   h6:
     prefix: "░░░░░░░"
     colors:
-      foreground: "ef9f76"
+      foreground: "c44d05"
 
 block_quote:
   prefix: "▍ "
   colors:
-    foreground: "c6d0f5"
-    background: "414559"
-    prefix: "e5c890"
+    foreground: "ffffff"
+    background: "404040"
+    prefix: "c44d05"
 
 alert:
   prefix: "▍ "
   base_colors:
-    foreground: "c6d0f5"
-    background: "414559"
+    foreground: "ffffff"
+    background: "404040"
   styles:
     note:
-      color: "8caaee"
+      color: "ff6507"
     tip:
-      color: "a6d189"
+      color: "c0c0c0"
     important:
-      color: "ca9ee6"
+      color: "c0c0c0"
     warning:
-      color: "e5c890"
+      color: "c44d05"
     caution:
-      color: "e78284"
+      color: "ff6507"
 
 typst:
   colors:
-    foreground: "c6d0f5"
-    background: "414559"
+    foreground: "ffffff"
+    background: "404040"
 
 footer:
   style: template
@@ -135,7 +135,7 @@ footer:
 
 modals:
   selection_colors:
-    foreground: "85c1dc"
+    foreground: "c0c0c0"
 
 mermaid:
   background: transparent

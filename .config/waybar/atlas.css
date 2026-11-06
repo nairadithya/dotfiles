@@ -1,5 +1,8 @@
 @define-color accent #ff6507;
-@define-color bg-muted #404040;
-@define-color bg-muted-plus  #737373;
-@define-color bg  #121212;
-@define-color fg  #fff;
+@define-color bgMuted #404040;
+@define-color bgMutedPlus #737373;
+@define-color bg #121212;
+@define-color fg #ffffff;
+@define-color on_surface #ffffff;
+@define-color yellow #c44d05;
+@define-color error_container #ff6507;

@@ -1,5 +1,7 @@
 hl.on("hyprland.start", function ()  
  hl.exec_cmd("fnott")
+ hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+ hl.exec_cmd("hex start")
  hl.exec_cmd("clipse -listen")
  hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_RUNTIME_DIR DISPLAY")
  hl.exec_cmd("hypridle")

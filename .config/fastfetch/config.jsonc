@@ -12,37 +12,37 @@
     "modules": [
         {
             "type": "os",
-            "key": " ",
+            "key": "os ",
             "keyColor": "38;2;255;101;7",  // = color4
         },
         {
             "type": "kernel",
-            "key": " ",
+            "key": "kernel ",
             "keyColor": "38;2;255;101;7",
         },
         {
             "type": "shell",
-            "key": " ",
+            "key": "shell ",
             "keyColor": "38;2;255;101;7", 
         },
         {
             "type": "terminal",
-            "key": " ",
+            "key": "terminal ",
             "keyColor": "38;2;255;101;7", 
         },
         {
             "type": "wm",
-            "key": " ",
+            "key": "wm ",
             "keyColor": "38;2;255;101;7", 
         },
         {
             "type": "terminalfont",
-            "key": " ",
+            "key": "terminalfont ",
             "keyColor": "38;2;255;101;7", 
         },
         {
             "type": "uptime",
-            "key": " ",
+            "key": "uptime ",
             "keyColor": "38;2;255;101;7", 
         },
         {
@@ -53,27 +53,27 @@
         },
         {
             "type": "media",
-            "key": "󰝚 ",
+            "key": "media ",
             "keyColor": "38;2;255;101;7", 
         },
         {
             "type": "CPU",
-            "key": "⚙ ",
+            "key": "cpu ",
             "keyColor": "38;2;255;101;7", 
         },
         {
             "type": "GPU",
-            "key": " ",
+            "key": "gpu ",
             "keyColor": "38;2;255;101;7", 
         },
         {
             "type": "memory",
-            "key": "󰍛 ",
+            "key": "memory ",
             "keyColor": "38;2;255;101;7"
         },
                 {
             "type": "monitor",
-            "key": "🖼 ",
+            "key": "monitor ",
             "keyColor": "38;2;255;101;7",
         },
 

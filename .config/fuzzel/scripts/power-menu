@@ -1,35 +1,29 @@
 #!/usr/bin/lua
 local options = {
-    ["     Lock"] = "hyprlock",
-    ["     Shut down"] = "systemctl poweroff",
-    ["     Reboot"] = "systemctl reboot",
-    ["󰍃     Log out"] = "hyprctl dispatch exit 1",
-    ["󰒲     Suspend"] = "systemctl suspend",
-    ["     Hibernate"] = "systemctl hibernate",
+    { "Lock", "hyprlock" },
+    { "Shut down", "systemctl poweroff" },
+    { "Reboot", "systemctl reboot" },
+    { "Log out", "hyprctl dispatch exit 1" },
+    { "Suspend", "systemctl suspend" },
+    { "Hibernate", "systemctl hibernate" },
 }
 
-local options_string = ""
-local length = 0
-for key, _ in pairs(options) do
-    options_string = options_string .. key .. "\n"
-    length = length + 1
+local labels = {}
+for _, option in ipairs(options) do
+    labels[#labels + 1] = option[1]
 end
-options_string = options_string:sub(1, -2)
 
-local f = assert(
-    io.popen(
-        "echo -e '"
-            .. options_string
-            .. "' | fuzzel --placeholder \"Power Menu\" --dmenu "
-        ------------------ to change the location of the dropdown, use --location 1 (top left) or --location 3 (top right) (see --location in wofi --help)
-            .. length,
-        "r"
-    )
-)
-local s = assert(f:read("*a"))
-s = string.gsub(s, "^%s+", "")
-s = string.gsub(s, "%s+$", "")
-s = string.gsub(s, "[\n]+", " ")
-f:close()
+local menu = assert(io.popen(
+    "printf '%s\\n' '" .. table.concat(labels, "' '")
+        .. "' | fuzzel --placeholder 'Power Menu' --dmenu " .. #options,
+    "r"
+))
+local selected = menu:read("*l")
+menu:close()
 
-os.execute(options[s])
+for _, option in ipairs(options) do
+    if selected == option[1] then
+        os.execute(option[2])
+        break
+    end
+end

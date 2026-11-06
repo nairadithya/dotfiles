@@ -1,3 +1,3 @@
-hl.curve( "SPRING", { type = "spring", mass = 1, stiffness = 40, dampening = 11 })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 1, spring="SPRING", style="slide" })
-hl.animation({ leaf = "windows", enabled = true, speed = 10, spring = "SPRING", style = "popin 80%" })
+hl.curve( "overshoot", { type = "bezier", points = { {0.5, 0.9}, {0.1, 1.1} } } )
+hl.animation({ leaf = "workspaces", enabled = true, speed=5, style = "slide", bezier="overshoot"})
+hl.animation({ leaf = "windows", enabled = true, speed = 5, bezier="overshoot", style = "popin 80%" })

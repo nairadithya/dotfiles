@@ -1,5 +1,0 @@
-source "$ZDOTDIR/prompt.zsh"
-source "$ZDOTDIR/environmentvars.zsh"
-source "$ZDOTDIR/aliases.zsh"
-source "$ZDOTDIR/options.zsh"
-source "$ZDOTDIR/completions.zsh"

@@ -1,18 +1,56 @@
 [battery]
-full_symbol = "• "
-charging_symbol = "⇡ "
-discharging_symbol = "⇣ "
-unknown_symbol = "❓ "
-empty_symbol = "❗ "
+full_symbol = "battery "
+charging_symbol = "charging "
+discharging_symbol = "battery "
+unknown_symbol = "battery "
+empty_symbol = "battery "
 
 [erlang]
-symbol = "ⓔ "
+symbol = "erlang "
 
 [nodejs]
-symbol = "[⬢](bold green) "
+symbol = "node "
+style = "bold #ff6507"
+
+[directory]
+style = "bold #ff6507"
+
+[git_branch]
+symbol = "git "
+style = "bold #ff6507"
+
+[git_status]
+style = "bold #ff6507"
+conflicted = "conflict "
+ahead = "ahead "
+behind = "behind "
+diverged = "diverged "
+up_to_date = ""
+untracked = "untracked "
+stashed = "stashed "
+modified = "modified "
+staged = "staged "
+renamed = "renamed "
+deleted = "deleted "
+
+[character]
+success_symbol = "[>](bold #ff6507)"
+error_symbol = "[>](bold #c44d05)"
+
+[python]
+symbol = "python "
+
+[rust]
+symbol = "rust "
+
+[golang]
+symbol = "go "
+
+[lua]
+symbol = "lua "
 
 [pulumi]
-symbol = "🧊 "
+symbol = "pulumi "
 
 [typst]
 symbol = "t "

@@ -1,9 +1,9 @@
-@import "ef-bio.css";
+@import "atlas.css";
 
 window {
     all: unset;
     border: none;
-    font-family: "Blex Mono Nerd Font";
+    font-family: "CaskaydiaCove Nerd Font";
     font-weight: 600;
     color: @fg;
 }
@@ -68,6 +68,18 @@ window#waybar {
     margin: 0 6px;
 }
 
+#custom-dnd {
+    margin: 0 6px;
+}
+
+#custom-dnd.on {
+    color: @accent;
+}
+
+#custom-dnd.unavailable {
+    color: @bgMutedPlus;
+}
+
 #clock {
     padding: 0 12px;
     background: @bg;
@@ -78,6 +90,10 @@ window#waybar {
     margin: 8px;
     font-size: 1.2rem;
     color: @fg;
+}
+
+#workspaces button {
+    border-radius: 0;
 }
 
 #workspaces button.active {
